@@ -30,7 +30,7 @@
         @forelse ($courses as $course)
         <div class="w-full md:w-1/4">
             <div
-                class="border {{ $course->hasStudent(Auth::user()->id) ? 'border-red-600': '' }} m-2 shadow hover:shadow-2xl rounded-lg overflow-hidden">
+                class="border @auth {{ $course->hasStudent(Auth::user()->id) ? 'border-red-600': '' }} @endauth m-2 shadow hover:shadow-2xl rounded-lg overflow-hidden">
                 <div class="p-3">
                     <span class="bg-red-700 px-2 rounded-full text-red-100 text-sm">
                         CHF {{ $course->full_price }}
