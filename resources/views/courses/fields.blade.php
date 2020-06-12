@@ -165,7 +165,7 @@
                     @foreach ($students as $student)
                     @if ($course ?? '')
                     <option value="{{ $student->id }}" @if($course->hasStudent($student->id)) selected @endif>
-                        {{ $student->firstname }}
+                        {{ $student->firstname }} {{ $student->lastname }}
                     </option>
                     @else
                     <option value="{{ $student->id }}">{{ $student->firstname }}</option>

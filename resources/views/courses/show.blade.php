@@ -10,12 +10,6 @@
 
     @include('courses.show_fields')
 
-    <div>
-        zoom: {{$course->online_link }}
-        id: {{$course->online_id }}
-        password: {{$course->online_password }}
-    </div>
-
     <div class="my-10">
         <a href="{{ route('courses.edit', $course) }}"
             class="bg-red-700 text-white rounded-full py-2 px-3 hover:bg-red-800 inline-flex mr-2">

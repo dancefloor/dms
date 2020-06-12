@@ -74,6 +74,10 @@ class CourseController extends AppBaseController
         }
 
 
+        if ($request->students) {
+            $course->students()->attach($request->students, ['role'=>'student']);            
+        }
+
         if ($request->hasFile('cover_image')) {
             $course->update(['cover_image' => $request->cover_image->store('courses') ]);            
         }
@@ -150,6 +154,10 @@ class CourseController extends AppBaseController
 
         if ($request->styles) {
             $course->styles()->sync($request->styles);            
+        }
+
+        if ($request->students) {
+            $course->students()->attach($request->students, ['role'=>'student']);            
         }
 
         Flash::success('Course updated successfully.');

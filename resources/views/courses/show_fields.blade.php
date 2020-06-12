@@ -32,3 +32,43 @@
     </div>
 </div>
 @endif
+
+@if ($course->students()->count() > 0)
+<section id="students-list" class="mb-6">
+    <h3 class="font-semibold text-lg text-gray-700">Students</h3>
+    <ul class="border rounded-lg">
+        @foreach ($course->students as $item)
+        <li class="py-2 px-3 {{ $loop->first ? '' : 'border-b'}}">
+            <div class="inline-flex items-center">
+                <img src="{{ asset($item->avatar)}}" alt="" class="w-8 rounded-full">
+                <div class="ml-2">
+                    {{$item->firstname}} {{$item->lastname}}
+                    <span class="italic text-gray-600">{{$item->email}} </span>
+                </div>
+            </div>
+        </li>
+        @endforeach
+    </ul>
+</section>
+@endif
+
+@if ($course->online_link)
+<section>
+    <table>
+        <tr>
+            <td>zoom</td>
+            <td>{{ $course->online_link }}</td>
+        </tr>
+        @if ($course->online_id)
+        <tr>
+            <td>id</td>
+            <td>{{ $course->online_id }}</td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td>{{ $course->online_password }}</td>
+        </tr>
+        @endif
+    </table>
+</section>
+@endif

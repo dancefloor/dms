@@ -42,6 +42,9 @@
         $('#teachers').select2({
             placeholder: "Select a teacher(s)",
         });
+        $('#students').select2({
+            placeholder: "Select a students",
+        });
     });
 </script>
 @endpush
