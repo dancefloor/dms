@@ -8,8 +8,9 @@
 <section class="bg-black pt-10 pb-24 border-t border-gray-900">
 </section>
 <div class="container mx-auto -mt-24 px-4 bg-white rounded-lg shadow">
-    <form action="{{ route('users.update') }}" method="patch" class="py-5 px-8">
+    <form action="{{ route('users.update', $user->id) }}" method="post" class="py-5 px-8">
         @csrf
+        @method('PUT')
         <h1 class="text-2xl font-bold leading-7 text-gray-700 md:text-4xl sm:leading-9 sm:truncate mt-5 mb-10">Edit User
         </h1>
         @include('users.form.default')

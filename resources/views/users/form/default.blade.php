@@ -2,8 +2,8 @@
     <div class="w-full md:w-1/3 px-3 my-1">
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('firstname') border-red-500 @enderror"
-            id="firstname" type="text" placeholder="Firstname" name="firstname" value="{{ old('firstname') }}" required
-            autocomplete="firstname" autofocus>
+            id="firstname" type="text" placeholder="Firstname" name="firstname"
+            value="{{ $user->firstname ?? old('firstname') }}" required autocomplete="firstname" autofocus>
         @error('firstname')
         <p class="text-red-500 text-xs italic">{{ $message }}</p>
         @enderror
@@ -11,8 +11,8 @@
     <div class="w-full md:w-1/3 px-3 my-1">
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('lastname') border-red-500 @enderror"
-            id="lastname" type="text" placeholder="Lastname" name="lastname" value="{{ old('lastname') }}" required
-            autocomplete="lastname">
+            id="lastname" type="text" placeholder="Lastname" name="lastname"
+            value="{{ $user->lastname ?? old('lastname') }}" required autocomplete="lastname">
         @error('lastname')
         <p class="text-red-500 text-xs italic">{{ $message }}</p>
         @enderror
@@ -34,7 +34,7 @@
     <div class="w-full md:w-1/3 px-3 mb-2">
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('email') border-red-500 @enderror"
-            type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required
+            type="email" id="email" name="email" placeholder="Email" value="{{ $user->email ?? old('email') }}" required
             autocomplete="email">
         @error('email')
         <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -42,19 +42,19 @@
     </div>
 
     <div class="w-full md:w-1/3 px-3 mb-2">
-        <input
+        {{-- <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('password') border-red-500 @enderror"
-            type="password" id="password" name="password" placeholder="Password" required autocomplete="new-password">
+            type="password" id="password" name="password" placeholder="Password" required autocomplete="new-password"> --}}
         @error('password')
         <p class="text-red-500 text-xs italic">{{ $message }}</p>
         @enderror
     </div>
 
     <div class="w-full md:w-1/3 px-3 mb-2">
-        <input
+        {{-- <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('password') border-red-500 @enderror"
             type="password" id="password-confirm" name="password_confirmation"
-            placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">
+            placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password"> --}}
     </div>
 </div>
 
@@ -62,8 +62,8 @@
     <div class="w-full md:w-1/3 px-3 mb-2">
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('birthday') border-red-500 @enderror"
-            type="text" id="birthday" name="birthday" placeholder="Birthday" value="{{ old('birthday') }}" required
-            autocomplete="birthday">
+            type="text" id="birthday" name="birthday" placeholder="Birthday"
+            value="{{ $user->birthday ?? old('birthday') }}" required autocomplete="birthday">
         @error('birthday')
         <p class="text-red-500 text-xs italic">{{ $message }}</p>
         @enderror
@@ -72,9 +72,9 @@
     <div class="w-full md:w-1/3 px-3 mb-2">
         <label for="gender">
             <span class="text-gray-600 mr-3 font-semibold">Gender: </span>
-            <input type="radio" name="gender" value="male" required> <span
+            <input type="radio" name="gender" value="male" {{ $user->gender == 'male' ? 'checked':''}} required> <span
                 class="ml-1 mr-3 text-gray-600 text-sm">Male</span>
-            <input type="radio" name="gender" value="female"> <span
+            <input type="radio" name="gender" value="female" {{ $user->gender == 'female' ? 'checked':''}}> <span
                 class="ml-1 mr-3 text-gray-600 text-sm">Female</span>
         </label>
     </div>

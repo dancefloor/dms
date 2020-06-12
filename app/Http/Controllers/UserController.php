@@ -7,6 +7,7 @@ use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -105,7 +106,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit')->with('user', $user);
+        return view('users.edit')->with('user', $user)->with('roles',Role::all());
     }
 
     /**
@@ -118,10 +119,14 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->update($this->createUpdateRequest($request));
-
+        //dd($request->roles);
         if ( $request->roles ) {
-            $user->roles()->attach($request->roles);
+            $user->roles()->sync($request->roles);
         }
+
+        session()->flash('success', 'User updated successfully');
+
+        return redirect(route('users.index'));
     }
 
     /**
@@ -141,7 +146,8 @@ class UserController extends Controller
             'firstname' => $request->firstname, 
             'lastname' => $request->lastname, 
             'email' => $request->email, 
-            'password' => $request->password, 
+            // 'password' => $request->password, 
+            'password' => Hash::make('password'), 
             
             'birthday' => $request->birthday, 
             'gender' => $request->gender,

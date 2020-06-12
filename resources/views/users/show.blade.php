@@ -271,7 +271,9 @@
                 </div>
             </dl>
             <div class="mx-4 mt-10 mb-6">
-                <a href="" class="bg-red-700 text-white rounded-full px-3 py-2">Edit User</a>
+                <a href="{{ route('users.edit', $user->id) }}" class="bg-red-700 text-white rounded-full px-3 py-2">
+                    Edit User
+                </a>
             </div>
         </div>
     </div>

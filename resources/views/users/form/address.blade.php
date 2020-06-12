@@ -4,14 +4,14 @@
     <div class="w-full md:w-5/6 px-3 mb-2">
         <input
             class="appearance-none pl-5 block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('street') border-red-500 @enderror"
-            id="street" type="text" placeholder="Address / Street" name="street" value="{{ old('street') }}" required
-            autocomplete="street">
+            id="street" type="text" placeholder="Address / Street" name="street"
+            value="{{ $user->street ?? old('street') }}" required autocomplete="street">
     </div>
     <div class="w-full md:w-1/6 px-3">
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('street_number') border-red-500 @enderror"
             id="street_number" type="text" placeholder="Street number" name="street_number"
-            value="{{ old('street_number') }}" autocomplete="street_number">
+            value="{{ $user->street_number ?? old('street_number') }}" autocomplete="street_number">
     </div>
 </div>
 
@@ -25,31 +25,33 @@
     </div>
     <input
         class="appearance-none pl-5 block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500  @error('address_info') border-red-500 @enderror"
-        id="address_info" type="text" placeholder="Address extra" name="address_info" value="{{ old('address_info') }}"
-        autocomplete="address_info">
+        id="address_info" type="text" placeholder="Address extra" name="address_info"
+        value="{{ $user->address_info ?? old('address_info') }}" autocomplete="address_info">
 </div>
 
 <div class="flex flex-wrap mb-4 -mx-3">
     <div class="w-full md:w-1/4 px-3 mb-2">
         <input
             class="appearance-none pl-5 block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500  @error('postal_code') border-red-500 @enderror"
-            id="postal_code" type="text" placeholder="Postal Code" name="postal_code" value="{{ old('postal_code') }}"
-            autocomplete="postal_code">
+            id="postal_code" type="text" placeholder="Postal Code" name="postal_code"
+            value="{{ $user->postal_code ?? old('postal_code') }}" autocomplete="postal_code">
     </div>
     <div class="w-full md:w-1/4 px-3">
         <input
             class="appearance-none pl-5 block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500  @error('city') border-red-500 @enderror"
-            id="city" type="text" placeholder="City" name="city" value="{{ old('city') }}" autocomplete="city">
+            id="city" type="text" placeholder="City" name="city" value="{{ $user->city ?? old('city') }}"
+            autocomplete="city">
     </div>
     <div class="w-full md:w-1/4 px-3">
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('state') border-red-500 @enderror"
-            id="state" type="text" placeholder="State" name="state" value="{{ old('state') }}" autocomplete="state">
+            id="state" type="text" placeholder="State" name="state" value="{{ $user->state ?? old('state') }}"
+            autocomplete="state">
     </div>
     <div class="w-full md:w-1/4 px-3">
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('country') border-red-500 @enderror"
-            id="country" type="text" placeholder="Country" name="country" value="{{ old('country') }}"
+            id="country" type="text" placeholder="Country" name="country" value="{{ $user->country ?? old('country') }}"
             autocomplete="country">
     </div>
 </div>

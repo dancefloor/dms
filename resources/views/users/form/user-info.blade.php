@@ -4,8 +4,8 @@
     <div class="w-full md:w-1/3 px-3 mb-2">
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500  @error('mobile') border-red-500 @enderror"
-            id="mobile" type="text" placeholder="Mobile" name="mobile" value="{{ old('mobile') }}" required
-            autocomplete="phone">
+            id="mobile" type="text" placeholder="Mobile" name="mobile" value="{{ $user->mobile ?? old('mobile') }}"
+            required autocomplete="phone">
         @error('mobile')
         <p class="text-red-500 text-xs italic">{{ $message }}</p>
         @enderror
@@ -13,7 +13,7 @@
     <div class="w-full md:w-1/3 px-3">
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500  @error('phone') border-red-500 @enderror"
-            id="phone" type="text" placeholder="Secondary Phone" name="phone" value="{{ old('phone') }}"
+            id="phone" type="text" placeholder="Secondary Phone" name="phone" value="{{ $user->phone ?? old('phone') }}"
             autocomplete="phone">
         @error('phone')
         <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -40,13 +40,13 @@
     <div class="w-full md:w-1/3 px-3">
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500  @error('profession') border-red-500 @enderror"
-            id="profession" type="text" placeholder="profession" name="profession" value="{{ old('profession') }}"
-            autocomplete="profession">
+            id="profession" type="text" placeholder="profession" name="profession"
+            value="{{ $user->profession ?? old('profession') }}" autocomplete="profession">
     </div>
     <div class="w-full md:w-1/3 px-3">
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500  @error('branch') border-red-500 @enderror"
-            id="branch" type="text" placeholder="branch" name="branch" value="{{ old('branch') }}"
+            id="branch" type="text" placeholder="branch" name="branch" value="{{ $user->branch ?? old('branch') }}"
             autocomplete="branch">
     </div>
 </div>
@@ -54,6 +54,6 @@
 
 <div class="mb-4">
     <textarea name="biography" id="biography" cols="30" rows="5" placeholder="biography"
-        class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-lg py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500  @error('biography') border-red-500 @enderror">{{ old('biography') }}</textarea>
+        class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-lg py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500  @error('biography') border-red-500 @enderror">{{ $user->biography ?? old('biography') }}</textarea>
 
 </div>
