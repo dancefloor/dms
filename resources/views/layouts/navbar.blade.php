@@ -26,8 +26,9 @@
     <div class="inline-flex items-center">
         <div :class="{ 'block': openMenu, 'hidden':!openMenu }" class="px-2 pt-2 pb-4 hidden md:inline-flex">
             @auth
-            <a href="{{ route('dashboard') }}"
-                class="block text-white hover:bg-gray-800 rounded px-2 py-1 md:mt-1">Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="block text-white hover:bg-gray-800 rounded px-2 py-1 md:mt-1">
+                Dashboard
+            </a>
             @if (auth()->user()->isAdmin())
             <a href="{{ route('courses.index') }}"
                 class="block text-white hover:bg-gray-800 rounded px-2 py-1 mt-1">Courses</a>

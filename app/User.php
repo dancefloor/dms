@@ -154,8 +154,9 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        $admin_id = Role::where('slug','admin');
-        //return in_array($admin_id ,$this->roles()->pluck('id')->toArray());
+        $admin = Role::where('slug','admin')->first();
+        return in_array($admin->id , $this->roles()->pluck('id')->toArray());
+        //return $admin;
     }
 
 } 
