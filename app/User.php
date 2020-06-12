@@ -1,4 +1,5 @@
 <?php
+// https://stackoverflow.com/questions/51091501/laravel-many-to-many-on-pivot-table-with-eloquent
 
 namespace App;
 
