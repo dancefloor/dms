@@ -35,7 +35,7 @@ class CourseController extends AppBaseController
     {
         // $courses = $this->courseRepository->all();
         // $courses = Course::all()->orderBy('','desc');
-        $courses = Course::orderBy('created_at','desc')->get();
+        $courses = Course::orderBy('created_at','desc')->paginate(10);
 
         return view('courses.index')
             ->with('courses', $courses);
@@ -70,7 +70,7 @@ class CourseController extends AppBaseController
         }
 
         if ($request->teachers) {
-            $course->teachers()->attach($request->teachers);            
+            $course->teachers()->attach($request->teachers, ['role'=>'instructor']);            
         }
 
 
@@ -148,16 +148,17 @@ class CourseController extends AppBaseController
 
         $course = $this->courseRepository->update($this->saveFieldsRequest($request), $id);
 
-        if ($request->teachers) {
-            $course->teachers()->sync($request->teachers, ['role'=>'teacher']);            
-        }
-
         if ($request->styles) {
             $course->styles()->sync($request->styles);            
         }
 
+        if ($request->teachers) {
+            $course->teachers()->sync($request->teachers, ['role'=>'instructor']);            
+        }
+
         if ($request->students) {
-            $course->students()->attach($request->students, ['role'=>'student']);            
+            //dd($request->students);
+            $course->students()->sync($request->students, ['role'=>'student']);            
         }
 
         Flash::success('Course updated successfully.');

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Role;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
@@ -18,45 +18,37 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
-        return view('users.index')->with('users', User::all());
+    {   
+        $search =request()->query('search');
+        if ($search) {
+            $users = User::where('firstname','LIKE', "%{$search}%")
+                        ->orWhere('lastname','LIKE', "%{$search}%")->paginate(10);
+        } else if (request()->gender) {
+            if (request()->gender == 'male') {
+                $users = User::where('gender','male')->latest()->paginate(10);
+            }else{
+                $users = User::where('gender','female')->latest()->paginate(10);
+            }        
+        } else if (request()->role) {
+            if (request()->role == 'instructor') {                                
+                $users = User::whereHas('roles', function($query){
+                    $query->where('slug', 'instructor');
+                })->paginate(10);
+                //dd($users);
+            }else if(request()->role == 'assistant'){
+                $users = User::whereHas( 'roles', function($query){
+                    $query->where('slug','class-assistant');
+                })->latest()->paginate(10); 
+            }
+        } else {
+            $users = User::latest()->paginate(10);
+        }
+        return view('users.index')->with('users', $users); 
     }
 
 
-    // public function teachers(){
-    //     $users = User::where();
-    //     return view('users.index')->with('users', $users);
-    // }
-    
-    // public function actives(){
-    //     $users = User::where();
-    //     return view('users.actives')->with('users', $users);
-    // }
-    
-    // public function passive(){
-    //     $users = User::where();
-    //     return view('users.passive')->with('users', $users);
-    // }
-    
-    // public function debtors(){
-    //     $users = User::where();
-    //     return view('users.debtors')->with('users', $users);
-    // }
 
-    // public function assistants(){
-    //     $users = User::where();
-    //     return view('users.assistants')->with('users', $users);
-    // }
 
-    public function male(){        
-        $users = User::where('gender','male')->paginate(10);        
-        return view('users.index')->with('users', $users);
-    }
-
-    public function females(){
-        $users = User::where('gender','female')->paginate(10); 
-        return view('users.index')->with('users', $users);
-    }
 
 
     /**
@@ -77,10 +69,15 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
+        // dd($request->all());
         $user = User::create($this->createUpdateRequest($request));
         
         if ( $request->roles ) {
             $user->roles()->attach($request->roles);
+        }
+
+        if ($request->hasFile('picture')) {            
+            $user->update(['picture' => $request->picture->store('users') ]);            
         }
         
         session()->flash('success', 'You have created a new User successfully');
@@ -118,10 +115,16 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        // dd($request->all());        
         $user->update($this->createUpdateRequest($request));
-        //dd($request->roles);
+        
         if ( $request->roles ) {
             $user->roles()->sync($request->roles);
+        }
+
+        if ($request->hasFile('picture')) {            
+            // dd('im inside');
+            $user->update(['picture' => $request->picture->store('users') ]);            
         }
 
         session()->flash('success', 'User updated successfully');
@@ -135,9 +138,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        session()->flash('success', 'User deleted successfully');
+        return redirect(route('users.index'));
     }
 
     public function createUpdateRequest($request)
@@ -145,13 +151,11 @@ class UserController extends Controller
         return [
             'firstname' => $request->firstname, 
             'lastname' => $request->lastname, 
-            'email' => $request->email, 
-            // 'password' => $request->password, 
-            'password' => Hash::make('password'), 
+            'email' => $request->email,             
+            'password' => Hash::make($request->password), 
             
             'birthday' => $request->birthday, 
-            'gender' => $request->gender,
-            'picture' => $request->picture,    
+            'gender' => $request->gender,            
             
             'mobile' => $request->mobile,
             'phone' => $request->phone,
@@ -161,7 +165,7 @@ class UserController extends Controller
             'profession' => $request->profession,
             'biography' => $request->biography,
             'branch' => $request->branch,
-            'how_heard_df' => $request->how_heard_df,
+            'aware_of_df' => $request->aware_of_df,
             'work_status' => $request->work_status,
             'price_hour' => $request->price_hour,
             

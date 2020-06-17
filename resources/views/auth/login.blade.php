@@ -4,9 +4,9 @@
 
 <div class="w-full max-w-md">
     <div class="flex justify-center mb-5">
-        @include('icons.logo-black', ['style' => 'h-16'])
+        @include('icons.logo-white', ['style' => 'h-16'])
     </div>
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('login') }}">
+    <form class="bg-white shadow-xl rounded-lg px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('login') }}">
         @csrf
         <h1 class="text-center text-gray-700 text-lg font-bold mb-3">{{ __('Login') }}</h1>
 

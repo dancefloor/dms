@@ -21,9 +21,9 @@
                         class="whitespace-no-wrap py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition ease-in-out duration-150">
                         All
                     </a>
-                    <a href="#"
+                    <a href="{{ route('courses.index', ['type' => 'class'])}}"
                         class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition ease-in-out duration-150">
-                        Active
+                        Classes
                     </a>
                     <a href="#"
                         class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-red-500 font-medium text-sm leading-5 text-red-600 focus:outline-none focus:text-red-800 focus:border-red-700 transition ease-in-out duration-150">
@@ -100,24 +100,23 @@
             class="block hover:bg-gray-200 focus:outline-none focus:bg-gray-200 transition duration-150 ease-in-out">
             <div class="flex items-center px-4 py-4 sm:px-6">
                 <div class="min-w-0 flex-1 flex items-center">
-                    <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+                    <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-4">
                         <div>
                             <div class="text-sm leading-5 font-medium text-red-800 truncate uppercase">
                                 {{ $item->name }}
                             </div>
                             <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                                {{-- @include('icons.dance') --}}
+                                {{ $item->type }}
+                            </div>
+                        </div>
+                        <div class="hidden md:block">
+                            <div>
                                 @foreach ($item->teachers as $teacher)
                                 <div class="inline-flex items-center mr-2">
                                     <img src="{{$teacher->avatar}}" alt="" class="w-8 rounded-full">
                                     <span class="truncate ml-1">{{ $teacher->firstname }}</span>
                                 </div>
                                 @endforeach
-
-                            </div>
-                        </div>
-                        <div class="hidden md:block">
-                            <div>
                                 <div class="text-sm leading-5 text-gray-900">
                                     Started on
                                     <time datetime="2020-01-07">January 7, 2020</time>
@@ -132,6 +131,15 @@
                                     All courses paid
                                 </div>
                             </div>
+                        </div>
+                        <div>
+                            @foreach ($item->students as $student)
+                            <div
+                                class="inline-block w-8 h-8 border border-gray-300 rounded-full overflow-hidden -mx-1 hover:border-gray-100">
+                                <img src="{{ asset($student->avatar) }}" alt="" class=" ">
+                            </div>
+
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -158,28 +166,8 @@
 
 {{-- Pagination --}}
 
-<div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
-    <div class="hidden sm:block">
-        <p class="text-sm leading-5 text-gray-700">
-            Showing
-            <span class="font-medium">1</span>
-            to
-            <span class="font-medium">10</span>
-            of
-            <span class="font-medium">20</span>
-            results
-        </p>
-    </div>
-    <div class="flex-1 flex justify-between sm:justify-end">
-        <a href="#"
-            class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-            Previous
-        </a>
-        <a href="#"
-            class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-            Next
-        </a>
-    </div>
+<div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+    {{ $courses->links() }}
 </div>
 
 

@@ -2,8 +2,8 @@
     <div class="relative inline-block text-left" x-data="{open: false}">
         <div class="">
             <span class="rounded-md shadow-sm block w-64">
-                <button @click="open=!open" type="button"
-                    class="inline-flex justify-center block w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-red-700 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
+                <button @click="open=!open" @click.away="open = false" type="button"
+                    class="inline-flex justify-center block w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-red-200 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
                     id="options-menu" aria-haspopup="true" aria-expanded="true">
                     Style
                     <svg class="-mr-1 ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

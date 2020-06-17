@@ -18,7 +18,9 @@
     </div>
 </section>
 <div class="container mx-auto -mt-24 px-4 bg-white rounded-lg shadow">
-    {!! Form::open(['route' => 'courses.store', 'files' => true, 'class' => 'df-form']) !!}
+
+    {!! Form::open(['route' => 'courses.store', 'files' => true, 'class' => 'df-form dropzone']) !!}
+    <livewire:course.form />
 
     @include('courses.fields')
 

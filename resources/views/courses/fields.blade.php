@@ -234,18 +234,31 @@
                         <select id="level" name="level"
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-3 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                             <option disabled selected>Select level</option>
-                            <option value="beginner" {{ $course->level == 'beginner' ? 'selected' : old('value') }}>
-                                Beginner</option>
-                            <option value="intermediate"
-                                {{ $course->level == 'intermediate' ? 'selected' : old('value') }}>Intermediate
+                            <option value="beginner" @isset($course->
+                                level){{ $course->level == 'beginner' ? 'selected' : old('value') }}@endisset>
+                                Beginner
                             </option>
-                            <option value="advanced" {{ $course->level == 'advanced' ? 'selected' : old('value') }}>
-                                Advanced</option>
-                            <option value="expert" {{ $course->level == 'expert' ? 'selected' : old('value') }}>Expert
+                            <option value="intermediate" @isset($course->level)
+                                {{ $course->level == 'intermediate' ? 'selected' : old('value') }}
+                                @endisset>
+                                Intermediate
                             </option>
-                            <option value="master" {{ $course->level == 'master' ? 'selected' : old('value') }}>Master
+                            <option value="advanced" @isset ($course->level)
+                                {{ $course->level == 'advanced' ? 'selected' : old('value') }} @endisset>
+                                Advanced
                             </option>
-                            <option value="pro" {{ $course->level == 'pro' ? 'selected' : old('value') }}>Pro</option>
+                            <option value="expert" @isset ($course->level)
+                                {{ $course->level == 'expert' ? 'selected' : old('value') }} @endisset>
+                                Expert
+                            </option>
+                            <option value="master" @isset ($course->level)
+                                {{ $course->level == 'master' ? 'selected' : old('value') }} @endisset>
+                                Master
+                            </option>
+                            <option value="pro" @isset ($course->level)
+                                {{ $course->level == 'pro' ? 'selected' : old('value') }} @endisset>
+                                Pro
+                            </option>
                         </select>
                         <div
                             class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -263,25 +276,26 @@
         </div>
 
         <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Teaching focus</h3>
-        <div x-data="{choreography:false}" class="mb-5">
+        <div x-data="{ choreography:false }" class="mb-5">
             <div>
                 <input x-on:click="choreography = false" type="radio" name="focus" id="partnerwork" value="partnerwork"
-                    {{ $course->focus == 'partnerwork' ? 'checked' : old('value') }} required>
+                    @isset($course->focus) {{ $course->focus == 'partnerwork' ? 'checked' : old('value') }} @endisset
+                required>
                 <label class="ml-2" for="partnerwork">Partnerwork</label>
             </div>
             <div>
                 <input x-on:click="choreography = false" type="radio" name="focus" id="footwork" value="footwork"
-                    {{ $course->focus == 'footwork' ? 'checked' : old('value') }}>
+                    @isset($course->focus) {{ $course->focus == 'footwork' ? 'checked' : old('value') }} @endisset>
                 <label class="ml-2" for="footwork">Footwork</label>
             </div>
             <div>
                 <input x-on:click="choreography = true" type="radio" name="focus" id="choreography" value="choreography"
-                    {{ $course->focus == 'choreography' ? 'checked' : old('value') }}>
+                    @isset($course->focus) {{ $course->focus == 'choreography' ? 'checked' : old('value') }} @endisset>
                 <label class="ml-2" for="choreography">Choreography</label>
             </div>
             <div>
                 <input x-on:click="choreography = false" type="radio" name="focus" id="styling" value="styling"
-                    {{ $course->focus == 'styling' ? 'checked' : old('value') }}>
+                    @isset($course->focus) {{ $course->focus == 'styling' ? 'checked' : old('value') }} @endisset>
                 <label class="ml-2" for="styling">Styling</label>
             </div>
             <div x-show="choreography" class="mt-3">
@@ -295,22 +309,23 @@
             <div class="mb-5">
                 <div>
                     <input x-on:click="online = false" type="radio" name="type" id="class" value="class"
-                        {{ $course->type == 'class' ? 'checked' : old('value') }} required>
+                        @isset($course->type) {{ $course->type == 'class' ? 'checked' : old('value') }} @endisset
+                    required>
                     <label class="ml-2" for="class">Class</label>
                 </div>
                 <div>
                     <input x-on:click="online = false" type="radio" name="type" id="workshop" value="workshop"
-                        {{ $course->type == 'workshop' ? 'checked' : old('value') }}>
+                        @isset($course->type) {{ $course->type == 'workshop' ? 'checked' : old('value') }} @endisset>
                     <label class="ml-2" for="class">Workshop</label>
                 </div>
                 <div>
                     <input x-on:click="online = false" type="radio" name="type" id="bootcamp" value="bootcamp"
-                        {{ $course->type == 'bootcamp' ? 'checked' : old('value') }}>
+                        @isset($course->type) {{ $course->type == 'bootcamp' ? 'checked' : old('value') }} @endisset>
                     <label class="ml-2" for="bootcamp">Bootcamp</label>
                 </div>
                 <div>
                     <input x-on:click="online = true" type="radio" name="type" id="online" value="online"
-                        {{ $course->type == 'online' ? 'checked' : old('value') }}>
+                        @isset($course->type) {{ $course->type == 'online' ? 'checked' : old('value') }} @endisset>
                     <label class="ml-2" for="online">Online</label>
                 </div>
             </div>
@@ -318,16 +333,16 @@
             <div x-show="online">
                 <div class="mb-5">
                     <input type="text" id="online_link" name="online_link" placeholder="Zoom link or Instagram"
-                        value="{{ $course->online_link }}">
+                        value="{{ $course->online_link ?? old('value') }}">
                 </div>
                 <div class="flex flex-wrap -mx-3 my-5">
                     <div class="w-full md:w-1/2 px-3">
                         <input type="text" id="online_id" name="online_id" placeholder="ID (optional)"
-                            value="{{ $course->online_id}}">
+                            value="{{ $course->online_id ?? old('value') }}">
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                         <input type="text" id="online_password" name="online_password" placeholder="Password (optional)"
-                            value="{{ $course->online_password }}">
+                            value="{{ $course->online_password ?? old('value') }}">
                     </div>
                 </div>
             </div>

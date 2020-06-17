@@ -13,15 +13,27 @@ class StyleSeeder extends Seeder
     public function run()
     {
         Style::create([
-            'name' => 'Salsa on1', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Salsa on1', 
+            'genre'         => 'Line Salsa', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '', 
+            'origin'        => 'USA',
+            'year_of_origin'=> '70\'s',
         ]);
 
         Style::create([
-            'name' => 'Salsa on2', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Salsa on2', 
+            'genre'         => 'Line Salsa', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '', 
+            'origin'        => '',
+            'year_of_origin'=> '',
         ]);
         
         Style::create([
-            'name' => 'Dancehall','description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'Dancehall', 'genre' => 'Urban', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
         ]);
 
         Style::create([
@@ -57,31 +69,31 @@ class StyleSeeder extends Seeder
         ]);
 
         Style::create([
-            'name' => 'Rumba', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'Rumba guaguanco', 'genre' => 'Rumba', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
         ]);
 
         Style::create([
-            'name' => 'Afro-beats', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'Afro-beats', 'genre' => 'Urban', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
         ]);
 
         Style::create([
-            'name' => 'House', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'House', 'genre' => 'Urban', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
         ]);
 
         Style::create([
-            'name' => 'Streching', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'Streching', 'genre' => 'Sport', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
         ]);
 
         Style::create([
-            'name' => 'Salsa fusion', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'Salsa fusion', 'genre' => 'Fusion', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
         ]);
 
         Style::create([
-            'name' => 'Son Cubano', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'Son Cubano', 'genre' => 'Son', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
         ]);
 
         Style::create([
-            'name' => 'Boogaloo', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'Boogaloo', 'genre' => 'Line Salsa', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
         ]);
 
     }

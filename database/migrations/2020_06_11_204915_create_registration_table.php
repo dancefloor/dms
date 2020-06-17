@@ -19,7 +19,7 @@ class CreateRegistrationTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('payment_id')->nullable();
             $table->enum('status', ['waiting', 'pending', 'payed', 'cancelled', 'standby'])->default('pending'); // waiting=waiting list, pending=waiting for money to be transfered, standby=payments are paused, waiting for admin validation'
-            $table->enum('role',['teacher','assistant','student']);
+            $table->enum('role',['instructor','assistant','student']);
             $table->timestamps();
         });
     }

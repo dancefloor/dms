@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <main class="flex justify-center items-center h-screen bg-gray-100">
+    <main class="flex justify-center items-center h-screen bg-gray-800">
         @yield('content')
     </main>
     @yield('scripts')

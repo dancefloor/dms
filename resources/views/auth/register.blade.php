@@ -8,10 +8,10 @@
 
 <div class="w-full max-w-md -mt-10">
     <div class="flex justify-center py-4">
-        @include('icons.logo-black',['style'=>'h-16'])
+        @include('icons.logo-white',['style'=>'h-16'])
     </div>
 
-    <form method="POST" action="{{ route('register') }}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <form method="POST" action="{{ route('register') }}" class="bg-white shadow-xl rounded-lg px-8 pt-6 pb-8 mb-4">
         @csrf
         <h1 class="text-center text-gray-700 text-lg font-bold mb-3">{{ __('Register') }}</h1>
 
@@ -86,7 +86,7 @@
             <div class="relative">
                 <select
                     class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="how_heard_df" name="how_heard_df" required>
+                    id="aware_of_df" name="aware_of_df" required>
                     <option disabled selected>How did you first heard about dancefloor</option>
                     <option value="facebook">Facebook</option>
                     <option value="instagram">Instagram</option>

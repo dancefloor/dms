@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Course;
+use App\Models\Role;
 
 class User extends Authenticatable
 {
@@ -34,7 +35,7 @@ class User extends Authenticatable
         'profession',
         'biography',
         'branch',
-        'how_heard_df',
+        'aware_of_df',
         'work_status',
         'price_hour',
 

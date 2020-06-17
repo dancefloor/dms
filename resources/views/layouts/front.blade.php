@@ -54,6 +54,9 @@
         @yield('content')
     </main>
 
+    @include('layouts.footer')
+
+
     @stack('scripts')
     <livewire:scripts>
 </body>

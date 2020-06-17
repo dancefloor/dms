@@ -1,7 +1,8 @@
 <?php
 
+use App\Models\Permission;
 use Illuminate\Database\Seeder;
-use App\Role;
+use App\Models\Role;
 
 class RoleSeeder extends Seeder
 {
@@ -12,6 +13,55 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
+
+        Permission::firstOrCreate([
+            'name'  => 'CRUD Courses',
+            'slug'  => 'crud-courses',
+            'label' => 'The person has the right to view, create, edit and delete courses', 
+        ]);
+        
+        Permission::firstOrCreate([
+            'name'  => 'CRUD Users',
+            'slug'  => 'crud-users',
+            'label' => 'The person has the right to view, create, edit and delete users', 
+        ]);
+
+        Permission::firstOrCreate([
+            'name'  => 'CRUD Roles',
+            'slug'  => 'crud-roles',
+            'label' => 'The person has the right to view, create, edit and delete roles', 
+        ]);
+
+        Permission::firstOrCreate([
+            'name'  => 'CRUD Permissions',
+            'slug'  => 'crud-permissions',
+            'label' => 'The person has the right to view, create, edit and delete permissions', 
+        ]);
+
+        Permission::firstOrCreate([
+            'name'  => 'CRUD Styles',
+            'slug'  => 'crud-styles',
+            'label' => 'The person has the right to view, create, edit and delete styles', 
+        ]);
+
+        Permission::firstOrCreate([
+            'name'  => 'CRUD Locations',
+            'slug'  => 'crud-locations',
+            'label' => 'The person has the right to view, create, edit and delete locations', 
+        ]);
+
+        Permission::firstOrCreate([
+            'name'  => 'CRUD Classrooms',
+            'slug'  => 'crud-classrooms',
+            'label' => 'The person has the right to view, create, edit and delete classrooms', 
+        ]);
+
+        Permission::firstOrCreate([
+            'name'  => 'CRUD Payments',
+            'slug'  => 'crud-payments',
+            'label' => 'The person has the right to view, create, edit and delete payments', 
+        ]);
+
         Role::firstOrCreate([
             'name'  => 'Admin',
             'slug'  => 'admin',

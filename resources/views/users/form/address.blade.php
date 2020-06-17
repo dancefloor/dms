@@ -5,7 +5,7 @@
         <input
             class="appearance-none pl-5 block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('street') border-red-500 @enderror"
             id="street" type="text" placeholder="Address / Street" name="street"
-            value="{{ $user->street ?? old('street') }}" required autocomplete="street">
+            value="{{ $user->street ?? old('street') }}" autocomplete="street">
     </div>
     <div class="w-full md:w-1/6 px-3">
         <input

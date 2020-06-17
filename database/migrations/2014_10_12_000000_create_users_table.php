@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('profession')->nullable();
             $table->text('biography')->nullable();
             $table->string('branch')->nullable();
-            $table->string('how_heard_df')->nullable();
+            $table->string('aware_of_df')->nullable();
             $table->string('work_status')->nullable();
             $table->decimal('price_hour')->nullable();
 

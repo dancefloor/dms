@@ -2,7 +2,7 @@
 
 @section('content')
 <section>
-    <div class="bg-red-800 pt-10 pb-24 border-t border-gray-900">
+    <div class="bg-gray-800 pt-10 pb-24 border-t border-gray-900">
         <div class="container mx-auto px-4">
             <div class="flex justify-between mb-8 items-center">
                 <div>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="container mx-auto -mt-24 px-4">
-        <div class="bg-white rounded-lg py-3 shadow mb-20">
+        <div class="bg-white rounded-lg shadow mb-20">
             {{ $slot }}
         </div>
     </div>

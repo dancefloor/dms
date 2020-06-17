@@ -14,8 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $heardOf = ['Instagram', 'Facebook', 'Google', 'Friend', 'Old Student', 'Festival'];
-
+        $heardOf = ['instagram', 'facebook', 'google', 'friend', 'old-student', 'party', 'festival', 'public-manifestation', 'instructor'];
 
         $gab = User::firstOrCreate([
             'firstname'     => 'Gabriel',
@@ -221,7 +220,7 @@ class UserSeeder extends Seeder
                 'password'      => Hash::make('password'),
                 'mobile'        => $user->mobile,
                 'gender'        => $user->gender,
-                'how_heard_df'  => $heardOf[array_rand($heardOf)]
+                'aware_of_df'  => $heardOf[array_rand($heardOf)]
             ]);
         }
 

@@ -1,9 +1,10 @@
 @extends('layouts.back')
 
 @section('content')
-<section class="bg-black pt-10 pb-24 border-t border-gray-900">
+<section class="bg-gray-800 pt-10 pb-24">
+    <br>
 </section>
-<div class="max-w-6xl mx-auto -mt-24 bg-white rounded-lg shadow">
+<div class="max-w-3xl mx-auto -mt-24 bg-white rounded-lg shadow">
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
         <div class="flex items-center border-b border-gray-200 py-3">
             <img src="{{ asset($user->avatar) }}" alt="{{ $user->firstname }}" class="h-20 w-20 rounded-full mx-3">
@@ -18,7 +19,7 @@
         </div>
         <div>
             <dl>
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Full name
                     </dt>
@@ -27,7 +28,7 @@
                     </dd>
                 </div>
 
-                <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Email
                     </dt>
@@ -36,7 +37,7 @@
                     </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Mobile
                     </dt>
@@ -48,7 +49,7 @@
                     </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Phone
                     </dt>
@@ -60,8 +61,7 @@
                     </dd>
                 </div>
 
-                @if ($user->birthday)
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Birthday
                     </dt>
@@ -69,9 +69,8 @@
                         {{ $user->birthday }}
                     </dd>
                 </div>
-                @endif
 
-                <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Gender
                     </dt>
@@ -80,8 +79,8 @@
                     </dd>
                 </div>
 
-                @if ($user->work_status)
-                <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Work Status
                     </dt>
@@ -89,10 +88,9 @@
                         {{ $user->work_status }}
                     </dd>
                 </div>
-                @endif
 
-                @if ($user->profession)
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Profession
                     </dt>
@@ -100,10 +98,8 @@
                         {{ $user->profession }}
                     </dd>
                 </div>
-                @endif
 
-                @if ($user->branch )
-                <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Professional Branch
                     </dt>
@@ -111,18 +107,19 @@
                         {{ $user->branch }}
                     </dd>
                 </div>
-                @endif
 
-                <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
-                        How he/she heard about dancefloor first
+                        Heard of dancefloor
                     </dt>
                     <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
                         {{ $user->how_heard_df }}
                     </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                @if ($user->price_hour)
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Price hour
                     </dt>
@@ -130,8 +127,10 @@
                         {{ $user->price_hour }}
                     </dd>
                 </div>
+                @endif
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         About
                     </dt>
@@ -140,8 +139,7 @@
                     </dd>
                 </div>
 
-
-                <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Address
                     </dt>
@@ -156,7 +154,9 @@
                 </div>
 
                 {{-- Social --}}
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+
+                <h3 class="text-gray-700 uppercase text-sm px-6 py-1 font-semibold">Social</h3>
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Facebook
                     </dt>
@@ -165,7 +165,7 @@
                     </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Linkedin
                     </dt>
@@ -174,7 +174,7 @@
                     </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Instagram
                     </dt>
@@ -183,7 +183,7 @@
                     </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Youtube
                     </dt>
@@ -192,7 +192,7 @@
                     </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Tiktok
                     </dt>
@@ -201,7 +201,7 @@
                     </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Twitter
                     </dt>
@@ -210,7 +210,7 @@
                     </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Skype
                     </dt>
@@ -219,7 +219,7 @@
                     </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Snapchat
                     </dt>
@@ -228,7 +228,7 @@
                     </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-100 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Pinterest
                     </dt>
@@ -237,45 +237,60 @@
                     </dd>
                 </div>
 
-
-                <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                         Roles & Permissions
                     </dt>
                     <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                        @if ($user->roles->count() > 0)
                         <ul class="border border-gray-200 rounded-md">
                             @foreach ($user->roles as $role)
                             <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm leading-5">
-                                <div class="w-0 flex-1 flex items-center">
-                                    <svg class="flex-shrink-0 h-5 w-5 text-gray-400" fill="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M12.451 17.337l-2.451 2.663h-2v2h-2v2h-6v-5l6.865-6.949c1.08 2.424 3.095 4.336 5.586 5.286zm11.549-9.337c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-3-3c0-1.104-.896-2-2-2s-2 .896-2 2 .896 2 2 2 2-.896 2-2z" />
-                                    </svg>
+                                <div class="w-0 flex-1 flex items-center text-gray-700">
+                                    @include('icons.user-access')
                                     <span class="ml-2 flex-1 w-0 truncate">
                                         {{$role->name}}
                                     </span>
                                 </div>
                                 <div class="ml-4 flex-shrink-0">
                                     <a href="#"
-                                        class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out">
-                                        Remove
+                                        class="font-medium text-red-700 hover:text-red-800 transition duration-150 ease-in-out">
+                                        details
                                     </a>
                                 </div>
                             </li>
-
                             @endforeach
-
                         </ul>
+                        @endif
                     </dd>
                 </div>
             </dl>
-            <div class="mx-4 mt-10 mb-6">
-                <a href="{{ route('users.edit', $user->id) }}" class="bg-red-700 text-white rounded-full px-3 py-2">
-                    Edit User
-                </a>
-            </div>
         </div>
     </div>
 </div>
+
+<div class="max-w-3xl mx-auto">
+    <div class="flex justify-between my-5">
+        <div>
+            <a href="{{ route('users.index') }}"
+                class="bg-gray-300 hover:bg-gray-400 py-2 px-4 rounded-lg mr-2 inline-flex text-gray-800">
+                @include('icons.chevron-left', ['style' => 'w-4 mr-2'])
+                Back
+            </a>
+        </div>
+        <div class="inline-flex">
+            <a href="{{ route('users.edit', $user) }}" class="bg-gray-300 hover:bg-gray-400 py-2 px-4 rounded-lg mr-2">
+                Edit User
+            </a>
+            <form action="{{ route('users.destroy', $user) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                    class="bg-red-700 hover:bg-red-800 py-2 px-4 rounded-lg text-white">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 @endsection

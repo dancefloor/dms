@@ -1,5 +1,5 @@
 {{-- Filters --}}
-<div class="bg-white px-4 border-b border-gray-200 sm:px-6">
+<div class="bg-white px-4 border-b border-gray-200 sm:px-6 rounded-lg">
     <div class="pt-3 pb-4 sm:p-0">
         <div class="sm:hidden">
             <select
@@ -34,20 +34,20 @@
                     <a href="{{ route('users.passive')}}"
                         class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition ease-in-out duration-150">
                         Passive Students
-                    </a>
-                    <a href="{{ route('users.debtors')}}"
+                    </a>--}}
+                    <a href="{{ route('users.index', ['role' => 'instructor']) }}"
                         class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition ease-in-out duration-150">
-                        Students with debts
+                        Instructors
                     </a>
-                    <a href="{{ route('users.assistants')}}"
+                    <a href="{{ route('users.index', ['role' => 'assistant']) }}"
                         class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition ease-in-out duration-150">
                         Assistants
-                    </a>--}}
-                    <a href="{{ route('users.male') }}"
+                    </a>
+                    <a href="{{ route('users.index', ['gender' => 'male']) }}"
                         class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition ease-in-out duration-150">
                         Men
                     </a>
-                    <a href="{{ route('users.females')}}" class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5
+                    <a href="{{ route('users.index',['gender' => 'female']) }}" class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5
                     text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700
                     focus:border-gray-300 transition ease-in-out duration-150">
                         Women
@@ -60,38 +60,40 @@
 
 {{-- Seach field  --}}
 <div class="px-4 pt-5 pb-3 sm:px-6">
-    <div>
-        <label for="filter" class="sr-only">Search candidates</label>
-        <div class="flex rounded-md shadow-sm">
-            <div class="relative flex-grow focus-within:z-10">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+    <form action="{{ route('users.index') }}" method="get">
+        <div>
+            <label for="filter" class="sr-only">Search candidates</label>
+            <div class="flex rounded-md shadow-sm">
+                <div class="relative flex-grow focus-within:z-10">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <input id="search" type="search" name="search"
+                        class="appearance-none rounded-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-l-md text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5 transition ease-in-out duration-150"
+                        placeholder="Search..." value="{{ request()->query('search') }}">
+                </div>
+                <button
+                    class="-ml-px relative flex items-center px-3 py-2 rounded-r-md border border-gray-300 text-sm leading-5 bg-gray-200 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 transition ease-in-out duration-150">
+                    <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
-                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
                             clip-rule="evenodd"></path>
                     </svg>
-                </div>
-                <input id="filter"
-                    class="appearance-none rounded-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-l-md text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5 transition ease-in-out duration-150"
-                    placeholder="John Doe">
+                    <span class="ml-2">Filter</span>
+                </button>
             </div>
-            <button
-                class="-ml-px relative flex items-center px-3 py-2 rounded-r-md border border-gray-300 text-sm leading-5 bg-gray-200 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 transition ease-in-out duration-150">
-                <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
-                        clip-rule="evenodd"></path>
-                </svg>
-                <span class="ml-2">Filter</span>
-            </button>
         </div>
-    </div>
+    </form>
 </div>
 
 
-<ul>
+<ul class="mt-2">
     @forelse ($users as $user)
-    <li>
+    <li class="border-t">
         <a href="{{ route('users.show', $user->id) }}"
             class="block hover:bg-gray-200 focus:outline-none focus:bg-gray-200 transition duration-150 ease-in-out">
             <div class="flex items-center px-4 py-4 sm:px-6">
@@ -153,26 +155,6 @@
 
 {{-- Pagination --}}
 
-<div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
-    <div class="hidden sm:block">
-        <p class="text-sm leading-5 text-gray-700">
-            Showing
-            <span class="font-medium">1</span>
-            to
-            <span class="font-medium">10</span>
-            of
-            <span class="font-medium">20</span>
-            results
-        </p>
-    </div>
-    <div class="flex-1 flex justify-between sm:justify-end">
-        <a href="#"
-            class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-            Previous
-        </a>
-        <a href="#"
-            class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-            Next
-        </a>
-    </div>
+<div class="border-t px-4 py-3 border-gray-200 sm:px-6 px-6">
+    {{ $users->withQueryString()->links() }}
 </div>

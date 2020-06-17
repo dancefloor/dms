@@ -185,15 +185,16 @@ class Course extends Model
 
     public function students()
     {
-        return $this->belongsToMany(User::class, 'registrations', 'course_id', 'user_id')
-            ->using(Registration::class)
+        return $this->belongsToMany('App\User', 'registrations', 'course_id', 'user_id')
+            ->using('App\Models\Registration')        
             ->withPivot('role')
-            ->wherePivot('role', 'student');
+            ->wherePivot('role','student')
+            ->withTimestamps();
     }
 
     public function teachers()
     {
-        return $this->belongsToMany(User::class, 'registrations', 'course_id', 'user_id')->using(Registration::class)->wherePivot('role', 'teacher');
+        return $this->belongsToMany(User::class, 'registrations', 'course_id', 'user_id')->using(Registration::class)->wherePivot('role', 'instructor');
     }
 
     public function assistants()

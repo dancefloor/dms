@@ -14,15 +14,12 @@
         rel="stylesheet">
 
     <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
 
 
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
@@ -31,15 +28,15 @@
     <livewire:styles>
 </head>
 
-<body class="">
+<body class="bg-gray-100">
     @include('layouts.navbar')
 
     @if (session()->has('success'))
-    <div class="mt-20" x-data="{ open: true }" x-show="open">
+    <div class="" x-data="{ open: true }" x-show="open">
         <!--Header Alert-->
         <div class="alert-banner w-full">
             <label
-                class="close cursor-pointer flex items-center justify-between w-full py-4 px-3 bg-green-400 rounded text-white font-bold"
+                class="close cursor-pointer flex items-center justify-between w-full py-4 px-3 bg-green-400 text-white font-bold"
                 title="close" for="banneralert">
                 {{ session()->get('success') }}
                 <button type="button" @click="open = false">
@@ -50,14 +47,14 @@
     </div>
     @endif
 
-    <main class="bg-gray-100 pb-20">
+    <main class="pb-20">
         @yield('content')
     </main>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
 
     @stack('scripts')

@@ -23,6 +23,7 @@ class CreateStylesTable extends Migration
             $table->string('color')->nullale();
             $table->string('image')->nullale();
             $table->string('origin')->nullale();
+            $table->string('genre')->nullale();
             $table->string('year_of_origin')->nullale();
             $table->timestamps();
             $table->softDeletes();
