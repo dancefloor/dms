@@ -161,11 +161,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        
         /*
-         * Package Service Providers...
-         */
-
+        * Package Service Providers...
+        */
+        Cohensive\Embed\EmbedServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
@@ -229,6 +230,7 @@ return [
         'Form'         => Collective\Html\FormFacade::class,
         'Html'         => Collective\Html\HtmlFacade::class,
         'Flash'        => Laracasts\Flash\Flash::class,
+        'Embed'        => Cohensive\Embed\Facades\Embed::class,
     ],
 
 ];

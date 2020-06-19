@@ -33,67 +33,152 @@ class StyleSeeder extends Seeder
         ]);
         
         Style::create([
-            'name' => 'Dancehall', 'genre' => 'Urban', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Dancehall', 
+            'genre'         => 'Urban', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '', 
+            'origin'        => '',
+            'year_of_origin'=> '',
         ]);
 
         Style::create([
-            'name' => 'Hip-hop', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Hip-hop', 
+            'genre'         => 'Urban',
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '', 
+            'origin'        => '',
+            'year_of_origin'=> '',
         ]);
 
         Style::create([
-            'name' => 'Lady Styling', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Lady Styling', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '',
+            'origin'        => '',
+            'year_of_origin'=> '',
         ]);
 
         Style::create([
-            'name' => 'Men Styling', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Men Styling', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '',
+            'origin'        => '',
+            'year_of_origin'=> '',
         ]);
 
         Style::create([
-            'name' => 'Salsa cubana', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Salsa cubana', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '',
+            'origin'        => '',
+            'year_of_origin'=> '',
         ]);
 
         Style::create([
-            'name' => 'Rueda de Casino', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'Rueda de Casino', 
+            'description'=>''
+            ,'icon'=>'', 'image'=>'',
+            'origin'=>'',
+            'year_of_origin'=>'',
         ]);
 
         Style::create([
-            'name' => 'Rumba', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'Rumba',
+            'description'=>''
+            ,'icon'=>'', 'image'=>'',
+            'origin'=>'',
+            'year_of_origin'=>'',
         ]);
 
         Style::create([
-            'name' => 'Afro-cubano', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'Afro-cubano', 
+            'description'=>''
+            ,'icon'=>'', 'image'=>'',
+            'origin'=>'',
+            'year_of_origin'=>'',
         ]);
 
         Style::create([
-            'name' => 'Timba', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name' => 'Timba', 
+            'description'=>''
+            ,'icon'=>'', 'image'=>'',
+            'origin'=>'',
+            'year_of_origin'=>'',
         ]);
 
         Style::create([
-            'name' => 'Rumba guaguanco', 'genre' => 'Rumba', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Rumba guaguanco', 
+            'genre'         => 'Rumba', 
+            'description'   =>  '',
+            'icon'          =>  '', 
+            'image'         =>  '', 
+            'origin'        =>  '',
+            'year_of_origin'=>  '',
         ]);
 
         Style::create([
-            'name' => 'Afro-beats', 'genre' => 'Urban', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Afro-beats', 
+            'genre'         => 'Urban', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '', 
+            'origin'        => '',
+            'year_of_origin'=> '',
         ]);
 
         Style::create([
-            'name' => 'House', 'genre' => 'Urban', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'House', 
+            'genre'         => 'Urban', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '', 
+            'origin'        => '',
+            'year_of_origin'=> '',
         ]);
 
         Style::create([
-            'name' => 'Streching', 'genre' => 'Sport', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Streching', 
+            'genre'         => 'Sport', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '', 
+            'origin'        => '',
+            'year_of_origin'=> '',
         ]);
 
         Style::create([
-            'name' => 'Salsa fusion', 'genre' => 'Fusion', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Salsa fusion', 
+            'genre'         => 'Fusion', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '', 
+            'origin'        => '',
+            'year_of_origin'=> '',
         ]);
 
         Style::create([
-            'name' => 'Son Cubano', 'genre' => 'Son', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Son Cubano', 
+            'genre'         => 'Son', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '', 
+            'origin'        => '',
+            'year_of_origin'=> ''
         ]);
 
         Style::create([
-            'name' => 'Boogaloo', 'genre' => 'Line Salsa', 'description'=>'','icon'=>'', 'image'=>'', 'origin'=>'','year_of_origin'=>''
+            'name'          => 'Boogaloo', 
+            'genre'         => 'Line Salsa', 
+            'description'   => '',
+            'icon'          => '', 
+            'image'         => '', 
+            'origin'        => '',
+            'year_of_origin'=> '',
         ]);
 
     }

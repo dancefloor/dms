@@ -28,6 +28,7 @@ class MollieController extends Controller
         ],
         'description' => 'Dancefloor', 
         'redirectUrl' => route('payment.success'), // after the payment completion where you to redirect
+          
         ]);
     
         $payment = Mollie::api()->payments()->get($payment->id);
@@ -57,9 +58,11 @@ class MollieController extends Controller
         //dd($pay->molley_payment_id);
         $mollie = Mollie::api()->payments()->get($pay->molley_payment_id);
         if ($mollie->isPaid()) {
-            echo 'payment has been received';
-        }else{
-            echo 'Nope';
+            // echo 'Payment Error';
+            return view('payments.success');            
+            
+        }else{            
+            echo 'Payment Error';
         }
         
         // if ($payment->isPaid()) {

@@ -59,9 +59,38 @@
     </section>
     <div class="flex flex-wrap">
         @forelse ($courses as $course)
+
+        @auth
+        @switch(auth()->user()->registrationStatus($course->id))
+        @case('["pending"]')
+        @php $border = 'border-orange-400'; @endphp
+        @break
+        @case('["waiting"]')
+        @php
+        $border = 'border-blue-600';
+        @endphp
+        @break
+        @case('["payed"]')
+        @php
+        $border = 'border-green-600';
+        @endphp
+        @break
+        @case('["standby"]')
+        @php
+        $border = 'border-pink-600';
+        @endphp
+        @break
+        @default
+        @php
+        $border = 'border-gray-800';
+        @endphp
+        @endswitch
+        @endauth
+
+
         <div class="w-full md:w-1/4">
             <div
-                class="border @auth {{ $course->hasStudent(Auth::user()->id) ? 'border-red-600': '' }} @endauth m-2 shadow hover:shadow-2xl rounded-lg overflow-hidden">
+                class="border @auth {{ $course->hasStudent(Auth::user()->id) ? $border : '' }} @endauth m-2 shadow hover:shadow-2xl rounded-lg overflow-hidden">
                 {{-- <div class="p-3"> --}}
                 <div class="px-3 pt-3 pb-1">
                     {{-- <span class="bg-red-700 px-2 rounded-full text-red-100 text-sm float-right"> --}}
@@ -97,12 +126,41 @@
                 </div>
                 @auth
                 <div class="flex justify-between mb-3 mx-3 items-center">
-                    <span class="text-xs text-gray-600">10 places left</span>
+                    <span class="text-xs text-gray-600">
+                        10 places left
+                        {{-- {{  == '' ? 'YEES' : 'NON' }} --}}
+                    </span>
                     <div class="">
                         @if ($course->hasStudent(Auth::user()->id))
-                        <button id="registered" disabled="disabled" class="bg-gray-200 text-red-700 p-2 rounded-full">
+
+                        @switch(auth()->user()->registrationStatus($course->id))
+
+                        @case('["pending"]')
+                        <span id="pending" class="bg-gray-200 text-orange-600 p-2 rounded-full inline-flex">
+                            @include('icons.pending',['style'=>'w-5'])
+                        </span>
+                        @break
+                        @case('["waiting"]')
+                        <span id="waiting" class="bg-gray-200 text-blue-600 p-2 rounded-full inline-flex">
+                            @include('icons.waiting',['style'=>'w-5'])
+                        </span>
+                        @break
+                        @case('["payed"]')
+                        <span id="registered" class="bg-gray-200 text-green-700 p-2 rounded-full inline-flex">
                             @include('icons.checked',['style'=>'w-5'])
+                        </span>
+                        @break
+                        @case('["standby"]')
+                        <button id="standby" disabled="disabled" class="bg-gray-200 text-pink-400 p-2 rounded-full">
+                            @include('icons.standby',['style'=>'w-5'])
                         </button>
+                        @break
+                        @default
+                        <button id="cancelled" disabled="disabled" class="bg-gray-200 text-gray-800 p-2 rounded-full">
+                            @include('icons.x-circle-thin',['style'=>'w-5'])
+                        </button>
+                        @endswitch
+
                         @else
                         <form action="{{ route('registration.add', $course->id ) }}" method="post">
                             @csrf
@@ -135,7 +193,9 @@
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
 <script>
-    tippy('#register', {content: "{{ "Register to this class" }}",});
-    tippy('#registered', {content: "{{ "You are registered" }}",});
+    tippy('#register',      {content: "{{ "Register to class" }}",});
+    tippy('#registered',    {content: "{{ "You are registered" }}",});
+    tippy('#waiting',       {content: "{{ "This class is full, you are in the waiting list" }}",});
+    tippy('#pending',       {content: "{{ "You are pre-registered, proceed to pay to complete registration" }}",});
 </script>
 @endpush

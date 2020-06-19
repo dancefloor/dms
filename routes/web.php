@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('roles', 'RoleController');
     Route::resource('users', 'UserController');
     Route::post('registration/{course}','RegistrationController@add')->name('registration.add');
+    Route::delete('registration/{course}','RegistrationController@remove')->name('registration.remove');
     
     Route::get('/mollie-payment','MollieController@preparePayment')->name('mollie.payment');
     Route::get('/payment-success','MollieController@paymentSuccess')->name('payment.success');

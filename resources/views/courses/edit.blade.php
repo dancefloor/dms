@@ -22,7 +22,61 @@
     {!! Form::model($course, ['route' => ['courses.update', $course->id ], 'class' =>
     'df-form', 'files' => true, 'method' => 'patch']) !!}
 
-    @include('courses.fields')
+
+    {{-- tutorials https://codepen.io/ryangjchandler/pen/qBOEgjg?editors=1010 --}}
+
+    <div class="flex flex-wrap -mx-3">
+        <div class="w-full md:w-4/6 px-3">
+
+            @include('courses.form.default')
+
+            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Promotion</h3>
+
+            @include('courses.form.promotion')
+
+            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Pricing</h3>
+
+            @include('courses.form.prices')
+
+            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Schedule</h3>
+
+            @include('courses.form.days')
+
+            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Students</h3>
+
+            @include('courses.form.students')
+        </div>
+
+        <div class="w-full md:w-2/6 px-3">
+            <!-- Cover Image Field -->
+            @include('courses.form.cover-image')
+
+
+            @include('courses.form.styles')
+
+            @include('courses.form.teachers')
+
+            @include('courses.form.level')
+
+            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Teaching focus</h3>
+
+            @include('courses.form.focus')
+
+            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Type of course</h3>
+
+            @include('courses.form.type')
+        </div>
+    </div>
+
+
+    <!-- Submit Field -->
+    <div class="my-10">
+        <button type="submit" class="btn-save inline-flex">
+            @include('icons.save')
+            <span class="ml-2">Save Course</span>
+        </button>
+        <a href="{{ route('courses.index') }}" class="btn-cancel">Cancel</a>
+    </div>
 
     {!! Form::close() !!}
 </div>

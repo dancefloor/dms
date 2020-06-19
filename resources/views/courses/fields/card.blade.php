@@ -1,4 +1,4 @@
-<div class="flex flex-wrap my-20 items-center border shadow rounded-lg">
+<div class="flex flex-wrap my-20 items-center border shadow-lg rounded-lg bg-white">
     <div class="w-full md:w-1/2">
         @if ($course->cover_image)
         <img src="{{ asset($course->cover_image) }}" alt="" class="rounded-l-lg">

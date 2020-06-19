@@ -1,4 +1,6 @@
 <?php
+// tutorial https://laraveldaily.com/embed-and-parse-youtube-vimeo-videos-with-laravel-embed-package/
+// https://laracasts.com/discuss/channels/general-discussion/is-there-a-way-to-change-video-site-link-to-video-embed-link-using-laravel
 
 namespace App\Models;
 
@@ -6,6 +8,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\User;
+use App\Models\Registration;
+use Cohensive\Embed\Facades\Embed;
 
 /**
  * Class Course
@@ -185,11 +189,10 @@ class Course extends Model
 
     public function students()
     {
-        return $this->belongsToMany('App\User', 'registrations', 'course_id', 'user_id')
-            ->using('App\Models\Registration')        
-            ->withPivot('role')
-            ->wherePivot('role','student')
-            ->withTimestamps();
+        return $this->belongsToMany(User::class, 'registrations', 'course_id', 'user_id')
+            ->using(Registration::class)            
+            ->withPivot('role','status')
+            ->wherePivot('role','student');
     }
 
     public function teachers()
@@ -229,5 +232,44 @@ class Course extends Model
         if ($this->saturday == 1)   { array_push($days,'sat');}
         if ($this->sunday == 1)     { array_push($days,'sun');}
         return $days;
+    }
+
+
+    public function displayVideo(int $num = 1)    
+    {
+        switch ($num) {
+            case 2:
+                $video = $this->teaser_video_2;
+                break;
+            case 3:
+                $video = $this->teaser_video_3;
+                break;
+            default:
+                $video = $this->teaser_video_1;
+                break;
+        }
+
+        $embed = Embed::make($video)->parseUrl();
+
+        if (!$embed)
+            return '';
+
+        $embed->setAttribute(['width' => '100%', 'height' => 450]);
+        return $embed->getHtml();
+    }
+
+    function youtubeID($url)
+    {
+        if(strlen($url) > 11)
+        {
+            if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match))
+            {
+                return $match[1];
+            }
+            else
+                return false;
+        }
+
+        return $url;
     }
 }

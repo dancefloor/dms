@@ -35,7 +35,14 @@ class CourseController extends AppBaseController
     {
         // $courses = $this->courseRepository->all();
         // $courses = Course::all()->orderBy('','desc');
-        $courses = Course::orderBy('created_at','desc')->paginate(10);
+
+
+        $search =request()->query('search');
+        if ($search) {
+            $courses = Course::where('name','LIKE', "%{$search}%")->paginate(10);
+        } else {
+            $courses = Course::orderBy('created_at','desc')->paginate(10);
+        }                        
 
         return view('courses.index')
             ->with('courses', $courses);
@@ -75,7 +82,11 @@ class CourseController extends AppBaseController
 
 
         if ($request->students) {
-            $course->students()->attach($request->students, ['role'=>'student']);            
+            $studentsTable = [];
+            foreach ($request->students as $key => $value) {    
+                $studentsTable[$value] = ['role'=>'student'];               
+            }            
+            $course->students()->attach($studentsTable);                     
         }
 
         if ($request->hasFile('cover_image')) {
@@ -148,20 +159,29 @@ class CourseController extends AppBaseController
 
         $course = $this->courseRepository->update($this->saveFieldsRequest($request), $id);
 
+        if ($request->hasFile('cover_image')) {
+            $course->update(['cover_image' => $request->cover_image->store('courses') ]);            
+        }
+
         if ($request->styles) {
             $course->styles()->sync($request->styles);            
         }
 
         if ($request->teachers) {
-            $course->teachers()->sync($request->teachers, ['role'=>'instructor']);            
+            $course->teachers()->sync($request->teachers, ['role'=>'student']);            
         }
 
-        if ($request->students) {
-            //dd($request->students);
-            $course->students()->sync($request->students, ['role'=>'student']);            
+        if ($request->students) {            
+            //tutorial https://stackoverflow.com/questions/27230672/laravel-sync-how-to-sync-an-array-and-also-pass-additional-pivot-fields 
+            //option 2 = updateExistingPivot?
+            $studentsTable = [];
+            foreach ($request->students as $key => $value) {    
+                $studentsTable[$value] = ['role'=>'student'];               
+            }            
+            $course->students()->sync($studentsTable);            
         }
-
-        Flash::success('Course updated successfully.');
+        
+        session()->flash('success', 'Course updated successfully.');
 
         return redirect(route('courses.index'));
     }

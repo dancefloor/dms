@@ -11,7 +11,17 @@ class RegistrationController extends Controller
     {                                
         $course->students()->attach(auth()->user()->id,['role'=>'student', 'status'=>'pending', 'created_at'=> now()]);
         
-        session()->flash('success', 'You added this course to your list of courses. Please proceed to pay for this course');
+        session()->flash('alert', 'You have successfully pre-register. Please proceed to pay on your Dashboard');
+
+        return redirect()->back();
+    }
+
+    public function remove(Course $course)
+    {
+
+        $course->students()->detach(auth()->user()->id);
+        
+        session()->flash('success', 'You have remove this class from your list successfully');
 
         return redirect()->back();
     }

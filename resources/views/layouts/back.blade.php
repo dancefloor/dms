@@ -36,22 +36,23 @@
         <!--Header Alert-->
         <div class="alert-banner w-full">
             <label
-                class="close cursor-pointer flex items-center justify-between w-full py-4 px-3 bg-green-400 text-white font-bold"
+                class="close cursor-pointer flex items-center justify-between w-full py-4 px-5 bg-green-400 text-white font-bold"
                 title="close" for="banneralert">
                 {{ session()->get('success') }}
                 <button type="button" @click="open = false">
-                    @include('icons.x')
+                    @include('icons.x', ['style'=>'w-4'])
                 </button>
             </label>
         </div>
     </div>
     @endif
 
+
     <main class="pb-20">
         @yield('content')
     </main>
 
-
+    @include('layouts.footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 
 

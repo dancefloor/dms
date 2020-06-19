@@ -7,7 +7,7 @@
     <section>
         <header class="flex justify-between items-baseline">
             <h2 class="uppercase text-sm font-semibold text-gray-600 mb-3">My courses</h2>
-            @if (auth()->user()->pendingCourses()->count())
+            @if (auth()->user()->pendingCourses()->count() > 0)
             <div class="mb-3">
                 <a href="{{ route('checkout') }}"
                     class="bg-red-700 text-white py-2 px-3 hover:bg-red-800 rounded-full">Proceed to
@@ -16,39 +16,44 @@
             @endif
         </header>
 
-        <dl class="border bg-white rounded-lg">
+        <ul class="border bg-white rounded-lg">
             @forelse (auth()->user()->learns as $item)
-            <div class="px-3 py-2 {{ $loop->last ? '' : 'border-b border-gray-300'}}">
-                <dt class="flex justify-between">
-                    <a href="">{{ $item->name }}</a>
-                    <div class="inline-flex items-center">
-                        @switch($item->pivot->status)
-                        @case('pending')
-                        @include('icons.add')
-                        @break
-                        @case(2)
-                        @include('icons.add')
-                        @break
-                        @default
-                        @include('icons.x')
-                        @endswitch
-                        <span class="ml-2">{{ $item->pivot->status }}</span>
-                    </div>
-                </dt>
-                <dd class="capitalize">
-                    {{ $item->start_date->format('d F y') }} - {{ $item->end_date->format('d F y') }}
+            <li
+                class="grid grid-cols-5 gap-4 items-center px-3 py-2 {{ $loop->last ? '' : 'border-b border-gray-300'}}">
+                <div>
+                    <strong class="block"><a href="">{{ $item->name }}</a></strong>
                     {{ implode(',',$item->days)}}
-                </dd>
-            </div>
+                </div>
+                <div>
+                    {{ $item->start_date->format('d F y') }} - {{ $item->end_date->format('d F y') }}
+                </div>
+                <div>
+                    Profs
+                </div>
+                <div class="flex justify-end">
+                    <div class="inline-flex items-center">
+                        <x-registration-status status="{{ $item->pivot->status }}" />
+                    </div>
+                </div>
+                <div class="capitalize text-right">
+                    <form action="{{ route('registration.remove', $item)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Remove</button>
+                    </form>
+                </div>
+            </li>
 
             @empty
-            <dt class="text-center">You have not signed to any class yet</dt>
-            <dd class="text-center my-3">
-                <a href="" class="bg-red-700 text-white px-3 py-2 rounded-full capitalize hover:bg-red-800">Find
-                    courses</a>
-            </dd>
+            <li>
+                <dt class="text-center">You have not signed to any class yet</dt>
+                <dd class="text-center my-3">
+                    <a href="" class="bg-red-700 text-white px-3 py-2 rounded-full capitalize hover:bg-red-800">Find
+                        courses</a>
+                </dd>
+            </li>
             @endforelse
-        </dl>
+        </ul>
     </section>
 
 

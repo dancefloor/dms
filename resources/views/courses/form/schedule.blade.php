@@ -45,10 +45,11 @@ $end_time = $course->end_time_sun;
 @endisset
 <div class="flex flex-wrap">
     <div class="w-full md:w-1/2 p-2">
-        <input type="time" id="start_time_{{ $day }}" name="start_time_{{ $day }}"
+        <input class="h-8" type="time" id="start_time_{{ $day }}" name="start_time_{{ $day }}"
             value="{{ $start_time ?? old('value') }}">
     </div>
     <div class="w-full md:w-1/2 p-2">
-        <input type="time" id="end_time_{{ $day }}" name="end_time_{{ $day }}" value="{{ $end_time ?? old('value') }}">
+        <input class="h-8" type="time" id="end_time_{{ $day }}" name="end_time_{{ $day }}"
+            value="{{ $end_time ?? old('value') }}">
     </div>
 </div>

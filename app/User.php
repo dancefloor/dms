@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Course;
 use App\Models\Role;
+use App\Models\Registration;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -19,14 +21,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 
-        'lastname', 
-        'email', 
-        'password', 
-        'birthday', 
+        'firstname',
+        'lastname',
+        'email',
+        'password',
+        'birthday',
         'gender',
         'picture',
-        
+
         'mobile',
         'phone',
         'mobile_verified_at',
@@ -90,7 +92,7 @@ class User extends Authenticatable
 
     public function hasRole($id)
     {
-        return in_array($id, $this->roles()->pluck('id')->toArray()); 
+        return in_array($id, $this->roles()->pluck('id')->toArray());
     }
 
     public function permissions()
@@ -103,7 +105,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Course::class, 'registrations', 'user_id', 'course_id')
             ->using('App\Models\Registration')
             ->withPivot('role')
-            ->wherePivot('role','instructor')
+            ->wherePivot('role', 'instructor')
             ->withTimestamps();
     }
 
@@ -112,7 +114,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Course::class, 'registrations', 'user_id', 'course_id')
             ->using('App\Models\Registration')
             ->withPivot('role')
-            ->wherePivot('role','assistant')
+            ->wherePivot('role', 'assistant')
             ->withTimestamps();
     }
 
@@ -120,17 +122,18 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Course::class, 'registrations', 'user_id', 'course_id')
             ->using('App\Models\Registration')
-            ->withPivot('role','status')
-            ->wherePivot('role','student')
+            ->withPivot('role', 'status')
+            ->wherePivot('role', 'student')
             ->withTimestamps();
     }
-    
+
     public function pendingCourses()
     {
         return $this->belongsToMany(Course::class, 'registrations', 'user_id', 'course_id')
             ->using('App\Models\Registration')
             ->withPivot('status')
-            ->wherePivot('status','pending')
+            ->wherePivot('status', 'pending')
+            ->wherePivot('role', 'student')
             ->withTimestamps();
     }
 
@@ -139,13 +142,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Course::class, 'registrations', 'user_id', 'course_id')
             ->using('App\Models\Registration')
             ->withPivot('status')
-            ->wherePivot('status','payed')
+            ->wherePivot('status', 'payed')
+            ->wherePivot('role', 'student')
             ->withTimestamps();
     }
 
     public function getAvatarAttribute()
     {
-        
+
         if (!$this->picture) {
             return $this->gender === 'male' ? asset('images/avatar-male.png') : asset('images/avatar-female.png');
         }
@@ -155,9 +159,48 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        $admin = Role::where('slug','admin')->first();
-        return in_array($admin->id , $this->roles()->pluck('id')->toArray());
+        $admin = Role::where('slug', 'admin')->first();
+        return in_array($admin->id, $this->roles()->pluck('id')->toArray());
         //return $admin;
     }
 
-} 
+    public function scopeWomen()
+    {
+        return $this->whereGender('female');
+    }
+
+    public function scopeMen()
+    {
+        return $this->whereGender('male');
+    }
+
+    public function registrationStatus($id)
+    {
+        $result = DB::table('registrations')
+            ->where('user_id', $this->id)
+            ->where('course_id', $id)
+            ->where('role', 'student')
+            ->get();
+
+            $id = collect($result)->map(function ($item, $key) {
+                return $item->status;
+            });
+        return $id;
+    }
+}
+
+
+// $user = User::find($userID);
+//     $categoryIDs = $request->input('categories');
+
+//     $result = DB::table('building_category')
+//         ->where('building_id', $buildingID)
+//         ->whereIn('category_id', $categoryIDs)
+//         ->get();
+
+//     $buildingCategories = collect($result)->map(function ($item, $key) {
+//         return $item->id;
+//     });
+
+//     // now sync the collection as an array
+//     $user->buildingCategories()->sync($buildingCategories->toArray());
