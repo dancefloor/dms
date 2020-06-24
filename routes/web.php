@@ -19,6 +19,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('dashboard', 'ProfileController@index')->name('dashboard')->middleware('verified');
 
+Route::get('salsa-fusion','OnlineController')->name('salsa.fusion');
+
 Route::middleware(['auth'])->group(function(){
     Route::resource('courses', 'CourseController');
     Route::resource('locations', 'LocationController');

@@ -23,10 +23,10 @@ class MollieController extends Controller
     {   
         $payment = Mollie::api()->payments()->create([
         'amount' => [
-            'currency' => 'CHF', // Type of currency you want to send
+            'currency' => 'EUR', // Type of currency you want to send
             'value' => request()->amount.'.00', // You must send the correct number of decimals, thus we enforce the use of strings
         ],
-        'description' => 'Dancefloor', 
+        'description' => request()->description, 
         'redirectUrl' => route('payment.success'), // after the payment completion where you to redirect
           
         ]);

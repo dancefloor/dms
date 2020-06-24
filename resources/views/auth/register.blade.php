@@ -63,26 +63,26 @@
                 placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">
         </div>
 
-        <div class="mb-4">
+        {{-- <div class="mb-4">
             <input
                 class="appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none @error('birthday') border-red-500 @enderror"
                 type="text" id="birthday" name="birthday" placeholder="Birthday" value="{{ old('birthday') }}" required
-                autocomplete="birthday">
-            @error('birthday')
-            <p class="text-red-500 text-xs italic">{{ $message }}</p>
-            @enderror
-        </div>
+        autocomplete="birthday">
+        @error('birthday')
+        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+        @enderror
+</div> --}}
 
-        <div class="mb-8">
+{{-- <div class="mb-8">
             <label for="gender">
                 <input type="radio" name="gender" value="male">
                 <span class="ml-1 mr-3 text-sm text-gray-600">Male</span>
                 <input type="radio" name="gender" value="female">
                 <span class="ml-1 mr-3 text-sm text-gray-600">Female</span>
             </label>
-        </div>
+        </div> --}}
 
-        <div class="mb-8">
+{{-- <div class="mb-8">
             <div class="relative">
                 <select
                     class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -105,26 +105,26 @@
                     </svg>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <div class="mb-4 flex">
-            <input type="checkbox" name="agreement" value="true" class="mr-2 mt-1" required>
-            <span class="text-sm text-gray-600">
-                By registering you accept and agreed with all our <a href="" class="text-red-800 hover:underline">terms
-                    and
-                    conditions</a> and <a href="" class="text-red-800 hover:underline">Confidentiality Policy</a>
-            </span>
-        </div>
+<div class="mb-4 flex">
+    <input type="checkbox" name="agreement" value="true" class="mr-2 mt-1" required>
+    <span class="text-sm text-gray-600">
+        By registering you accept and agreed with all our <a href="" class="text-red-800 hover:underline">terms
+            and
+            conditions</a> and <a href="" class="text-red-800 hover:underline">Confidentiality Policy</a>
+    </span>
+</div>
 
 
 
-        <div class="mt-0">
-            <button type="submit" class="rounded-full bg-red-700 py-2 px-4 text-white hover:bg-red-800 w-full">
-                {{ __('Register') }}
-            </button>
-        </div>
+<div class="mt-0">
+    <button type="submit" class="rounded-full bg-red-700 py-2 px-4 text-white hover:bg-red-800 w-full">
+        {{ __('Register') }}
+    </button>
+</div>
 
-    </form>
+</form>
 </div>
 
 

@@ -2,6 +2,10 @@
 
 @section('content')
 
+@if ($course->type == 'online')
+@include('courses.online')
+@else
+
 <div class="container mx-auto">
     <div class="flex justify-center mx-3">
         <div class="w-full md:w-4/5">
@@ -43,5 +47,8 @@
         </div>
     </div>
 </div>
+
+@endif
+
 
 @endsection
