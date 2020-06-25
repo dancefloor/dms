@@ -13,13 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'WelcomeController')->name('welcome');
+//Route::get('/', 'WelcomeController')->name('welcome');
+Route::get('/','PageController@onlineClass')->name('salsa.fusion');
 
 Auth::routes(['verify' => true]);
 
 Route::get('dashboard', 'ProfileController@index')->name('dashboard')->middleware('verified');
-
-Route::get('salsa-fusion','OnlineController')->name('salsa.fusion');
 
 Route::middleware(['auth'])->group(function(){
     Route::resource('courses', 'CourseController');

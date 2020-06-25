@@ -3,9 +3,12 @@
     <div class="container mx-auto my-10">
         <div class="flex flex-wrap -mx-3 my-1 items-center">
             <div class="w-full md:w-1/3 px-3 my-1">
-                <a href="{{ route('welcome') }}">
-                    @include('icons.logo-white',['style'=>'h-16'])
-                </a>
+                {{-- <a href="{{ route('welcome') }}"> --}}
+                <div class="flex justify-center md:justify-start">
+                    <a href="/">
+                        @include('icons.logo-white',['style'=>'h-16'])
+                    </a>
+                </div>
             </div>
             <div class="w-full md:w-1/3 px-3 my-1 inline-flex text-center">
                 <div class="flex justify-center w-full">
@@ -39,8 +42,8 @@
 
             </div>
             <div class="w-full md:w-1/3 px-3 my-1">
-                <div class="flex justify-end">
-                    <div class="text-right">
+                <div class="flex justify-center md:justify-end">
+                    <div class="text-center md:text-right">
                         <div>
                             <a href="mailto:infos@genevasalsa.com"
                                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out inline-flex">

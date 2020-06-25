@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class OnlineController extends Controller
+class PageController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -12,7 +12,7 @@ class OnlineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function onlineClass(Request $request)
     {
         return view('special-class');
     }

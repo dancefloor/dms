@@ -38,6 +38,13 @@
 
         <div class="mb-4">
             <input
+                class="appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none @error('lastname') border-red-500 @enderror"
+                id="facebook" type="text" placeholder="Facebook" name="facebook" value="{{ old('facebook') }}" required
+                autocomplete="facebook">
+        </div>
+
+        <div class="mb-4">
+            <input
                 class="appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none @error('email') border-red-500 @enderror"
                 type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required
                 autocomplete="email">
