@@ -4,6 +4,7 @@
 
 <div class="container mx-auto">
 
+    @auth
     <div class="flex justify-center my-20">
         <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
             <img class="w-full" src="{{ asset('images/salsa-fusion.png')}}" alt="Salsa fusion by Dancefloor">
@@ -33,7 +34,7 @@
             </div>
         </div>
     </div>
-
+    @endauth
 
     <main class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
         <div class="sm:text-center">
