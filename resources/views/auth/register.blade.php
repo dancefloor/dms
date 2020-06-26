@@ -115,14 +115,14 @@
             </div>
         </div> --}}
 
-<div class="mb-4 flex">
+{{-- <div class="mb-4 flex">
     <input type="checkbox" name="agreement" value="true" class="mr-2 mt-1" required>
     <span class="text-sm text-gray-600">
         By registering you accept and agreed with all our <a href="" class="text-red-800 hover:underline">terms
             and
             conditions</a> and <a href="" class="text-red-800 hover:underline">Confidentiality Policy</a>
     </span>
-</div>
+</div> --}}
 
 
 
