@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('/', 'WelcomeController')->name('welcome');
-Route::get('/','PageController@onlineClass')->name('salsa.fusion');
+Route::get('/', function(){
+    return redirect('/courses/29');
+});
+
+//Route::get('/','PageController@onlineClass')->name('salsa.fusion');
 
 Auth::routes(['verify' => true]);
 

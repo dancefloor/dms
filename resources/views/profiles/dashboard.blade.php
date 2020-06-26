@@ -21,11 +21,13 @@
             <li
                 class="grid grid-cols-5 gap-4 items-center px-3 py-2 {{ $loop->last ? '' : 'border-b border-gray-300'}}">
                 <div>
-                    <strong class="block"><a href="">{{ $item->name }}</a></strong>
+                    <strong class="block"><a href="{{ route('courses.show', $item) }}">{{ $item->name }}</a></strong>
                     {{ implode(',',$item->days)}}
                 </div>
                 <div>
+                    @if ($item->start_date)
                     {{ $item->start_date->format('d F y') }} - {{ $item->end_date->format('d F y') }}
+                    @endif
                 </div>
                 <div>
                     Profs
@@ -55,13 +57,9 @@
             @endforelse
         </ul>
     </section>
-
-
     <br>
-
-
     <section>
-        <h2>Paiements</h2>
+        {{-- <h2>Paiements</h2> --}}
     </section>
 </section>
 

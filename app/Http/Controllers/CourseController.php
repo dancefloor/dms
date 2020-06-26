@@ -7,12 +7,14 @@ use App\Http\Requests\UpdateCourseRequest;
 use App\Repositories\CourseRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Flash;
 use Response;
 use App\Models\Course;
 use App\Models\Style;
 use App\Role;
 use App\User;
+use App\Services\Slug;
 
 class CourseController extends AppBaseController
 {
@@ -105,9 +107,9 @@ class CourseController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $course = $this->courseRepository->find($id);
+        $course = $this->courseRepository->find($slug);
 
         if (empty($course)) {
             Flash::error('Course not found');
@@ -215,8 +217,10 @@ class CourseController extends AppBaseController
 
     public function saveFieldsRequest($request)
     {
+
         return [
             'name'          => $request->name,
+            'slug'          => Str::slug($request->name),  
             'description'   => $request->description,
             'excerpt'       => $request->excerpt,
             'tagline'       => $request->tagline,

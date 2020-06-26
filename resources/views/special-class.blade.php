@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="container mx-auto">
-
     @auth
     <div class="flex justify-center my-20">
         <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
@@ -115,7 +114,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full md:w-1/2 mx-3">
+            <div class="w-full md:w-1/2 px-5">
                 <h3 class="text-4xl font-bold my-4">Details</h3>
 
                 <div class="inline-flex">

@@ -44,18 +44,24 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-between">
-            <button
-                class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-5 rounded-full focus:outline-none focus:shadow-outline"
-                type="submit">
-                {{ __('Login') }}
-            </button>
+        <div class="flex items-center justify-between mb-5">
+            <a class="inline-block align-baseline font-bold text-sm text-red-700 hover:text-red-900"
+                href="{{ route('register') }}">
+                {{ __('Create Account') }}
+            </a>
             @if (Route::has('password.request'))
             <a class="inline-block align-baseline font-bold text-sm text-red-700 hover:text-red-900"
                 href="{{ route('password.request') }}">
                 {{ __('Forgot Your Password?') }}
             </a>
             @endif
+        </div>
+        <div class="mb-3">
+            <button
+                class="bg-red-700 hover:bg-red-800 w-full text-white font-bold py-2 px-5 rounded-full focus:outline-none focus:shadow-outline"
+                type="submit">
+                {{ __('Login') }}
+            </button>
         </div>
     </form>
     <p class="text-center text-gray-500 text-xs">

@@ -184,8 +184,13 @@ class User extends Authenticatable
 
             $id = collect($result)->map(function ($item, $key) {
                 return $item->status;
-            });
+            })->flatten();
         return $id;
+    }
+
+    public function isRegistered($id)
+    {
+        return in_array($id, $this->learns()->pluck('course_id')->toArray());
     }
 }
 

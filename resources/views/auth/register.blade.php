@@ -39,8 +39,9 @@
         <div class="mb-4">
             <input
                 class="appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none @error('lastname') border-red-500 @enderror"
-                id="facebook" type="text" placeholder="Facebook" name="facebook" value="{{ old('facebook') }}" required
-                autocomplete="facebook">
+                id="facebook" type="text" placeholder="Facebook profile" name="facebook" value="{{ old('facebook') }}"
+                required autocomplete="facebook">
+            <p class="text-xs text-gray-500 ml-2">*Required for the private Facebook group</p>
         </div>
 
         <div class="mb-4">
