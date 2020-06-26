@@ -24,8 +24,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('dashboard', 'ProfileController@index')->name('dashboard')->middleware('verified');
 
+Route::resource('courses', 'CourseController');
 Route::middleware(['auth'])->group(function(){
-    Route::resource('courses', 'CourseController');
     Route::resource('locations', 'LocationController');
     Route::resource('skills', 'SkillController');
     Route::resource('lessons', 'LessonController');
