@@ -71,9 +71,10 @@
                 <div class="max-w-sm rounded overflow-hidden shadow-lg">
                     <img src="{{ asset('images/swiss-post.png') }}" alt="Swiss Post" class="w-full h-24 object-cover">
                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Swiss Post</div>
+                        <div class="font-bold text-xl mb-2">Bank transferts</div>
                         <p class="text-gray-700 text-base">
-                            If you live in Switzerland you can pay directly at your nearest post office using the red
+                            You can make a bank transfert or if you live in Switzerland you can pay directly at your
+                            nearest post office using the red
                             payment Slip
                         </p>
                     </div>
