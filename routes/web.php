@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/', 'WelcomeController')->name('welcome');
 Route::get('/', function(){
-    return redirect('/courses/29');
+    return redirect('/courses/1');
 });
 
 //Route::get('/','PageController@onlineClass')->name('salsa.fusion');

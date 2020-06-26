@@ -22,37 +22,6 @@
     @endif
     @endif
 
-    @auth
-    <div class="flex justify-center my-20">
-        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-            <img class="w-full" src="{{ asset('images/salsa-fusion.png')}}" alt="Salsa fusion by Dancefloor">
-            <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2 text-gray-800">1:15 from Monday to Friday</div>
-                <ul class="text-gray-700 text-base list-disc pl-5">
-                    <li>Learn the Dancefloor Fusions Style</li>
-                    <li>Improve your foundations: Groove, Isolation, Afro Movement</li>
-                    <li>Learn how to introduce Urban dances and Afro in your salsa</li>
-                    <li>Get the special tips to make your moves look better</li>
-                </ul>
-            </div>
-            <div class="px-6 py-4">
-                <span
-                    class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2">#groove</span>
-                <span
-                    class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2">#isolations</span>
-                <span
-                    class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800">#afro-moves</span>
-            </div>
-            <div>
-                <a href="{{ route('mollie.payment', ['amount' => '40', 'description'=> 'DF Salsa Fusion class']) }}"
-                    class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-b-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-                    Pay now
-                </a>
-
-            </div>
-        </div>
-    </div>
-    @endauth
 
     <main class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
         <div class="sm:text-center">
@@ -72,16 +41,26 @@
 
             <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
                 <div class="rounded-md shadow">
-                    @auth
-                    <a href="{{ route('mollie.payment', ['amount' => '40', 'description'=> 'DF Salsa Fusion class']) }}"
-                        class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-                        Pay now
-                    </a>
 
+                    @auth
+                    @if (!auth()->user()->isRegistered($course->id))
+                    <form action="{{ route('registration.add', $course->id) }}" method="post">
+                        @csrf
+                        <button type="submit" id="register" title="Register"
+                            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                            Select course
+                        </button>
+                    </form>
                     @else
-                    <a href="{{ route('register') }}"
+                    @endif
+                    <a href="{{ route('dashboard') }}"
                         class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-                        Register
+                        Dashboard
+                    </a>
+                    @else
+                    <a href="{{ route('login') }}"
+                        class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                        Sign-in
                     </a>
                     @endauth
 
@@ -170,15 +149,24 @@
 
                 <div class="w-full md:w-48 my-10">
                     @auth
-                    <a href="{{ route('mollie.payment', ['amount' => '40', 'description'=> 'DF Salsa Fusion class']) }}"
-                        class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-                        Pay now
-                    </a>
-
+                    @if (!auth()->user()->isRegistered($course->id))
+                    <form action="{{ route('registration.add', $course->id) }}" method="post">
+                        @csrf
+                        <button type="submit" id="register" title="Register"
+                            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                            Select course
+                        </button>
+                    </form>
                     @else
-                    <a href="{{ route('register') }}"
+                    @endif
+                    <a href="{{ route('dashboard') }}"
                         class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-                        Register
+                        Dashboard
+                    </a>
+                    @else
+                    <a href="{{ route('login') }}"
+                        class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                        Sign-in
                     </a>
                     @endauth
                 </div>
@@ -201,9 +189,19 @@
 
 <div class="flex justify-center mb-20">
     @auth
-    <a href="{{ route('mollie.payment', ['amount' => '40', 'description'=> 'DF Salsa Fusion class']) }}"
+    @if (!auth()->user()->isRegistered($course->id))
+    <form action="{{ route('registration.add', $course->id) }}" method="post">
+        @csrf
+        <button type="submit" id="register" title="Register"
+            class="w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+            Select course
+        </button>
+    </form>
+    @else
+    @endif
+    <a href="{{ route('dashboard') }}"
         class="w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-        Pay now
+        Dashboard
     </a>
 
     @else

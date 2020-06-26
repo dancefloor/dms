@@ -9,7 +9,7 @@ class RegistrationController extends Controller
 {
     public function add(Course $course)
     {                                
-        $course->students()->attach(auth()->user()->id,['role'=>'student', 'status'=>'pending', 'created_at'=> now()]);
+        $course->students()->attach(auth()->user()->id, ['role'=>'student', 'status'=>'pending', 'created_at'=> now()]);
         
         session()->flash('alert', 'You have successfully pre-register. Please proceed to pay on your Dashboard');
 

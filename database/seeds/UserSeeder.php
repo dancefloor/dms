@@ -13,8 +13,7 @@ class UserSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        $heardOf = ['instagram', 'facebook', 'google', 'friend', 'old-student', 'party', 'festival', 'public-manifestation', 'instructor'];
+    {        
 
         $gab = User::firstOrCreate([
             'firstname'     => 'Gabriel',
@@ -209,27 +208,6 @@ class UserSeeder extends Seeder
         ]);
         $ivan->roles()->attach(3);
 
-        $json = file_get_contents(database_path('data/d.json'));
-
-        $data = json_decode($json);
-        foreach ($data as $key => $user) {
-            User::create([
-                'firstname'     => $user->firstname,
-                'lastname'      => $user->lastname,
-                'email'         => $user->email,
-                'password'      => Hash::make('password'),
-                'mobile'        => $user->mobile,
-                'gender'        => $user->gender,
-                'aware_of_df'  => $heardOf[array_rand($heardOf)]
-            ]);
-        }
-
-
-        //factory(App\User::class, 50)->create();
-        // Populate the pivot table
-        App\User::all()->each(function ($user) {
-            $user->roles()->attach(6);
-        });
     }
 }
 
