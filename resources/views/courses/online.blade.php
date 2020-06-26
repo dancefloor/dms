@@ -8,7 +8,7 @@
 
 <div class="container mx-auto">
 
-
+    @auth
     @if (auth()->user()->isRegistered($course->id))
     @if (auth()->user()->registrationStatus($course->id) == '["paid"]')
     <div>
@@ -21,7 +21,7 @@
     </div>
     @endif
     @endif
-
+    @endauth
 
     <main class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
         <div class="sm:text-center">
