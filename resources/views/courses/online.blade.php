@@ -212,7 +212,7 @@
     @endauth
 </div>
 
-@can('crud-courses')
+@can('crud_courses')
 <div class="container mx-auto">
     <ul>
         @foreach ($course->students as $student)
