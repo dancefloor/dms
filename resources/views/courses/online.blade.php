@@ -2,21 +2,21 @@
 
 @section('content')
 
-@extends('layouts.front')
-
-@section('content')
-
 <div class="container mx-auto">
 
     @auth
     @if (auth()->user()->isRegistered($course->id))
+    {{-- @foreach (auth()->user()->registrationStatus($course->id) as $i)
+    {{$i}}
+    @endforeach --}}
     @if (auth()->user()->registrationStatus($course->id) == '["paid"]')
+
     <div>
         You are registered
     </div>
     @else
     <div class="bg-orange-300 text-orange-700 mt-10 p-4 rounded-lg font-bold">
-        You are pre-registered, please proceed to pay to complete your registration or review your registration in your
+        You are pre-registered, please proceed to pay to complete your registration on your
         <a href="{{ route('dashboard') }}" class="underline">Dashboard</a>
     </div>
     @endif
@@ -212,6 +212,18 @@
     @endauth
 </div>
 
-@endsection
+@can('crud-courses')
+<div class="container mx-auto">
+    <ul>
+        @foreach ($course->students as $student)
+        <li>
+            <a href="{{ route('users.show', $student->id) }}">{{ $student->firstname }} {{ $student->lastname }}</a>
+        </li>
+        @endforeach
+    </ul>
+</div>
+@endcan
+
+
 
 @endsection

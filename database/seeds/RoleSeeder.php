@@ -62,28 +62,36 @@ class RoleSeeder extends Seeder
             'label' => 'The person has the right to view, create, edit and delete payments', 
         ]);
 
+        // List of Roles -------------------
+        
+        Role::firstOrCreate([
+            'name'  => 'Super Admin',
+            'slug'  => 'super-admin',
+            'label' => 'Administrator of the website, full access, all rigths granted',
+        ]);
+
         Role::firstOrCreate([
             'name'  => 'Admin',
             'slug'  => 'admin',
-            'label' => 'Administrator of the website, full access, all rigths granted',
+            'label' => 'The school owner',
         ]);
 
         Role::firstOrCreate([
             'name'  => 'Manager',
             'slug'  => 'manager',
-            'label' => 'The school manager',
+            'label' => 'School manager',
+        ]);
+
+        Role::firstOrCreate([
+            'name'  => 'Editor',
+            'slug'  => 'editor',
+            'label' => 'A person who helps the manager with payments and the administration',
         ]);
 
         Role::firstOrCreate([
             'name'  => 'Instructor',
             'slug'  => 'instructor',
             'label' => 'A person who teaches and manages dance classes',
-        ]);
-
-        Role::firstOrCreate([
-            'name'  => 'Admin assistant',
-            'slug'  => 'admin-assistant',
-            'label' => 'A person who helps the manager verify payments and the administration',
         ]);
 
         Role::firstOrCreate([

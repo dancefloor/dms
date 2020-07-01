@@ -43,7 +43,7 @@ class PermissionController extends Controller
 
         $permission = Permission::create([
             'name' => $request->name,
-            'slug'  => Str::slug($request->name,'-'), 
+            'slug'  => Str::of($request->name)->snake(), 
             'label' => $request->label,
         ]);
 
@@ -89,7 +89,7 @@ class PermissionController extends Controller
     {
         $permission->update([
             'name'  => $request->name,
-            'slug'  => Str::slug($request->name,'-'), 
+            'slug'  => Str::of($request->name)->snake(), 
             'label' => $request->label,
         ]);
 

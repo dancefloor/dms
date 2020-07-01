@@ -1,3 +1,6 @@
+@extends('layouts.back')
+
+@section('content')
 <x-listing title="Users" add="users.create" model="User">
     <x-slot name="icon">
         @include('icons.users', ['style'=>'w-16 h-16'])
@@ -12,3 +15,4 @@
         @include('users.table')
     </main>
 </x-listing>
+@endsection

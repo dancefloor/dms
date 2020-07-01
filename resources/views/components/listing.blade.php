@@ -1,6 +1,3 @@
-@extends('layouts.back')
-
-@section('content')
 <section>
     <div class="bg-gray-800 pt-10 pb-24 border-t border-gray-900">
         <div class="container mx-auto px-4">
@@ -31,4 +28,3 @@
     </div>
 
 </section>
-@endsection

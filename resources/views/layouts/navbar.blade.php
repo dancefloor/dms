@@ -33,26 +33,34 @@
                 </div>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex">
-                        {{-- @auth
-                        <a href="{{ route('dashboard') }}"
-                        class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900
+                        @auth
+                        <a href="{{ route('dashboard') }}" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900
                         focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
-                        Dashboard
+                            Dashboard
                         </a>
 
+                        @can('crud-courses')
                         <a href="{{ route('courses.index') }}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
                             Courses
                         </a>
+                        @endcan
+
+                        @can('crud_styles')
                         <a href="{{ route('styles.index') }}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
                             Styles
                         </a>
-                        @if (auth()->user()->isAdmin())
+                        @endcan
+
+                        @can('view_users')
                         <a href="{{ route('users.index') }}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
                             Users
                         </a>
+                        @endcan
+
+                        @if (auth()->user()->isAdmin())
                         <a href="{{ route('roles.index') }}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
                             Roles & Permissions
@@ -60,7 +68,7 @@
                         @endif
 
 
-                        @endauth --}}
+                        @endauth
 
                     </div>
                 </div>
