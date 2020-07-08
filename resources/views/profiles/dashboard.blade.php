@@ -38,7 +38,7 @@
                 </div>
                 <div class="flex justify-end">
                     <div class="inline-flex items-center">
-                        <x-registration-status status="{{ $item->pivot->status }}" />
+                        <x-registration-status uid="{{ auth()->user()->id }}" cid="{{ $item->id }}" />
                     </div>
                 </div>
                 <div class="capitalize text-right">

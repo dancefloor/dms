@@ -121,8 +121,7 @@
                         </div>
 
                         <div class="text-gray-700">
-                            {{-- {{$item->students->count()}} --}}
-                            20 students registered
+                            {{ $item->students->count() }} students
                         </div>
                     </div>
                 </div>

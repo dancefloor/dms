@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="container mx-auto -mt-24 px-4">
-        <div class="bg-white rounded-lg shadow mb-20">
+        <div class="bg-white rounded-lg shadow mb-20 overflow-hidden">
             {{ $slot }}
         </div>
     </div>

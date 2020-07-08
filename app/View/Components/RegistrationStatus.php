@@ -2,10 +2,13 @@
 
 namespace App\View\Components;
 
+use App\User;
 use Illuminate\View\Component;
 
 class RegistrationStatus extends Component
 {
+    public $uid;
+    public $cid;
     public $status;
     public $color;
     public $icon;
@@ -14,9 +17,10 @@ class RegistrationStatus extends Component
      *
      * @return void
      */
-    public function __construct($status)
-    {
-        $this->status = $status;
+    public function __construct($uid, $cid)
+    {        
+        $this->uid = $uid;
+        $this->cid = $cid;    
     }
 
     /**
@@ -26,9 +30,14 @@ class RegistrationStatus extends Component
      */
     public function render()
     {
+
+        $user = User::find($this->uid);
+
+        $this->status = $user->registrationStatus($this->cid);
+
         switch ($this->status) {
             case 'pending':
-                $this->color = 'bg-orange-500 text-orange-100';
+                $this->color = 'bg-orange-300 text-orange-800';
                 $this->icon = 'pending';
                 break;
             case 'waiting':

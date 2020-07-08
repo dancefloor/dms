@@ -1,6 +1,3 @@
-<div class="inline-flex items-center px-2 py-1 rounded-full text-xs {{ $color }}">
-    @include('icons.'.$icon, ['style'=>'w-4'])
-    <span class="ml-2">
-        {{ $status }}
-    </span>
+<div class="inline-flex items-center py-1 px-3 rounded-full {{ $color }}">
+    @include('icons.'. $icon ) {{ $status }}
 </div>

@@ -158,11 +158,20 @@
                         </button>
                     </form>
                     @else
-                    <a href="{{ route('dashboard') }}"
-                        class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-                        Dashboard
-                    </a>
+                    <div class="inline-flex">
+                        <a href="{{ route('dashboard') }}"
+                            class="mx-2 w-56 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                            Dashboard
+                        </a>
+                        @if ($course->online_link)
+                        <a href="{{ $course->online_link }}" target="_blank"
+                            class="mx-2 w-56 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                            FB Group
+                        </a>
+                        @endif
+                    </div>
                     @endif
+
                     @else
                     <a href="{{ route('login') }}"
                         class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
@@ -199,9 +208,15 @@
     </form>
     @else
     <a href="{{ route('dashboard') }}"
-        class="w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+        class="mx-2 w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
         Dashboard
     </a>
+    @if ($course->online_link)
+    <a href="{{ $course->online_link }}" target="_blank"
+        class="mx-2 w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+        FB Group
+    </a>
+    @endif
     @endif
 
     @else
@@ -212,14 +227,37 @@
     @endauth
 </div>
 
-@can('crud_courses')
+
+@can('crud-courses')
 <div class="container mx-auto">
-    <ul>
-        @foreach ($course->students as $student)
-        <li>
-            <a href="{{ route('users.show', $student->id) }}">{{ $student->firstname }} {{ $student->lastname }}</a>
+    <h3 class="mb-6 text-3xl font-bold text-gray-700">Registered students</h3>
+    <ul class="border rounded-lg">
+        <li class="py-3 px-4 bg-gray-200 border-b text-xs uppercase text-gray-700 font-semibold">
+            <div class="grid grid-cols-4 gap-5">
+                <div>Full name</div>
+                <div>Email</div>
+                <div>Facebook</div>
+                <div class="text-right">
+                    Status
+                </div>
+            </div>
         </li>
-        @endforeach
+        @forelse ($course->students as $student)
+        <li class="py-3 px-4 {{ $loop->last ? '' : 'border-b' }} hover:bg-gray-200">
+            <a href="{{ route('users.show', $student->id) }}">
+                <div class="grid grid-cols-4 gap-5 text-gray-700">
+                    <div>{{ $student->firstname }} {{ $student->lastname }}</div>
+                    <div>{{ $student->email }}</div>
+                    <div>{{ $student->facebook }}</div>
+                    <div class="text-right">
+                        <x-registration-status uid="{{ $student->id }}" cid="{{ $course->id }}" />
+                    </div>
+                </div>
+            </a>
+        </li>
+        @empty
+        <li>No students have registered yet!</li>
+        @endforelse
     </ul>
 </div>
 @endcan

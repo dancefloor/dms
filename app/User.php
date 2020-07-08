@@ -184,7 +184,7 @@ class User extends Authenticatable
 
             $id = collect($result)->map(function ($item, $key) {
                 return $item->status;
-            });
+            })->first();
         return $id;
     }
 
