@@ -228,7 +228,7 @@
 </div>
 
 
-@can('crud-courses')
+@can('crud_courses')
 <div class="container mx-auto">
     <h3 class="mb-6 text-3xl font-bold text-gray-700">Registered students</h3>
     <ul class="border rounded-lg">
