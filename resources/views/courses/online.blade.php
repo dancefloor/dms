@@ -233,11 +233,11 @@
     <h3 class="mb-6 text-3xl font-bold text-gray-700">Registered students</h3>
     <ul class="border rounded-lg">
         <li class="py-3 px-4 bg-gray-200 border-b text-xs uppercase text-gray-700 font-semibold">
-            <div class="grid grid-cols-4 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
                 <div>Full name</div>
                 <div>Email</div>
                 <div>Facebook</div>
-                <div class="text-right">
+                <div class="md:text-right">
                     Status
                 </div>
             </div>
@@ -245,11 +245,11 @@
         @forelse ($course->students as $student)
         <li class="py-3 px-4 {{ $loop->last ? '' : 'border-b' }} hover:bg-gray-200">
             <a href="{{ route('users.show', $student->id) }}">
-                <div class="grid grid-cols-4 gap-5 text-gray-700">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 text-gray-700">
                     <div>{{ $student->firstname }} {{ $student->lastname }}</div>
                     <div>{{ $student->email }}</div>
                     <div>{{ $student->facebook }}</div>
-                    <div class="text-right">
+                    <div class="md:text-right">
                         <x-registration-status uid="{{ $student->id }}" cid="{{ $course->id }}" />
                     </div>
                 </div>
