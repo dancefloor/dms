@@ -43,7 +43,7 @@
             </div>
 
             <div class="my-5">
-                <a href="{{ route('mollie.payment', ['amount' => $total ])}}"
+                <a href="{{ route('mollie.payment', ['amount' => $total, 'name' => auth()->user()->firstname . ' ' . auth()->user()->lastname, 'email' => auth()->user()->email ])}}"
                     class="bg-red-700 text-white px-3 py-2 rounded-full">Pay now</a>
             </div>
 

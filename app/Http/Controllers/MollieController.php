@@ -27,9 +27,13 @@ class MollieController extends Controller
                 'currency'      => 'EUR', // Type of currency you want to send
                 'value'         => request()->amount . '.00', // You must send the correct number of decimals, thus we enforce the use of strings
             ],
-            'description'   => 'order 12341423',
+            'description'   => 'salsa fusion',
             'redirectUrl'   => route('webhooks.mollie'), 
-            'webhookUrl'   => route('payment.status')
+            'webhookUrl'    => route('payment.status'),
+            "metadata"      => [
+                "name"  =>   request()->name,
+                "email" =>   request()->email,
+            ],
         ]);
 
         

@@ -7,6 +7,7 @@
     <section>
         <header class="flex justify-between items-baseline">
             <h2 class="uppercase text-sm font-semibold text-gray-600 mb-3">My courses</h2>
+            @can('crud_courses')
             @if (auth()->user()->pendingCourses()->count() > 0)
             <div class="mb-3">
                 <a href="{{ route('checkout') }}"
@@ -14,6 +15,7 @@
                     Checkout</a>
             </div>
             @endif
+            @endcan
         </header>
 
         <ul class="border bg-white rounded-lg">
