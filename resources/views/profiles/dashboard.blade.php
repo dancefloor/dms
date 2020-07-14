@@ -9,9 +9,9 @@
             <h2 class="uppercase text-sm font-semibold text-gray-600 mb-3">My courses</h2>
             @if (auth()->user()->pendingCourses()->count() > 0)
             <div class="mb-3">
-                {{-- <a href="{{ route('checkout') }}"
-                class="bg-red-700 text-white py-2 px-3 hover:bg-red-800 rounded-full">Proceed to
-                Checkout</a> --}}
+                <a href="{{ route('checkout') }}"
+                    class="bg-red-700 text-white py-2 px-3 hover:bg-red-800 rounded-full">Proceed to
+                    Checkout</a>
             </div>
             @endif
         </header>

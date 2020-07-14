@@ -188,6 +188,16 @@ class User extends Authenticatable
         return $id;
     }
 
+    public function setRegistrationStatus($id)
+    {
+        $registration = DB::table('registrations')
+            ->where('user_id', $this->id)
+            ->where('course_id', $id)
+            ->get();
+        dd($registration);
+            return $registration;
+    }
+
     public function isRegistered($id)
     {
         return in_array($id, $this->learns()->pluck('course_id')->toArray());

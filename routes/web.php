@@ -37,8 +37,10 @@ Route::middleware(['auth'])->group(function(){
     Route::post('registration/{course}','RegistrationController@add')->name('registration.add');
     Route::delete('registration/{course}','RegistrationController@remove')->name('registration.remove');
     
+    Route::name('webhooks.mollie')->post('webhooks/mollie', 'MollieWebhookController@handle');
     Route::get('/mollie-payment','MollieController@preparePayment')->name('mollie.payment');
-    Route::get('/payment-success','MollieController@paymentSuccess')->name('payment.success');
+    Route::get('/payment-success','MollieController@paymentSuccess')->name('payment.status');    
+    
     Route::get('checkout','CheckoutController')->name('checkout');
 });
 
