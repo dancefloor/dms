@@ -36,7 +36,7 @@
                         </td>
                         <td class="border-t-2"></td>
                         <td class="border-t-2 font-bold py-2 text-right pr-3">
-                            CHF {{ $total }}
+                            EUR {{ $total }}
                         </td>
                     </tr>
                 </table>

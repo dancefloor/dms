@@ -28,8 +28,8 @@ class MollieController extends Controller
                 'value'         => request()->amount . '.00', // You must send the correct number of decimals, thus we enforce the use of strings
             ],
             'description'   => 'salsa fusion',
-            'redirectUrl'   => route('webhooks.mollie'), 
-            'webhookUrl'    => route('payment.status'),
+            'redirectUrl'   => route('payment.status'), 
+            'webhookUrl'    => route('webhooks.mollie'),
             "metadata"      => [
                 "name"  =>   request()->name,
                 "email" =>   request()->email,
