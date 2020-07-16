@@ -26,7 +26,7 @@
                     <tr>
                         <td class="border-b pl-3">{{ $item->name }}</td>
                         <td class="border-b">{{ $item->pivot->status }}</td>
-                        <td class="border-b text-right py-2 pr-3">CHF {{ $item->full_price }}</td>
+                        <td class="border-b text-right py-2 pr-3">EUR {{ $item->full_price }}</td>
                     </tr>
                     @php $total = $total + $item->full_price; @endphp
                     @endforeach
