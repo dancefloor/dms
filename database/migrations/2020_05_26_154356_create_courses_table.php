@@ -64,13 +64,11 @@ class CreateCoursesTable extends Migration
             $table->decimal('reduced_price')->nullable();
             $table->decimal('promo_price')->nullable();
                         
-            $table->string('cover_image')->nullable();
-            
-            $table->enum('stauts',['soon','active', 'expired'])->nullable();
+            $table->string('thumbnail')->nullable();                    
             
             $table->set('focus',['partnerwork','footwork','choreography', 'styling', 'body movements', 'theory']);
             $table->enum('type',['bootcamp','class', 'workshop', 'online'])->nullable(); 
-            $table->enum('status',['active','finished','soon']);
+            $table->enum('status',['active','finished','soon'])->nullable();
             
             $table->string('online_link')->nullable(); 
             $table->string('online_id')->nullable(); 

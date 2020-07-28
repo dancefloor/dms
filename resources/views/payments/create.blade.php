@@ -1,23 +1,58 @@
-@extends('layouts.app')
+@extends('layouts.back')
+
+
+
+@section('head')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
 
 @section('content')
-    <section class="content-header">
-        <h1>
-            Payment
-        </h1>
-    </section>
-    <div class="content">
-        @include('adminlte-templates::common.errors')
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'payments.store']) !!}
+<div class="container mx-auto my-10">
+    <ul>
+        @if (session()->has('errors'))
+        <li>{{ session()->get('errors') }}</li>
+        @endif
+    </ul>
 
-                        @include('payments.fields')
+    <h1 class="text-gray-800 font-bold text-4xl mb-5">
+        New Payment
+    </h1>
 
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </div>
+    <form action="{{ route('payments.store') }}" method="POST">
+        @csrf
+
+        <select name="order" id="order" required>
+            <option default selected disabled>Select Order</option>
+            @foreach ($orders as $item)
+            <option value="{{ $item->id }}">
+                #{{$item->id}} | CHF {{ $item->total }} ({{ $item->user->firstname }} {{ $item->user->lastname }})
+            </option>
+            @endforeach
+        </select>
+
+        @include('payments.form.fields')
+
+
+        <button type="submit" class="bg-red-700 hover:bg-red-800 rounded-full px-4 py-2 text-gray-100">
+            Add Payment
+        </button>
+
+    </form>
+
+</div>
 @endsection
+
+
+@push('scripts')
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"
+    integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function() {        
+        $('#courses').select2({
+            placeholder: "Select a course(s)",
+        });
+    });
+</script>
+@endpush

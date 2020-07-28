@@ -1,4 +1,26 @@
-<div class="">
+<div id="days">
+    <div class="relative">
+        <select
+            class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 h-10 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="aware_of_df" name="aware_of_df" required>
+            <option disabled selected>Style</option>
+            @foreach ($styles as $style)
+            <a href="{{ route('welcome', [ 'style'=> $style->id ])}}"
+                class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 hover:text-gray-900 focus:outline-none focus:bg-gray100 focus:text-gray-900"
+                role="menuitem">{{ $style->name }}
+            </a>
+            @endforeach
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                <path d="M7 7l3-3 3 3m0 6l-3 3-3-3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+{{-- <div class="">
     <div class="relative inline-block text-left" x-data="{open: false}">
         <div class="">
             <span class="rounded-md shadow-sm block w-64">
@@ -20,12 +42,13 @@
                 <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                     @foreach ($styles as $style)
                     <a href="{{ route('welcome', [ 'style'=> $style->id ])}}"
-                        class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 hover:text-gray-900 focus:outline-none focus:bg-gray100 focus:text-gray-900"
-                        role="menuitem">{{ $style->name }}
-                    </a>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
+class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-200 hover:text-gray-900 focus:outline-none
+focus:bg-gray100 focus:text-gray-900"
+role="menuitem">{{ $style->name }}
+</a>
+@endforeach
 </div>
+</div>
+</div>
+</div>
+</div> --}}

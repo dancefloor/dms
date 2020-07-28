@@ -6,6 +6,9 @@ use App\Http\Requests\CreatePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 use App\Repositories\PaymentRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Order;
+use App\Models\Payment;
+use App\Service\RegistrationPaymentManager;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -42,7 +45,8 @@ class PaymentController extends AppBaseController
      */
     public function create()
     {
-        return view('payments.create');
+        $orders = Order::isOpen()->get();
+        return view('payments.create')->with('orders',$orders);
     }
 
     /**
@@ -56,9 +60,21 @@ class PaymentController extends AppBaseController
     {
         $input = $request->all();
 
-        $payment = $this->paymentRepository->create($input);
+        $payment = Payment::create([            
+            'code'      => $request->code,
+            'provider'  => $request->provider,
+            'method'    => $request->method,
+            'amount'    => $request->amount,
+            'currency'  => $request->currency,
+            'comments'  => $request->comments,
+            'status'    => 'paid'
+        ]);
+        
+        $payment->order()->associate($request->order)->save();
+        
+        RegistrationPaymentManager::updateOrder($request->order);
 
-        Flash::success('Payment saved successfully.');
+        session()->flash('success', 'Payment saved successfully.');        
 
         return redirect(route('payments.index'));
     }

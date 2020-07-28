@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -55,9 +55,14 @@ class Payment extends Model
         'method' => 'required'
     ];
 
-    public function registrations()
+    // public function registrations()
+    // {
+    //     return $this->hasMany('', 'foreign_key', 'local_key');        
+    // }
+
+    public function order()
     {
-        return $this->hasMany('', 'foreign_key', 'local_key');        
+        return $this->belongsTo(\App\Models\Order::class);
     }
 }
 

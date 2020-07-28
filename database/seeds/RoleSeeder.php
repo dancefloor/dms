@@ -16,49 +16,49 @@ class RoleSeeder extends Seeder
 
         Permission::firstOrCreate([
             'name'  => 'CRUD Courses',
-            'slug'  => 'crud-courses',
+            'slug'  => 'crud_courses',
             'label' => 'The person has the right to view, create, edit and delete courses', 
         ]);
         
         Permission::firstOrCreate([
             'name'  => 'CRUD Users',
-            'slug'  => 'crud-users',
+            'slug'  => 'crud_users',
             'label' => 'The person has the right to view, create, edit and delete users', 
         ]);
 
         Permission::firstOrCreate([
             'name'  => 'CRUD Roles',
-            'slug'  => 'crud-roles',
+            'slug'  => 'crud_roles',
             'label' => 'The person has the right to view, create, edit and delete roles', 
         ]);
 
         Permission::firstOrCreate([
             'name'  => 'CRUD Permissions',
-            'slug'  => 'crud-permissions',
+            'slug'  => 'crud_permissions',
             'label' => 'The person has the right to view, create, edit and delete permissions', 
         ]);
 
         Permission::firstOrCreate([
             'name'  => 'CRUD Styles',
-            'slug'  => 'crud-styles',
+            'slug'  => 'crud_styles',
             'label' => 'The person has the right to view, create, edit and delete styles', 
         ]);
 
         Permission::firstOrCreate([
             'name'  => 'CRUD Locations',
-            'slug'  => 'crud-locations',
+            'slug'  => 'crud_locations',
             'label' => 'The person has the right to view, create, edit and delete locations', 
         ]);
 
         Permission::firstOrCreate([
             'name'  => 'CRUD Classrooms',
-            'slug'  => 'crud-classrooms',
+            'slug'  => 'crud_classrooms',
             'label' => 'The person has the right to view, create, edit and delete classrooms', 
         ]);
 
         Permission::firstOrCreate([
             'name'  => 'CRUD Payments',
-            'slug'  => 'crud-payments',
+            'slug'  => 'crud_payments',
             'label' => 'The person has the right to view, create, edit and delete payments', 
         ]);
 
@@ -80,6 +80,12 @@ class RoleSeeder extends Seeder
             'name'  => 'Manager',
             'slug'  => 'manager',
             'label' => 'School manager',
+        ]);
+
+        Role::firstOrCreate([
+            'name'  => 'Secretary',
+            'slug'  => 'secretary',
+            'label' => 'In charge of controlling registrations, courses as well as answering phone calls and emails',
         ]);
 
         Role::firstOrCreate([

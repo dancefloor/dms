@@ -15,16 +15,20 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->decimal('subtotal_amount')->nullable();
-            $table->decimal('tax')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');            
+            $table->decimal('subtotal')->nullable();
+            $table->decimal('vat')->nullable();
             $table->decimal('discount')->nullable();
             $table->string('discount_code')->nullable();
-            $table->decimal('total_amount')->nullable();
-            $table->enum('status',['pending','canceled', 'paid', 'expired'])->nullable();
+            $table->decimal('total')->nullable();
+            $table->text('comments')->nullable();
+            $table->string('method')->nullable();
+            $table->enum('status',['open','canceled', 'paid', 'expired'])->nullable();
+            $table->foreignId('author_id')->nullable();
             $table->timestamps();
         });
-    }
+
+    } 
 
     /**
      * Reverse the migrations.

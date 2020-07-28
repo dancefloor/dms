@@ -39,7 +39,7 @@
                             Dashboard
                         </a>
 
-                        @can('crud-courses')
+                        @can('crud_courses')
                         <a href="{{ route('courses.index') }}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
                             Courses
@@ -66,6 +66,16 @@
                             Roles & Permissions
                         </a>
                         @endif
+
+                        <a href="{{ route('orders.index') }}"
+                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+                            Orders
+                        </a>
+
+                        <a href="{{ route('payments.index') }}"
+                            class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+                            Payments
+                        </a>
 
 
                         @endauth

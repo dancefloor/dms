@@ -2,18 +2,20 @@
 
 namespace App\View\Components;
 
+use App\Models\Course;
 use Illuminate\View\Component;
 
 class Catalogue extends Component
 {
+    public $courses;    
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($courses)
     {
-        //
+        $this->courses = $courses;
     }
 
     /**
@@ -26,3 +28,5 @@ class Catalogue extends Component
         return view('components.catalogue');
     }
 }
+
+

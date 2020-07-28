@@ -18,36 +18,8 @@
         </div>
     </div>
     <div class="container mx-auto -mt-24 px-4">
-        <div class="bg-white rounded-lg shadow mb-20 px-4 py-3">
-            <div class="border rounded-lg">
-                @php $total = 0; @endphp
-                <table class="w-full">
-                    @foreach (auth()->user()->pendingCourses as $item)
-                    <tr>
-                        <td class="border-b pl-3">{{ $item->name }}</td>
-                        <td class="border-b">{{ $item->pivot->status }}</td>
-                        <td class="border-b text-right py-2 pr-3">EUR {{ $item->full_price }}</td>
-                    </tr>
-                    @php $total = $total + $item->full_price; @endphp
-                    @endforeach
-                    <tr>
-                        <td class="border-t-2 pl-3">
-                            Total price:
-                        </td>
-                        <td class="border-t-2"></td>
-                        <td class="border-t-2 font-bold py-2 text-right pr-3">
-                            EUR {{ $total }}
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="my-5">
-                <a href="{{ route('mollie.payment', ['amount' => $total, 'name' => auth()->user()->firstname . ' ' . auth()->user()->lastname, 'email' => auth()->user()->email ])}}"
-                    class="bg-red-700 text-white px-3 py-2 rounded-full">Pay now</a>
-            </div>
-
-
+        <div class="bg-white rounded-lg shadow mb-20 px-10 py-5">
+            <livewire:checkout />
         </div>
     </div>
 

@@ -3,16 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Order extends Model
 {
     protected $fillable = [
         'user_id',
-        'subtotal_amount',
+        'subtotal',
         'tax',
         'discount',
         'discount_code',
-        'total_amount',
+        'total',
         'status',
     ];
 
@@ -25,9 +26,34 @@ class Order extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function courses(){
-        return $this->belongsToMany(\App\Models\Course::class)->withPivot('quantity');
+    
+    public function author()
+    {
+            return $this->belongsTo('App\User', 'author_id');
     }
+    
+
+    public function courses(){
+        return $this->belongsToMany(\App\Models\Course::class);
+    }
+
+    public function registrations()
+    {
+        return $this->hasMany(\App\Models\Registration::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(\App\Models\Payment::class);
+    }
+
+    public function scopeIsOpen($query)
+    {
+        return $query->whereStatus('open');
+    }
+
+    
+
 }
 
 

@@ -36,7 +36,7 @@ class RegistrationStatus extends Component
         $this->status = $user->registrationStatus($this->cid);
 
         switch ($this->status) {
-            case 'pending':
+            case 'pre-registered':
                 $this->color = 'bg-orange-300 text-orange-800';
                 $this->icon = 'pending';
                 break;
@@ -44,13 +44,21 @@ class RegistrationStatus extends Component
                 $this->color = 'bg-blue-500 text-blue-100';
                 $this->icon = 'waiting';
                 break;
-            case 'payed':
-                $this->color = 'bg-green-500 text-green-100';
+            case 'registered':
+                $this->color = 'bg-green-600 text-green-100';
                 $this->icon = 'checked';
                 break;
             case 'cancelled':
                 $this->color = 'bg-gray-800 text-gray-200';
-                $this->icon = 'x-circle-thin';
+                $this->icon = 'x';
+                break;
+            case 'open':
+                $this->color = 'bg-green-200 text-gray-700';
+                $this->icon = 'open';
+                break;
+            case 'partial':
+                $this->color = 'bg-green-400 text-gray-800';
+                $this->icon = 'phase';
                 break;
             default:
                 $this->color = 'bg-pink-500 text-pink-100';

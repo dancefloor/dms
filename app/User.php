@@ -11,6 +11,8 @@ use App\Models\Role;
 use App\Models\Registration;
 use Illuminate\Support\Facades\DB;
 
+use function PHPSTORM_META\map;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -132,10 +134,19 @@ class User extends Authenticatable
         return $this->belongsToMany(Course::class, 'registrations', 'user_id', 'course_id')
             ->using('App\Models\Registration')
             ->withPivot('status')
-            ->wherePivot('status', 'pending')
+            ->wherePivot('status', 'pre-registered')
             ->wherePivot('role', 'student')
             ->withTimestamps();
     }
+
+    // public function pendingCoursesIDs()
+    // {
+    //     $ids = [];
+    //     foreach ($this->pendingCourses as $item) {
+    //         $ids[] = $item->id;
+    //     }
+    //     return $ids;    
+    // }
 
     public function payedCourses()
     {
@@ -188,7 +199,7 @@ class User extends Authenticatable
         return $id;
     }
 
-    public function setRegistrationStatus($id)
+    public function updateRegistrationStatus($id)
     {
         $registration = DB::table('registrations')
             ->where('user_id', $this->id)
@@ -201,6 +212,15 @@ class User extends Authenticatable
     public function isRegistered($id)
     {
         return in_array($id, $this->learns()->pluck('course_id')->toArray());
+    }
+
+    public function useReduced():bool
+    {
+        if ($this->work_status != 'working'){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
 

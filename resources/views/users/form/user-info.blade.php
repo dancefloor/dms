@@ -27,9 +27,9 @@
             <select id="work_status" name="work_status"
                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-3 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                 <option disabled selected>Work Status</option>
-                <option student>Student</option>
-                <option value="student">Unemployed</option>
-                <option value="student">Working</option>
+                <option value="student">Student</option>
+                <option value="unemployed">Unemployed</option>
+                <option value="working">Working</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

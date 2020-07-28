@@ -204,7 +204,7 @@ class CourseSeeder extends Seeder
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
             'full_price' => 160, 'reduced_price' => 140,           
         ]);
-        $c19->teachers()->attach([10,40]); // Vivien & Assistante        
+        // $c19->teachers()->attach([10,40]); // Vivien & Assistante        
         $c19->styles()->attach(7);
         // Diafa | Salle B
 

@@ -53,7 +53,7 @@
             </li>
 
             @empty
-            <li>
+            <li class="py-10">
                 <dt class="text-center">You have not signed to any class yet</dt>
                 <dd class="text-center my-3">
                     <a href="/" class="bg-red-700 text-white px-3 py-2 rounded-full capitalize hover:bg-red-800">Find

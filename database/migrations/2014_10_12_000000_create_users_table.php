@@ -32,7 +32,9 @@ class CreateUsersTable extends Migration
             $table->text('biography')->nullable();
             $table->string('branch')->nullable();
             $table->string('aware_of_df')->nullable();
-            $table->string('work_status')->nullable();
+            $table->string('work_status')->default('working');
+            $table->string('unemployement_proof')->nullable();
+            $table->date('unemployement_expiry_date')->nullable();
             $table->decimal('price_hour')->nullable();
 
             $table->string('mobile')->nullable();            

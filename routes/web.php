@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', 'WelcomeController')->name('welcome');
-Route::get('/', function(){
-    return redirect('/courses/1');
-});
+Route::get('/', 'WelcomeController')->name('welcome');
+// Route::get('/', function(){
+//     return redirect('/courses/1');
+// });
 
 //Route::get('/','PageController@onlineClass')->name('salsa.fusion');
 
@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('permissions', 'PermissionController');
     Route::resource('roles', 'RoleController');
     Route::resource('users', 'UserController');
+    Route::resource('orders', 'OrderController');
+    
     Route::post('registration/{course}','RegistrationController@add')->name('registration.add');
     Route::delete('registration/{course}','RegistrationController@remove')->name('registration.remove');
     
