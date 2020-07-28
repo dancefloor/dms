@@ -214,7 +214,7 @@ class CourseSeeder extends Seeder
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
             'full_price' => 200, 'reduced_price' => 180,           
         ]);
-        $c20->teachers()->attach([5,42]); // Kouamé & Assistante
+        //$c20->teachers()->attach([5,42]); // Kouamé & Assistante
         $c20->styles()->attach(7);
         // CCA
 
@@ -234,7 +234,7 @@ class CourseSeeder extends Seeder
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
             'full_price' => 180, 'reduced_price' => 160,   
         ]);
-        $c22->teachers()->attach([10,40]); // Vivien & assistante
+        //$c22->teachers()->attach([10,40]); // Vivien & assistante
         $c22->styles()->attach(7);
         // Diafa | Salle B
 
