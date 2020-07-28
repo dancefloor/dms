@@ -31,11 +31,13 @@ class RegistrationPaymentManager {
             foreach ($order->registrations as $r) {
                 self::registrationCompleted($r->id);
             }
-        }else{
-            $order->status = 'partial';            
+            $order->save();
+        }else{                        
             foreach ($order->registrations as $r) {
                 self::registrationToPartial($r->id);
             }
+            $order->status = 'partial';
+            $order->save();
         }
     }
 

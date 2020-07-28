@@ -16,23 +16,29 @@
     <div class="border rounded-lg">
         <table class="w-full">
 
-            @empty($orders)
+            @if ($orders->isNotEmpty())
             <thead class="bg-gray-200 border-b">
                 <tr>
-                    <th>Order #</th>
-                    <th>User</th>
-                    <th>Date</th>
+                    <th class="text-left px-3">Order #</th>
+                    <th class="text-left px-3">User</th>
+                    <th class="text-left px-3">Date</th>
+                    <th class="text-left px-3">Total</th>
+                    <th class="text-left px-3">Method</th>
+                    <th class="text-left px-3">Status</th>
                     <th></th>
                 </tr>
             </thead>
-            @endempty
+            @endif
 
             @forelse ($orders as $item)
             <tr class="border-b">
-                <td class="border-r">{{ $item->id }}</td>
-                <td class="border-r">{{ $item->user->firstname }}</td>
-                <td class="border-r">{{ $item->created_at->format('d.m.yy') }}</td>
-                <td class="flex justify-end">
+                <td class="border-r py-1 px-3">{{ $item->id }}</td>
+                <td class="border-r py-1 px-3">{{ $item->user->firstname }}</td>
+                <td class="border-r py-1 px-3">{{ $item->created_at->format('d.m.yy') }}</td>
+                <td class="border-r py-1 px-3 text-right"> CHF {{ $item->total }}</td>
+                <td class="border-r py-1 px-3">{{ $item->method }}</td>
+                <td class="border-r py-1 px-3">{{ $item->status }}</td>
+                <td class="flex justify-end pr-3">
                     <a href="{{ route('orders.show', $item)}}" class="hover:underline mr-2">Show</a>
                     <form action="{{ route('orders.destroy', $item) }}" method="post">
                         @csrf

@@ -15,6 +15,7 @@ class Order extends Model
         'discount_code',
         'total',
         'status',
+        'method'
     ];
 
     protected $casts = [

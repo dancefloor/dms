@@ -27,7 +27,8 @@
                         <x-registration-status uid="{{ auth()->user()->id }}" cid="{{ $item->id }}" />
                     </td>
                     <td class="{{ $loop->last ? '' : 'border-b'}} text-right py-2 pr-3">
-                        CHF {{ $item->full_price - ($item->full_price * 0.08) }}
+                        CHF {{ $item->full_price }}
+                        {{-- ($item->full_price * 0.08) --}}
                     </td>
                 </tr>
                 @endforeach
@@ -93,17 +94,17 @@
                         <td class=""></td>
                         <td class="">Subtotal:</td>
                         <td class="font-bold py-2 text-right pr-3">
-                            CHF {{ $subtotal - ($subtotal * 0.08) }}
+                            CHF {{ $subtotal }}
                         </td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td class="border-t pl-3"></td>
                         <td class="border-t"></td>
                         <td class="border-t">VAT (8%)</td>
                         <td class="border-t font-bold py-2 text-right pr-3">
                             CHF {{ $subtotal * 0.08 }}
-                        </td>
-                    </tr>
+                    </td>
+                    </tr> --}}
 
                     @if ($count > 1)
                     <tr>

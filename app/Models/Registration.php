@@ -22,4 +22,14 @@ class Registration extends Pivot
     {
         return $this->BelongsTo(\App\Models\Order::class);
     }
+
+    public function user()
+    {
+        return $this->BelongsTo(\App\User::class);
+    }
+
+    public function course()
+    {
+        return $this->BelongsTo(\App\Models\Course::class);
+    }
 }

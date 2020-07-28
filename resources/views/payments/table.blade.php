@@ -1,34 +1,31 @@
 <div class="table-responsive">
     <table class="table w-full" id="payments-table">
-        <thead>
+        <thead class="bg-gray-200 border-b">
             <tr>
-                <th class="text-left">ID</th>
-                <th class="text-left">Method</th>
-                <th class="text-left">Amount</th>
-                <th class="text-left">Code</th>
-                <th class="text-left">Order</th>
-                <th colspan="3">Action</th>
+                <th class="text-left px-3">ID</th>
+                <th class="text-left px-3">Method</th>
+                <th class="text-left px-3">Amount</th>
+                <th class="text-left px-3">Code</th>
+                <th class="text-left px-3">Order</th>
+                <th colspan="3"></th>
             </tr>
         </thead>
         <tbody>
             @foreach($payments as $payment)
             <tr>
-                <td>{{ $payment->id }}</td>
-                <td>{{ $payment->method }}</td>
-                <td>{{ $payment->amount }}</td>
-                <td>{{ $payment->code }}</td>
-                <td>{{ $payment->order->id }}</td>
-                <td>
-                    {!! Form::open(['route' => ['payments.destroy', $payment->id], 'method' => 'delete']) !!}
-                    <div class='btn-group'>
-                        <a href="{{ route('payments.show', [$payment->id]) }}" class='btn btn-default btn-xs'><i
-                                class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="{{ route('payments.edit', [$payment->id]) }}" class='btn btn-default btn-xs'><i
-                                class="glyphicon glyphicon-edit"></i></a>
-                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' =>
-                        'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                    </div>
-                    {!! Form::close() !!}
+                <td class="px-3">{{ $payment->id }}</td>
+                <td class="px-3">{{ $payment->method }}</td>
+                <td class="px-3">{{ $payment->amount }}</td>
+                <td class="px-3">{{ $payment->code }}</td>
+                <td class="px-3">{{ $payment->order->id }}</td>
+                <td class="px-3 flex justify-end">
+                    <a href="{{ route('payments.show', $payment) }}" class="hover:underline mx-2">Show</a>
+                    {{-- <a href="{{ route('payments.edit', $payment) }}" class='btn btn-default btn-xs'>Edit</a> --}}
+                    <form action="{{ route('payments.destroy', $payment)}}" method="post" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="hover:underline">Delete</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

@@ -64,10 +64,15 @@ class OrderController extends Controller
         // }
         
         if ($request->courses) {                        
-            $order->courses()->attach($request->courses);            
+                
+            $order->courses()->attach($request->courses);                                            
             foreach ($request->courses as $id) {                
-                $registration = Registration::where('course_id', $id)->where('user_id', $request->user)->first();
+                $registration = Registration::where('course_id', $id)
+                                            ->where('user_id', $request->user)
+                                            ->where('role', 'student')
+                                            ->first();                
                 $order->registrations()->save($registration);
+                
                 RegistrationPaymentManager::registrationToOpen($registration->id);
             }                        
             //$order->subtotal_amount = OrderPriceCalculator::getSubtotal($order->user_id, $order->courses);
