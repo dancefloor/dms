@@ -82,7 +82,7 @@ class OrderController extends Controller
 
         session()->flash('success','Order created successfully');
         
-        return redirect(route('orders.index'));
+        return redirect(route('dashboard'));
     }
 
     /**

@@ -1,7 +1,7 @@
 <div>
     <!-- Let all your things have their places; let each part of your business have its time. - Benjamin Franklin -->
     <div
-        class="@auth {{ $course->hasStudent(Auth::user()->id) ? $border : '' }} @endauth m-2 shadow hover:shadow-2xl rounded-lg overflow-hidden">
+        class="@auth {{ $course->hasStudent(Auth::user()->id) ? $border : '' }} @endauth m-2 shadow hover:shadow-2xl rounded-lg overflow-hidden bg-white">
         {{-- <div class="p-3"> --}}
         <div class="px-3 pt-3 pb-1">
             {{-- <span class="bg-red-700 px-2 rounded-full text-red-100 text-sm float-right"> --}}

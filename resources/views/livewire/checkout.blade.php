@@ -139,8 +139,16 @@
             <br>
             <div class="w-full">
                 @if ($method == 'credit-card')
-                <a href="{{ route('mollie.payment', ['amount' => $total, 'name' => auth()->user()->firstname . ' ' . auth()->user()->lastname, 'email' => auth()->user()->email ])}}"
-                    class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full">
+                <a class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full" href="{{ route('mollie.payment', [
+                        'amount'    => $total, 
+                        'name'      => auth()->user()->firstname . ' ' . auth()->user()->lastname, 
+                        'email'     => auth()->user()->email,
+                        'courses'   => auth()->user()->pendingCourses()->pluck('course_id')->toArray(),
+                        'user'      => Auth::id(),
+                        'total'     => $total,
+                        'discount'  => $discount,
+                        'subtotal'  => $subtotal,                                                
+                        ])}}">
                     Pay by Credit Card
                 </a>
                 @endif

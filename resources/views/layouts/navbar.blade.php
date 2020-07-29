@@ -67,15 +67,19 @@
                         </a>
                         @endif
 
+                        @can('crud_orders',)
                         <a href="{{ route('orders.index') }}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
                             Orders
                         </a>
+                        @endcan
 
+                        @can('crud_payments')
                         <a href="{{ route('payments.index') }}"
                             class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
                             Payments
                         </a>
+                        @endcan
 
 
                         @endauth

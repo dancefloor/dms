@@ -13,7 +13,8 @@
         <option value="bank-transfer">Bank transfer</option>
         <option value="revolut">Revolut</option>
         <option value="paypal">Paypal</option>
-        <option value="paypal">Cash</option>
+        <option value="cash">Cash</option>
+        <option value="sumup">SumUp</option>
     </select>
 </div>
 

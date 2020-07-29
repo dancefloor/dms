@@ -9,12 +9,16 @@
 </div>
 <!-- Teaser Video 1 Field -->
 <div class="mb-5">
-    {!! Form::text('teaser_video_1', null, [ 'placeholder' => 'Primary teaser video'])!!}
+    {{-- {!! Form::text('teaser_video_1', null, [ 'placeholder' => 'Primary teaser video'])!!} --}}
+    <textarea name="teaser_video_1" id="teaser_video_1" cols="30"
+        rows="3">{{ $course->teaser_video_1 ?? old('value') }}</textarea>
 </div>
 
 <!-- Teaser Video 2 Field -->
 <div class="mb-6">
-    {!! Form::text('teaser_video_2', null, ['placeholder' => 'Seconday teaser video']) !!}
+    {{-- {!! Form::text('teaser_video_2', null, ['placeholder' => 'Seconday teaser video']) !!} --}}
+    <textarea name="teaser_video_2" id="teaser_video_1" cols="30"
+        rows="3">{{ $course->teaser_video_2 ?? old('value') }}</textarea>
 </div>
 
 <!-- Teaser Video 3 Field -->

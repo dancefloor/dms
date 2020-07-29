@@ -3,7 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js" defer></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endsection
 
@@ -88,8 +88,9 @@
 </script> --}}
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"
     integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <script>
     flatpickr("#start_date");
     flatpickr("#end_date");
@@ -106,20 +107,20 @@
         });
     });
 
-    $('#description').summernote({
-        placeholder: 'Hello stand alone ui',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-      });
-
+    // $('#description').summernote({
+    //     placeholder: 'Hello stand alone ui',
+    //     tabsize: 2,
+    //     height: 120,
+    //     toolbar: [
+    //       ['style', ['style']],
+    //       ['font', ['bold', 'underline', 'clear']],
+    //       ['color', ['color']],
+    //       ['para', ['ul', 'ol', 'paragraph']],
+    //       ['table', ['table']],
+    //       ['insert', ['link', 'picture', 'video']],
+    //       ['view', ['fullscreen', 'codeview', 'help']]
+    //     ]
+    //   });
+      
 </script>
 @endpush

@@ -21,12 +21,13 @@ class OrderPriceCalculator {
             }
         }
         
-        return $subtotal;
+        return number_format($subtotal, 2, '.', ',');
     }
 
     public static function getTotal($subtotal, $discount, $commission)
     {
-        return $subtotal - $discount + $commission;
+        // https://laracasts.com/discuss/channels/general-discussion/number-to-2-decimal-placed-blade
+        return number_format($subtotal - $discount + $commission, 2, '.', ',');
     }
 
     public static function getDiscount($count, $subtotal)
@@ -40,10 +41,10 @@ class OrderPriceCalculator {
                 return 0;
                 break;
             case 2:
-                return $subtotal * $two_courses_discount;
+                return number_format($subtotal * $two_courses_discount, 2, '.', ',');
                 break;
             case 3:
-                return $subtotal * $three_courses_discount;
+                return number_format($subtotal * $three_courses_discount, 2, '.', ',');
                 break;
             default:
                 return $subtotal * $four_courses_discount;
@@ -76,7 +77,7 @@ class OrderPriceCalculator {
                 return 5;
                 break;
             case 'paypal':
-                return $subtotal * 0.034;
+                return number_format($subtotal * 0.034, 2, '.', ',');
                 break;
             default:
                 return 0;
