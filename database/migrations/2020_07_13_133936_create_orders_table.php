@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('total')->nullable();
             $table->text('comments')->nullable();
             $table->string('method')->nullable();
-            $table->enum('status',['open','canceled', 'paid', 'expired'])->nullable();
+            $table->enum('status',['open','canceled', 'paid', 'expired', 'partial'])->nullable();
             $table->foreignId('author_id')->nullable();
             $table->timestamps();
         });

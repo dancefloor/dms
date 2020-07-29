@@ -45,7 +45,7 @@ class PaymentController extends AppBaseController
      */
     public function create()
     {
-        $orders = Order::isOpen()->get();
+        $orders = Order::isUnpaid()->get();
         return view('payments.create')->with('orders',$orders);
     }
 

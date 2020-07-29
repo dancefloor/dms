@@ -1,5 +1,5 @@
 <div class="border rounded-lg p-5">
-    <table>
+    <table class="w-full">
         <tr>
             <td valign="top" class="font-bold pl-2">
                 Bank

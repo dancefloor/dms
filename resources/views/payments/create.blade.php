@@ -21,15 +21,6 @@
     <form action="{{ route('payments.store') }}" method="POST">
         @csrf
 
-        <select name="order" id="order" required>
-            <option default selected disabled>Select Order</option>
-            @foreach ($orders as $item)
-            <option value="{{ $item->id }}">
-                #{{$item->id}} | CHF {{ $item->total }} ({{ $item->user->firstname }} {{ $item->user->lastname }})
-            </option>
-            @endforeach
-        </select>
-
         @include('payments.form.fields')
 
 

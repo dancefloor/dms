@@ -43,6 +43,7 @@
 <div class="container mx-auto my-20">
     <x-catalogue :courses="$courses" />
 </div>
+
 @endsection
 
 @push('scripts')

@@ -53,6 +53,16 @@ class Order extends Model
         return $query->whereStatus('open');
     }
 
+    public function scopeIsPartial($query)
+    {
+        return $query->whereStatus('open');
+    }
+
+    public function scopeIsUnpaid($query)
+    {
+        return $query->whereStatus('open')->orWhere('status','partial');
+    }
+
     
 
 }

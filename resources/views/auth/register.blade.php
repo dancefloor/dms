@@ -103,7 +103,7 @@
             <option value="festival">In a Festival</option>
             <option value="friend">From a friend</option>
             <option value="public-manifestation">Public manifestation (ex: Fête de Genève, Automnales)</option>
-            <option value="instructor">From an intructor</option>
+            <option value="instructor">From an instructor</option>
             <option value="old-student">I am an old student</option>
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

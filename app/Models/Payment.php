@@ -51,8 +51,8 @@ class Payment extends Model
      * @var array
      */
     public static $rules = [
-        'code' => 'required',
-        'method' => 'required'
+        'order'     => 'required',
+        'method'    => 'required'
     ];
 
     // public function registrations()

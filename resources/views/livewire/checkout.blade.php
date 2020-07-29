@@ -38,7 +38,7 @@
     <br>
     <h2 class="text-2xl">Payment methods</h2>
     <div class="flex flex-wrap mb-5 -mx-5">
-        <div class="w-full md:w-1/3 px-3">
+        <div class="w-full md:w-3/12 px-3">
             <div class="{{ $method == 'credit-card' ? 'bg-gray-200': 'bg-white'}} rounded-lg py-2 px-3">
                 <label for="method" class="inline-flex items-center">
                     <input type="radio" name="method" value="credit-card" class="text-center" wire:model="method">
@@ -72,7 +72,7 @@
                 </label>
             </div>
         </div>
-        <div class="w-full md:w-1/3 px-5 mb-1">
+        <div class="w-full md:w-5/12 px-5 mb-1">
             @if ($method == 'bank-transfer')
             @include('partials.bank-transfer')
             @endif
@@ -86,7 +86,7 @@
             @include('partials.cash')
             @endif
         </div>
-        <div class="w-full md:w-1/3 px-5">
+        <div class="w-full md:w-4/12 px-5">
             <div class="border rounded-lg">
                 <table class="w-full">
                     <tr>
