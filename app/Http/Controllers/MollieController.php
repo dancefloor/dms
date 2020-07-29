@@ -59,7 +59,7 @@ class MollieController extends Controller
             ],
             'description'   => 'salsa fusion',
             'redirectUrl'   => route('payment.status'), 
-            //'webhookUrl'    => route('webhooks.mollie'),
+            'webhookUrl'    => route('webhooks.mollie'),
             "metadata"      => [
                 "name"  =>   request()->name,
                 "email" =>   request()->email,
