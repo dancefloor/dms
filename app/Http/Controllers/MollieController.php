@@ -75,12 +75,11 @@ class MollieController extends Controller
             'amount'            => request()->amount,
             'currency'          => 'CHF',
             'molley_payment_id' => $payment->id,
-            'status'            => 'paid',
+            'status'            => 'open',
             'done'              => now(),
         ]);
 
-        $user_payment->order()->associate($order->id)->save();
-        RegistrationPaymentManager::updateOrder($order->id);
+        $user_payment->order()->associate($order->id)->save();        
 
         // redirect customer to Mollie checkout page
         return redirect($payment->getCheckoutUrl(), 303);
@@ -93,11 +92,14 @@ class MollieController extends Controller
      */
     public function paymentSuccess()
     {
-        $pay = Payment::latest()->first();
-        //dd($pay->molley_payment_id);
+        $pay = Payment::latest()->first();        
         $mollie = Mollie::api()->payments()->get($pay->molley_payment_id);
+                    
         if ($mollie->isPaid()) {
-            // echo 'Payment Error';
+            $pay->status = 'paid';
+            $pay->save();
+            RegistrationPaymentManager::updateOrder($pay->order_id);
+            
             return view('payments.status');
         } else {
             echo 'Payment Error';

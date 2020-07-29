@@ -39,7 +39,7 @@
         @auth
         <div class="flex justify-between mb-3 mx-3 items-center">
             <span class="text-xs text-gray-600">
-                10 places left
+                {{-- 10 places left --}}
 
             </span>
             <div class="">
