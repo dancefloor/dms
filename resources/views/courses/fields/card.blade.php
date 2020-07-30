@@ -78,8 +78,13 @@
                         <span class="ml-1">Price</span>
                     </td>
                     <td class="text-gray-600">
-                        Full {{ $course->full_price}} CHF / Reduced {{ $course->reduced_price}} CHF /
-                        {{ $course->promo_price }}
+                        Full {{ $course->full_price}} CHF
+                        @if ($course->reduced_price)
+                        / Reduced {{ $course->reduced_price}} CHF
+                        @endif
+                        @if ($course->promo_price)
+                        / PROMO {{ $course->promo_price }}
+                        @endif
                     </td>
                 </tr>
                 <tr>
