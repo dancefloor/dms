@@ -49,27 +49,30 @@
                         @endif
 
                         @if ($course->tuesday)
+                        <br>
                         <span>Tuesday</span>
                         {{ date('H:i', strtotime($course->start_time_tue)) }} -
                         {{ date('H:i', strtotime($course->end_time_tue)) }}
                         @endif
 
                         @if ($course->wednesday)
+                        <br>
                         Thursday: {{ date('H:i', strtotime($course->start_time_thu)) }} -
                         {{ date('H:i', strtotime($course->end_time_thu)) }}
                         @endif
 
                         @if ($course->thursday)
+                        <br>
                         Thursday: {{ date('H:i', strtotime($course->start_time_thu)) }} -
                         {{ date('H:i', strtotime($course->end_time_thu)) }}
                         @endif
 
-                        {{ $course->monday }}
+                        {{-- {{ $course->monday }}
                         {{ $course->tuesday }}
                         {{ $course->wednesday }}
-
+                        {{ $course->thursday }}
                         {{ $course->friday }}
-                        {{ $course->saturday }}
+                        {{ $course->saturday }} --}}
                     </td>
                 </tr>
                 <tr>
@@ -108,10 +111,10 @@
 
             @endforelse
         </div>
-        <a href="#" title="Register"
+        {{-- <a href="#" title="Register"
             class="border border-red-800 text-red-800 py-1 px-3 rounded-full mt-8 mb-6 inline-flex hover:bg-red-700 hover:text-white">
             <span>@include('icons.registration', ['style'=>'w-5 mr-1 inline-flex'])Register</span>
-        </a>
+        </a> --}}
         {{-- <a href="{{ route('mollie.payment')}}">Mollie</a> --}}
     </div>
 </div>
