@@ -17,11 +17,13 @@
 <!-- Teaser Video 2 Field -->
 <div class="mb-6">
     {{-- {!! Form::text('teaser_video_2', null, ['placeholder' => 'Seconday teaser video']) !!} --}}
-    <textarea name="teaser_video_2" id="teaser_video_1" cols="30"
+    <textarea name="teaser_video_2" id="teaser_video_2" cols="30"
         rows="3">{{ $course->teaser_video_2 ?? old('value') }}</textarea>
 </div>
 
 <!-- Teaser Video 3 Field -->
 <div class="mb-6">
-    {!! Form::text('teaser_video_3', null, ['placeholder' => 'Third teaser video']) !!}
+    {{-- {!! Form::text('teaser_video_3', null, ['placeholder' => 'Third teaser video']) !!} --}}
+    <textarea name="teaser_video_3" id="teaser_video_3" cols="30"
+        rows="3">{{ $course->teaser_video_3 ?? old('value') }}</textarea>
 </div>

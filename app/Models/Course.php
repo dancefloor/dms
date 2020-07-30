@@ -94,7 +94,7 @@ class Course extends Model
         'reduced_price',
         'promo_price',
 
-        'cover_image',
+        'thumbnail',
         'focus',
         'type',
 

@@ -91,8 +91,8 @@ class CourseController extends AppBaseController
             $course->students()->attach($studentsTable);                     
         }
 
-        if ($request->hasFile('cover_image')) {
-            $course->update(['cover_image' => $request->cover_image->store('courses') ]);            
+        if ($request->hasFile('thumbnail')) {
+            $course->update(['thumbnail' => $request->thumbnail->store('courses') ]);            
         }
 
         Flash::success('Course saved successfully.');
@@ -161,8 +161,8 @@ class CourseController extends AppBaseController
 
         $course = $this->courseRepository->update($this->saveFieldsRequest($request), $id);
 
-        if ($request->hasFile('cover_image')) {
-            $course->update(['cover_image' => $request->cover_image->store('courses') ]);            
+        if ($request->hasFile('thumbnail')) {
+            $course->update(['thumbnail' => $request->thumbnail->store('courses') ]);            
         }
 
         if ($request->styles) {

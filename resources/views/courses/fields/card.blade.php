@@ -1,7 +1,7 @@
 <div class="flex flex-wrap my-20 items-center border shadow-lg rounded-lg bg-white">
     <div class="w-full md:w-1/2">
-        @if ($course->cover_image)
-        <img src="{{ asset($course->cover_image) }}" alt="" class="rounded-l-lg">
+        @if ($course->thumbnail)
+        <img src="{{ asset($course->thumbnail) }}" alt="" class="rounded-l-lg">
         @else
         <img src="{{ asset('images/coco-fred.jpg') }}" alt="" class="rounded-l-lg">
         @endif

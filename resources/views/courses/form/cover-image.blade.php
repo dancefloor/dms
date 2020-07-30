@@ -1,10 +1,10 @@
 <div class="my-5">
-    @isset($course->cover_image)
-    <img src="{{ asset($course->cover_image) }}" alt="{{ $course->name}}">
+    @isset($course->thumbnail)
+    <img src="{{ asset($course->thumbnail) }}" alt="{{ $course->name}}">
     @endisset
-    <label for="cover_image">Cover Image</label>
-    <input type="file" name="cover_image" id="cover_image" @isset($course->cover_image)
-    value="{{ $course->cover_image }}" @endisset>
+    <label for="thumbnail">Cover Image</label>
+    <input type="file" name="thumbnail" id="thumbnail" @isset($course->cover_image)
+    value="{{ $course->thumbnail }}" @endisset>
     {{-- <label
         class="w-full inline-flex justify-center items-center px-3 py-2 bg-gray-300 text-gray-800 rounded hover:shadow-lg tracking-wide border border-blue cursor-pointer hover:bg-gray-700 hover:text-white">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
