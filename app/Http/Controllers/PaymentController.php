@@ -56,8 +56,9 @@ class PaymentController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreatePaymentRequest $request)
+    public function store(CreatePaymentRequest $request)    
     {
+        //dd($request->all());
         $input = $request->all();
 
         $payment = Payment::create([            
@@ -65,8 +66,10 @@ class PaymentController extends AppBaseController
             'provider'  => $request->provider,
             'method'    => $request->method,
             'amount'    => $request->amount,
+            'amount_received' => $request->amount_received,
             'currency'  => $request->currency,
             'comments'  => $request->comments,
+            'received_date'  => $request->received_date,
             'status'    => 'paid'
         ]);
         

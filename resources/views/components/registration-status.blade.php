@@ -1,3 +1,8 @@
 <div class="inline-flex items-center py-1 px-3 rounded-full {{ $color }}">
-    @include('icons.'. $icon ) {{ $status }}
+    @include('icons.'. $icon )
+    @if ( $status == 'open' )
+    <span class="ml-2 capitalize">pending</span>
+    @else
+    <span class="ml-2 capitalize">{{ $status }}</span>
+    @endif
 </div>

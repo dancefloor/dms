@@ -106,16 +106,16 @@
                     </td>
                     </tr> --}}
 
-                    @if ($count > 1)
+                    {{-- @if ($count > 1)
                     <tr>
                         <td class="border-t pl-3"></td>
                         <td class="border-t"></td>
                         <td class="border-t">Discount ({{ $discountText }})</td>
-                        <td class="border-t font-bold py-2 text-right pr-3">
-                            CHF {{ $discount }}
-                        </td>
+                    <td class="border-t font-bold py-2 text-right pr-3">
+                        CHF {{ $discount }}
+                    </td>
                     </tr>
-                    @endif
+                    @endif --}}
                     @if ($method == 'credit-card' || $method == 'paypal')
                     <tr>
                         <td class="border-t pl-3"></td>

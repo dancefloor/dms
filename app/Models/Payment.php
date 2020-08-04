@@ -27,11 +27,11 @@ class Payment extends Model
         'provider',
         'method',
         'amount',
+        'amount_received',
         'currency',
         'molley_payment_id',
         'status',
-        'done',
-        'done',
+        'received_date',
     ];
 
     /**

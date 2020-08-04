@@ -20,12 +20,14 @@ class CreatePaymentsTable extends Migration
             $table->string('provider')->nullable();
             $table->string('method')->nullable();
             $table->string('amount');
+            $table->string('amount_received')->nullable();
             $table->string('currency')->nullable();
             $table->string('molley_payment_id')->nullable();
-            $table->enum('status',['paid','partial','pending','processing','overpaid', 'failed', 'open', 'canceled', 'expired']);
-            $table->timestamp('done')->nullable();
+            $table->enum('status',['paid','partial','processing','overpaid', 'failed', 'open', 'canceled', 'expired']);
+            $table->date('received_date')->nullable();
             $table->text('comments')->nullable();
             $table->foreignId('order_id');
+            $table->foreignId('user_id');
             $table->timestamps();
             $table->softDeletes();
         });

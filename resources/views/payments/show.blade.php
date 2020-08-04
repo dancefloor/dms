@@ -17,6 +17,14 @@
                 <td class="font-bold px-3 py-2">Amount</td>
                 <td>{{ $payment->amount  }}</td>
             </tr>
+            <tr>
+                <td class="font-bold px-3 py-2">Amount Received</td>
+                <td>{{ $payment->amount_received  }}</td>
+            </tr>
+            <tr>
+                <td class="font-bold px-3 py-2">Received Date</td>
+                <td>{{ $payment->received_date  }}</td>
+            </tr>
             <tr class="bg-white">
                 <td class="font-bold px-3 py-2">Method</td>
                 <td>{{ $payment->method }}</td>

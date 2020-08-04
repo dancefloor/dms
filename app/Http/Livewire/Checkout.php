@@ -20,7 +20,8 @@ class Checkout extends Component
     {
         $this->subtotal = OrderPriceCalculator::getSubtotal(Auth::id(), Auth::user()->pendingCourses);          
         $this->count = count(Auth::user()->pendingCourses);
-        $this->discount = OrderPriceCalculator::getDiscount($this->count,$this->subtotal);
+        // $this->discount = OrderPriceCalculator::getDiscount($this->count,$this->subtotal);
+        $this->discount = 0;        
         $this->total = OrderPriceCalculator::getTotal($this->subtotal, $this->discount, 0);        
         $this->discountText = OrderPriceCalculator::getDiscountText($this->count);
     }
