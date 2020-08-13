@@ -10,18 +10,22 @@
     {{-- @foreach (auth()->user()->registrationStatus($course->id) as $i)
     {{$i}}
     @endforeach --}}
-    @if (auth()->user()->registrationStatus($course->id) == '["paid"]')
-
-    <div>
-        You are registered
+    @if (auth()->user()->registrationStatus($course->id) == 'registered')
+    <div class="bg-green-300 text-green-800 mt-10 p-4 rounded-lg font-bold">
+        You have successfully registered, please join our private facebook group
+        @if ($course->online_link)
+        <a href="{{ $course->online_link }}" class="underline" target="_blank">FB Group</a>
+        @endif
     </div>
     @else
     <div class="bg-orange-300 text-orange-700 mt-10 p-4 rounded-lg font-bold">
         You are pre-registered, please proceed to pay to complete your registration on your
         <a href="{{ route('dashboard') }}" class="underline">Dashboard</a>
     </div>
+
     @endif
     @endif
+
     @endauth
 
     <main class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
@@ -90,7 +94,6 @@
     </div>
 </div>
 
-
 <div id="details" class="bg-gray-900 text-gray-100 py-20">
     <div class="container mx-auto">
         <div class="flex flex-wrap my-16">
@@ -150,11 +153,15 @@
                             class="mx-2 w-56 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
                             Dashboard
                         </a>
+
+
+                        @if (auth()->user()->registrationStatus($course->id) == 'registered')
                         @if ($course->online_link)
                         <a href="{{ $course->online_link }}" target="_blank"
                             class="mx-2 w-56 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
                             FB Group
                         </a>
+                        @endif
                         @endif
                     </div>
                     @endif
