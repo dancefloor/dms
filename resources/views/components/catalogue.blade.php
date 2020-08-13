@@ -31,11 +31,13 @@
     <div class="flex flex-wrap">
         @forelse ($courses as $course)
         <div class="w-full md:w-1/4">
-            @auth
-            <x-course-card :course="$course" :user="Auth()->user()" />
-            @else
-            <x-course-card :course="$course" />
-            @endauth
+            <a href="{{route('courses.show', $course )}}">
+                @auth
+                <x-course-card :course="$course" :user="Auth()->user()" />
+                @else
+                <x-course-card :course="$course" />
+                @endauth
+            </a>
         </div>
         @empty
         No courses available

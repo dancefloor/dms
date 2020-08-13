@@ -40,9 +40,9 @@
 </main>
 @endguest
 
-{{ env('APP_URL').'/storage' }}
+{{-- {{ env('APP_URL').'/storage' }}
 <br>
-{{ base_path('public/paypal.png') }}
+{{ base_path('public/paypal.png') }} --}}
 
 {{-- // 'root' =>  --}}
 
