@@ -133,7 +133,7 @@
                 </div>
                 <br>
                 <div class="inline-flex">
-                    @includeif('icons.money') <span class="ml-2">Price: {{ $course->full_price }}</span>
+                    @includeif('icons.money') <span class="ml-2">Price: {{ $course->full_price }} CHF</span>
                 </div>
                 {!! $course->description !!}
 
