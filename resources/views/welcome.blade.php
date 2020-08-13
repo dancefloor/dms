@@ -40,6 +40,13 @@
 </main>
 @endguest
 
+{{ env('APP_URL').'/storage' }}
+<br>
+{{ base_path('public/paypal.png') }}
+
+{{-- // 'root' =>  --}}
+
+
 <div class="container mx-auto my-20">
     <x-catalogue :courses="$courses" />
 </div>

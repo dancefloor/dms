@@ -6,6 +6,10 @@
                 <select id="level" name="level"
                     class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-3 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                     <option disabled selected>Select level</option>
+                    <option value="All levels" @isset($course->
+                        level){{ $course->level == 'All levels' ? 'selected' : old('value') }}@endisset>
+                        All levels
+                    </option>
                     <option value="beginner" @isset($course->
                         level){{ $course->level == 'beginner' ? 'selected' : old('value') }}@endisset>
                         Beginner

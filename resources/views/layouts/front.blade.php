@@ -32,7 +32,9 @@
 </head>
 
 <body class="bg-gray-100">
+    @yield('fb')
     @include('layouts.navbar')
+
 
     @if (session()->has('success'))
     <div x-data="{ open: true }" x-show="open">

@@ -15,6 +15,7 @@ use App\Models\Style;
 use App\Role;
 use App\User;
 use App\Services\Slug;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends AppBaseController
 {
@@ -208,6 +209,7 @@ class CourseController extends AppBaseController
             return redirect(route('courses.index'));
         }
 
+        Storage::delete($course->thumbnail);
         $this->courseRepository->delete($id);
 
         Flash::success('Course deleted successfully.');

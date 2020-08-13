@@ -17,7 +17,7 @@ class CreateStylesTable extends Migration
         Schema::create('styles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->nullale();
             $table->text('description')->nullale();
             $table->string('icon')->nullale();
             $table->string('color')->nullale();

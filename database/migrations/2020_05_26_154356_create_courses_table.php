@@ -56,9 +56,9 @@ class CreateCoursesTable extends Migration
             $table->string('level')->nullable();
             $table->integer('level_number')->nullable();
 
-            $table->string('teaser_video_1')->nullable();
-            $table->string('teaser_video_2')->nullable();
-            $table->string('teaser_video_3')->nullable();
+            $table->text('teaser_video_1')->nullable();
+            $table->text('teaser_video_2')->nullable();
+            $table->text('teaser_video_3')->nullable();
 
             $table->decimal('full_price')->nullable();
             $table->decimal('reduced_price')->nullable();

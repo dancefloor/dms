@@ -1,28 +1,51 @@
-<div class="flex flex-wrap my-20 items-center border shadow-lg rounded-lg bg-white">
-    <div class="w-full md:w-1/2">
-        @if ($course->thumbnail)
-        <img src="{{ asset($course->thumbnail) }}" alt="" class="rounded-l-lg">
-        @else
-        <img src="{{ asset('images/coco-fred.jpg') }}" alt="" class="rounded-l-lg">
-        @endif
+<header class="flex justify-center mt-10 mb-3">
+    <h1 class="text-6xl font-bold">{{ $course->name }}</h1>
+</header>
 
+<div class="flex justify-center">
+    @if ($course->thumbnail)
+    <img src="{{ asset('images/' . $course->thumbnail) }}" alt="" class="rounded-lg">
+    @else
+    <img src="{{ asset('images/coco-fred.jpg') }}" alt="" class="rounded-lg">
+    @endif
+</div>
+
+
+<div class="flex flex-wrap -mx-3 mt-8">
+    <div class="w-full md:w-2/3 px-3">
+        <p class="text-gray-700 text-base">{{ $course->excerpt }}</p>
     </div>
+    <div class="w-full md:w-1/3 px-3">
+        <table>
+            <tr>
+                <td>@include('icons.level')</td>
+                <td class="capitalize">{{ $course->level }} {{ $course->level_number }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="inline-flex items-center mr-3">
+    @include('icons.dance')
+    @foreach ($course->styles as $item)
+    <span class="mx-1">{{ $item->name }}</span>
+    @endforeach
+</div>
+
+<div class="flex flex-wrap my-20 items-center border shadow-lg rounded-lg bg-white">
+
     <div class="w-full md:w-1/2 px-5">
-        <h1 class="text-3xl font-bold">{{ $course->name }}</h1>
+
         <div class="mb-8">
             <div class="text-sm text-gray-600 flex items-center mb-8">
-                <div class="inline-flex items-center mr-3">
-                    @include('icons.dance')
-                    @foreach ($course->styles as $item)
-                    <span class="mx-1">{{ $item->name }}</span>
-                    @endforeach
-                </div>
 
-                @include('icons.level')
-                <span class="ml-2 capitalize">{{ $course->level }} {{ $course->level_number }}</span>
+
+
             </div>
             <div class="text-gray-900 font-bold text-xl mb-2">{{ $course->tagline }}</div>
-            <p class="text-gray-700 text-base">{{ $course->excerpt }}</p>
+
         </div>
         <div class="mb-5">
             <table class="w-full">

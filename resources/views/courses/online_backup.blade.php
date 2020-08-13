@@ -1,6 +1,5 @@
 @extends('layouts.front')
 
-
 @section('content')
 
 <div class="container mx-auto">
@@ -28,15 +27,15 @@
         <div class="sm:text-center">
             <h2
                 class="text-4xl tracking-tight leading-10 font-extrabold text-gray-800 sm:text-5xl sm:leading-none md:text-6xl uppercase">
-                {{-- Intensive week --}}
+                Intensive week
                 <br class="xl:hidden" />
-                <span class="text-red-700">{{ $course->name }}
+                <span class="text-red-700">Salsa fusion
                 </span>
             </h2>
             <div class="flex justify-center">
                 <p
                     class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                    {{ $course->tagline }}
+                    with Kouame DANCEFLOOR & Fred DANCEFLOOR
                 </p>
             </div>
 
@@ -78,16 +77,10 @@
 </div>
 
 <div class="flex justify-center my-20">
-    <div class="w-full md:w-1/2">
-        {{-- <iframe
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FDancefloorGeneva%2Fvideos%2F529697621057960%2F&show_text=0&width=560"
-            width="700" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-            allowTransparency="true" allowFullScreen="true"></iframe> --}}
-
-        {!! $course->teaser_video_1 !!}
-
-
-    </div>
+    <iframe
+        src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FDancefloorGeneva%2Fvideos%2F529697621057960%2F&show_text=0&width=560"
+        width="700" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+        allowTransparency="true" allowFullScreen="true"></iframe>
 </div>
 
 
@@ -97,8 +90,25 @@
             <div class="w-full md:w-1/2">
                 <div class="flex justify-center">
                     <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-                        <img class="w-full" src="{{ asset('images/' . $course->thumbnail) }}" alt="{{ $course->name }}">
-                        {!! $course->excerpt !!}
+                        <img class="w-full" src="{{ asset('images/salsa-fusion.png')}}"
+                            alt="Salsa fusion by Dancefloor">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2 text-gray-800">1:15 from Monday to Friday</div>
+                            <ul class="text-gray-700 text-base list-disc pl-5">
+                                <li>Learn the Dancefloor Fusions Style</li>
+                                <li>Improve your foundations: Groove, Isolation, Afro Movement</li>
+                                <li>Learn how to introduce Urban dances and Afro in your salsa</li>
+                                <li>Get the special tips to make your moves look better</li>
+                            </ul>
+                        </div>
+                        <div class="px-6 py-4">
+                            <span
+                                class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2">#groove</span>
+                            <span
+                                class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2">#isolations</span>
+                            <span
+                                class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800">#afro-moves</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -108,19 +118,14 @@
                 <div class="inline-flex">
                     @include('icons.calendar')
                     <span class="ml-2">
-                        From
-                        {{ $course->start_date->format('F d') }}th until {{ $course->end_date->format('F d') }}th,
-                        {{$course->end_date->format('Y')}}
+                        From 13th to 17th of July
                     </span>
                 </div>
                 <br>
                 <div class="inline-flex">
                     @include('icons.time')
                     <span class="ml-2">
-                        @if ($course->wednesday)
-                        {{ date('H:i', strtotime($course->start_time_thu)) }} to
-                        {{ date('H:i', strtotime($course->end_time_thu)) }} CET
-                        @endif
+                        7 pm to 8:15 pm CET.
                     </span>
                 </div>
                 <br>
@@ -130,9 +135,17 @@
                 </div>
                 <br>
                 <div class="inline-flex">
-                    @includeif('icons.money') <span class="ml-2">Price: {{ $course->full_price }}</span>
+                    @includeif('icons.euro') <span class="ml-2">Price: 40 €</span>
                 </div>
-                {!! $course->description !!}
+                <ul class="text-lg list-disc pl-5 my-5">
+                    <li>A total of 6 hours and 15 minutes of class</li>
+                    <li>Class will be live in Geneva.</li>
+                    <li>For those who cannot joins, Online Class is on Facebook</li>
+                    <li>You register, pay the fee and give us your Facebook contact.</li>
+                    <li>You integrate the “Dancefloor Fusion Intensive Week” Facebook group.</li>
+                    <li>You can follow the classes live or watch them later during 1 month on the group.</li>
+                    <li>We will answer questions during the live class as well as later on messenger.</li>
+                </ul>
 
                 <div class="w-full md:w-48 my-10">
                     @auth
@@ -171,49 +184,52 @@
     </div>
 </div>
 
-{{-- <div class="flex justify-center py-20">
+
+
+
+<div class="flex justify-center py-20">
     <div class="md:rounded-full overflow-hidden">
         <iframe
             src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FDancefloorGeneva%2Fvideos%2F2250602018507552%2F&show_text=0&width=476"
             width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
             allowTransparency="true" allowFullScreen="true"></iframe>
     </div>
-</div> --}}
+</div>
 
-{{-- <div class="flex justify-center mb-20">
+<div class="flex justify-center mb-20">
     @auth
     @if (!auth()->user()->isRegistered($course->id))
     <form action="{{ route('registration.add', $course->id) }}" method="post">
-@csrf
-<button type="submit" id="register" title="Register"
-    class="w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-    Select course
-</button>
-</form>
-@else
-<a href="{{ route('dashboard') }}"
-    class="mx-2 w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-    Dashboard
-</a>
-@if ($course->online_link)
-<a href="{{ $course->online_link }}" target="_blank"
-    class="mx-2 w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-    FB Group
-</a>
-@endif
-@endif
+        @csrf
+        <button type="submit" id="register" title="Register"
+            class="w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+            Select course
+        </button>
+    </form>
+    @else
+    <a href="{{ route('dashboard') }}"
+        class="mx-2 w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+        Dashboard
+    </a>
+    @if ($course->online_link)
+    <a href="{{ $course->online_link }}" target="_blank"
+        class="mx-2 w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+        FB Group
+    </a>
+    @endif
+    @endif
 
-@else
-<a href="{{ route('register') }}"
-    class="w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-    Register
-</a>
-@endauth
-</div> --}}
+    @else
+    <a href="{{ route('register') }}"
+        class="w-48 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+        Register
+    </a>
+    @endauth
+</div>
 
 
 @can('crud_courses')
-<div class="container mx-auto mt-10">
+<div class="container mx-auto">
     <h3 class="mb-6 text-3xl font-bold text-gray-700">Registered students</h3>
     <ul class="border rounded-lg">
         <li class="py-3 px-4 bg-gray-200 border-b text-xs uppercase text-gray-700 font-semibold">
