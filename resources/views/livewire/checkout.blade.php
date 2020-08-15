@@ -65,81 +65,81 @@
                     <span class="text-sm italic text-gray-700 ml-2">(3,4 % + 0,55 CHF)</span>
                 </label>
             </div>
-            <div class="{{ $method == 'cash' ? 'bg-gray-200': 'bg-white' }} rounded-lg py-2 px-3">
-                <label for="method" class="inline-flex items-center">
-                    <input type="radio" name="method" value="cash" class="text-center" wire:model="method">
-                    <span class="ml-2">Cash</span>
-                </label>
-            </div>
-        </div>
-        <div class="w-full md:w-5/12 px-5 mb-1">
-            @if ($method == 'bank-transfer')
-            @include('partials.bank-transfer')
-            @endif
-            @if ($method == 'revolut')
-            @include('partials.revolut')
-            @endif
-            @if ($method == 'paypal')
-            @include('partials.paypal')
-            @endif
-            @if ($method == 'cash')
-            @include('partials.cash')
-            @endif
-        </div>
-        <div class="w-full md:w-4/12 px-5">
-            <div class="border rounded-lg">
-                <table class="w-full">
-                    <tr>
-                        <td></td>
-                        <td class=""></td>
-                        <td class="">Subtotal:</td>
-                        <td class="font-bold py-2 text-right pr-3">
-                            CHF {{ $subtotal }}
-                        </td>
-                    </tr>
-                    {{-- <tr>
+            {{-- <div class="{{ $method == 'cash' ? 'bg-gray-200': 'bg-white' }} rounded-lg py-2 px-3">
+            <label for="method" class="inline-flex items-center">
+                <input type="radio" name="method" value="cash" class="text-center" wire:model="method">
+                <span class="ml-2">Cash</span>
+            </label>
+        </div> --}}
+    </div>
+    <div class="w-full md:w-5/12 px-5 mb-1">
+        @if ($method == 'bank-transfer')
+        @include('partials.bank-transfer')
+        @endif
+        @if ($method == 'revolut')
+        @include('partials.revolut')
+        @endif
+        @if ($method == 'paypal')
+        @include('partials.paypal')
+        @endif
+        @if ($method == 'cash')
+        @include('partials.cash')
+        @endif
+    </div>
+    <div class="w-full md:w-4/12 px-5">
+        <div class="border rounded-lg">
+            <table class="w-full">
+                <tr>
+                    <td></td>
+                    <td class=""></td>
+                    <td class="">Subtotal:</td>
+                    <td class="font-bold py-2 text-right pr-3">
+                        CHF {{ $subtotal }}
+                    </td>
+                </tr>
+                {{-- <tr>
                         <td class="border-t pl-3"></td>
                         <td class="border-t"></td>
                         <td class="border-t">VAT (8%)</td>
                         <td class="border-t font-bold py-2 text-right pr-3">
                             CHF {{ $subtotal * 0.08 }}
-                    </td>
-                    </tr> --}}
+                </td>
+                </tr> --}}
 
-                    {{-- @if ($count > 1)
+                {{-- @if ($count > 1)
                     <tr>
                         <td class="border-t pl-3"></td>
                         <td class="border-t"></td>
                         <td class="border-t">Discount ({{ $discountText }})</td>
+                <td class="border-t font-bold py-2 text-right pr-3">
+                    CHF {{ $discount }}
+                </td>
+                </tr>
+                @endif --}}
+                @if ($method == 'credit-card' || $method == 'paypal')
+                <tr>
+                    <td class="border-t pl-3"></td>
+                    <td class="border-t"></td>
+                    <td class="border-t">{{ $method == 'credit-card' ? 'Credit card' : 'PayPal'}}</td>
                     <td class="border-t font-bold py-2 text-right pr-3">
-                        CHF {{ $discount }}
+                        CHF {{ $commission }}
                     </td>
-                    </tr>
-                    @endif --}}
-                    @if ($method == 'credit-card' || $method == 'paypal')
-                    <tr>
-                        <td class="border-t pl-3"></td>
-                        <td class="border-t"></td>
-                        <td class="border-t">{{ $method == 'credit-card' ? 'Credit card' : 'PayPal'}}</td>
-                        <td class="border-t font-bold py-2 text-right pr-3">
-                            CHF {{ $commission }}
-                        </td>
-                    </tr>
-                    @endif
-                    <tr>
-                        <td class="border-t pl-3"></td>
-                        <td class="border-t"></td>
-                        <td class="border-t font-bold">Total</td>
-                        <td class="border-t font-bold py-2 text-right pr-3">
-                            CHF {{ $total }}
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <br>
-            <div class="w-full">
-                @if ($method == 'credit-card')
-                <a class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full" href="{{ route('mollie.payment', [
+                </tr>
+                @endif
+                <tr>
+                    <td class="border-t pl-3"></td>
+                    <td class="border-t"></td>
+                    <td class="border-t font-bold">Total</td>
+                    <td class="border-t font-bold py-2 text-right pr-3">
+                        CHF {{ $total }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div class="w-full">
+            @if ($method == 'credit-card')
+            <a class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full" href="{{ route('mollie.payment', [
                         'amount'    => $total, 
                         'name'      => auth()->user()->firstname . ' ' . auth()->user()->lastname, 
                         'email'     => auth()->user()->email,
@@ -149,41 +149,41 @@
                         'discount'  => $discount,
                         'subtotal'  => $subtotal,                                                
                         ])}}">
-                    Pay by Credit Card
-                </a>
+                Pay by Credit Card
+            </a>
+            @endif
+            <form
+                action="{{ route('orders.store',['courses' => auth()->user()->pendingCourses()->pluck('course_id')->toArray(), 'user' => Auth::id() ]) }}"
+                method="post">
+                @csrf
+                <input type="hidden" value="{{ $total }}" name="total">
+                <input type="hidden" value="{{ $discount }}" name="discount">
+                <input type="hidden" value="{{ $subtotal }}" name="subtotal">
+                <input type="hidden" value="{{ $method }}" name="method">
+                @if ($method == 'bank-transfer')
+                <button type="submit" class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full">
+                    Pay by Bank Transfer
+                </button>
                 @endif
-                <form
-                    action="{{ route('orders.store',['courses' => auth()->user()->pendingCourses()->pluck('course_id')->toArray(), 'user' => Auth::id() ]) }}"
-                    method="post">
-                    @csrf
-                    <input type="hidden" value="{{ $total }}" name="total">
-                    <input type="hidden" value="{{ $discount }}" name="discount">
-                    <input type="hidden" value="{{ $subtotal }}" name="subtotal">
-                    <input type="hidden" value="{{ $method }}" name="method">
-                    @if ($method == 'bank-transfer')
-                    <button type="submit" class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full">
-                        Pay by Bank Transfer
-                    </button>
-                    @endif
-                    @if ($method == 'revolut')
-                    <button type="submit" class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full">
-                        Pay with Revolut
-                    </button>
-                    @endif
-                    @if ($method == 'paypal')
-                    <button type="submit" class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full">
-                        Pay by PayPal
-                    </button>
-                    @endif
-                    @if ($method == 'cash')
-                    <button type="submit" class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full">
-                        Pay in cash
-                    </button>
-                    @endif
-                </form>
-            </div>
+                @if ($method == 'revolut')
+                <button type="submit" class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full">
+                    Pay with Revolut
+                </button>
+                @endif
+                @if ($method == 'paypal')
+                <button type="submit" class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full">
+                    Pay by PayPal
+                </button>
+                @endif
+                @if ($method == 'cash')
+                <button type="submit" class="bg-red-700 text-white px-3 py-2 rounded-full block text-center w-full">
+                    Pay in cash
+                </button>
+                @endif
+            </form>
         </div>
-
-
     </div>
+
+
+</div>
 </div>
