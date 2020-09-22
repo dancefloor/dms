@@ -200,6 +200,20 @@ class User extends Authenticatable implements MustVerifyEmail
         return $id;
     }
 
+    public function registrationDate($id)
+    {
+        $result = DB::table('registrations')
+        ->where('user_id', $this->id)
+        ->where('course_id', $id)
+        ->where('role', 'student')
+        ->get();
+
+        $date = collect($result)->map(function ($item, $key) {
+            return $item->created_at;
+        })->first();
+        return $date;
+    }
+
     public function updateRegistrationStatus($id)
     {
         $registration = DB::table('registrations')
