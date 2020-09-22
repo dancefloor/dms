@@ -9,76 +9,83 @@
 @endsection
 
 @section('content')
-@include('adminlte-templates::common.errors')
-<section class="bg-black pt-10 pb-24 border-t border-gray-900">
-    <div class="container mx-auto">
-        <h1 class="text-white font-bold text-4xl mb-5">
-            New Course
-        </h1>
+
+
+
+<section>
+    <h1 class="mb-5">Add Course</h1>
+    <div class="border rounded-lg bg-white px-3">
+        <form action="{{ route('courses.store') }}" class="df-form" enctype="multipart/form-data" method="POST">
+            @csrf
+            {{-- @include('classrooms.form') --}}
+
+            <div class="flex flex-wrap -mx-3">
+                <div class="w-full md:w-4/6 px-3 py-5 border-r">
+
+                    @include('courses.form.main.default')
+
+                    @include('courses.form.main.online')
+
+                    {{-- <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Pricing</h3> --}}
+
+                    @include('courses.form.main.prices')
+
+                    {{-- <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-5">Videos</h3> --}}
+                    @include('courses.form.main.videos')
+
+                    {{-- <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Schedule</h3> --}}
+
+                    @include('courses.form.main.days')
+
+                    {{-- <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Students</h3> --}}
+
+                    @include('courses.form.main.students')
+                </div>
+
+                <div class="w-full md:w-2/6 px-3">
+
+                    @include('courses.form.sidebar.styles')
+
+                    @include('courses.form.sidebar.teachers')
+
+                    @include('courses.form.sidebar.level')
+
+                    @include('courses.form.sidebar.cover-image')
+
+
+                    <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-5">Type of course</h3>
+
+                    @include('courses.form.sidebar.type')
+
+                    <h3 class="text-gray-700 font-semibold uppercase ml-1 mt-5">Teaching focus</h3>
+
+                    @include('courses.form.sidebar.focus')
+
+                    @include('courses.form.sidebar.status')
+
+                    <div class="flex items-center">
+                        <button type="submit"
+                            class="inline-flex items-center bg-red-700 text-white hover:bg-red-800 py-2 px-4 rounded-lg mr-2">
+                            @include('icons.add')
+                            <span class="ml-2">Add Course</span>
+                        </button>
+                        <a href="{{ route('courses.index') }}"
+                            class="inline-flex py-2 px-4 bg-gray-300 items-center rounded-lg hover:bg-gray-500 ml-1">
+                            @include('icons.x', ['style'=>'w-3'])
+                            <span class="ml-2">Cancel</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
     </div>
+
 </section>
-<div class="container mx-auto -mt-24 px-4 bg-white rounded-lg shadow">
-
-    {!! Form::open(['route' => 'courses.store', 'files' => true, 'class' => 'df-form']) !!}
-    {{-- <livewire:course.form /> --}}
-
-    {{-- tutorials https://codepen.io/ryangjchandler/pen/qBOEgjg?editors=1010 --}}
-
-    <div class="flex flex-wrap -mx-3">
-        <div class="w-full md:w-4/6 px-3">
-
-            @include('courses.form.default')
-
-            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Promotion</h3>
-
-            @include('courses.form.promotion')
-
-            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Pricing</h3>
-
-            @include('courses.form.prices')
-
-            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Schedule</h3>
-
-            @include('courses.form.days')
-
-            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Students</h3>
-
-            @include('courses.form.students')
-        </div>
-
-        <div class="w-full md:w-2/6 px-3">
-            <!-- Cover Image Field -->
-            @include('courses.form.cover-image')
 
 
-            @include('courses.form.styles')
 
-            @include('courses.form.teachers')
-
-            @include('courses.form.level')
-
-            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Teaching focus</h3>
-
-            @include('courses.form.focus')
-
-            <h3 class="text-gray-700 font-semibold uppercase mb-3 ml-1 mt-10">Type of course</h3>
-
-            @include('courses.form.type')
-        </div>
-    </div>
-
-
-    <!-- Submit Field -->
-    <div class="my-10">
-        <button type="submit" class="btn-save inline-flex">
-            @include('icons.save')
-            <span class="ml-2">Save Course</span>
-        </button>
-        <a href="{{ route('courses.index') }}" class="btn-cancel">Cancel</a>
-    </div>
-
-    {!! Form::close() !!}
-</div>
 @endsection
 
 @push('scripts')
@@ -89,10 +96,13 @@
 
     $(document).ready(function() {        
         $('#styles').select2({
-            placeholder: "Select a style",
+            placeholder: "Enter style(s)",
         });
         $('#teachers').select2({
-            placeholder: "Select a teacher(s)",
+            placeholder: "Enter teacher(s)",
+        });
+        $('#students').select2({
+            placeholder: "Enter student(s)",
         });
     });
 </script>

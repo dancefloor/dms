@@ -70,7 +70,7 @@ class CourseController extends AppBaseController
      */
     public function store(CreateCourseRequest $request)
     {        
-
+        //dd($request->all());
         $course = $this->courseRepository->create(
             $this->saveFieldsRequest($request)
         );
@@ -82,7 +82,6 @@ class CourseController extends AppBaseController
         if ($request->teachers) {
             $course->teachers()->attach($request->teachers, ['role'=>'instructor']);            
         }
-
 
         if ($request->students) {
             $studentsTable = [];
@@ -96,7 +95,7 @@ class CourseController extends AppBaseController
             $course->update(['thumbnail' => $request->thumbnail->store('courses') ]);            
         }
 
-        Flash::success('Course saved successfully.');
+        session()->flash('success','Course saved successfully.');
 
         return redirect(route('courses.index'));
     }
@@ -151,11 +150,11 @@ class CourseController extends AppBaseController
      */
     public function update($id, UpdateCourseRequest $request)
     {
-        //dd($request->all());
+        // dd($request->all());
         $course = $this->courseRepository->find($id);
 
         if (empty($course)) {
-            Flash::error('Course not found');
+            session()->flash('error', 'Course not found.');
 
             return redirect(route('courses.index'));
         }
@@ -219,6 +218,11 @@ class CourseController extends AppBaseController
 
     public function saveFieldsRequest($request)
     {
+        if ($request->has('is_online')) {
+            $is_online = 1;
+        }else{
+            $is_online = 0;
+        }
 
         return [
             'name'          => $request->name,
@@ -273,9 +277,17 @@ class CourseController extends AppBaseController
             'type'          => $request->type,
             'limit'         => $request->limit,
             
+            'is_online'     => $is_online,     
             'online_link'   => $request->online_link,
+            'online_price'  => $request->online_price,
+            'to_waiting'    => $request->to_waiting,
+            'status'        => $request->status,
+
             'online_id'     => $request->online_id,    
             'online_password'=> $request->online_password,
+
+                   
+
             
             'user_id'       => auth()->user()->id,                
         ];

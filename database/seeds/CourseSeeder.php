@@ -16,7 +16,8 @@ class CourseSeeder extends Seeder
             'name' => 'Lady Styling Cubaine', 'monday' => 1, 'level' => 'beginner',
             'start_time_mon' => '18:30', 'end_time_mon' => '19:30',
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,        
+            'full_price' => 160, 'reduced_price' => 140,     
+            'status'=> 'active',   
         ]);
         $c1->students()->attach(1);
         $c1->teachers()->attach(6);
@@ -27,7 +28,8 @@ class CourseSeeder extends Seeder
             'name' => 'Salsa Porto on1', 'monday'=> 1, 'level' => 'Intermediate',            
             'start_time_mon' => '18:45', 'end_time_mon' => '19:45',   
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,           
+            'full_price' => 160, 'reduced_price' => 140,
+            'status'=> 'active',     
         ]);
         $c2->teachers()->attach([2,3]); //Corinne & Fred        
         $c2->styles()->attach(1);
@@ -37,7 +39,8 @@ class CourseSeeder extends Seeder
             'name' => 'Salsa cubaine', 'monday'=> 1, 'level' => 'Intermediate',
             'start_time_mon' => '18:45:00', 'end_time_mon' => '19:45:00',
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,            
+            'full_price' => 160, 'reduced_price' => 140,
+            'status'=> 'active',           
         ]);
         $c3->teachers()->attach([8,10]); // Sabrina & Vivien  
         $c3->styles()->attach(7);      
@@ -47,7 +50,8 @@ class CourseSeeder extends Seeder
             'name' => 'Lady Styling Body Movement & Isolation', 'monday'=> 1, 'level' => 'Intermediate',
             'start_time_mon' => '19:00', 'end_time_mon' => '20:30',
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 180, 'reduced_price' => 160,           
+            'full_price' => 180, 'reduced_price' => 160,  
+            'status'=> 'active',         
         ]);
         $c4->teachers()->attach(9); //Sonia    
         $c4->styles()->attach(7);    
@@ -57,7 +61,8 @@ class CourseSeeder extends Seeder
             'name' => 'Afrohouse/Afrobeat', 'monday'=> 1, 'level' => 'All levels',
             'start_time_mon' => '19:30', 'end_time_mon' => '20:45',  
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 170, 'reduced_price' => 150,            
+            'full_price' => 170, 'reduced_price' => 150, 
+            'status'=> 'active',           
         ]);
         $c5->teachers()->attach(14); //Ivan    
         $c5->styles()->attach(13);    
@@ -67,7 +72,8 @@ class CourseSeeder extends Seeder
             'name' => 'Salsa Cubaine', 'monday'=> 1, 'level' => 'Intermediate',
             'start_time_mon' => '19:50', 'end_time_mon' => '20:50',
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,              
+            'full_price' => 160, 'reduced_price' => 140,
+            'status'=> 'active',              
         ]);
         $c6->teachers()->attach([8,10]); // Sabrina & Vivien  
         $c6->styles()->attach(7);      
@@ -77,7 +83,8 @@ class CourseSeeder extends Seeder
             'name' => 'Salsa Porto On1', 'monday'=> 1, 'level' => 'Advanced', 'level_number' => '2',
             'start_time_mon' => '19:55', 'end_time_mon' => '20:55', 
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,             
+            'full_price' => 160, 'reduced_price' => 140,   
+            'status'=> 'active',          
         ]);
         $c7->teachers()->attach([2,3]); // Corinne & Fred    
         $c7->styles()->attach(1);    
@@ -88,6 +95,7 @@ class CourseSeeder extends Seeder
             'start_time_mon' => '20:45', 'end_time_mon' => '22:00',  
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
             'full_price' => 170, 'reduced_price' => 150,   
+            'status'=> 'active',
         ]);
         $c8->teachers()->attach(6); //Laëtycia   
         $c8->styles()->attach(14);     
@@ -97,7 +105,8 @@ class CourseSeeder extends Seeder
             'name' => 'Cubaine Choré Avancé', 'monday'=> 1, 'level' => 'Master',
             'start_time_mon' => '20:45', 'end_time_mon' => '22:00',  
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 170, 'reduced_price' => 150,     
+            'full_price' => 170, 'reduced_price' => 150,   
+            'status'=> 'active',  
         ]);
         $c9->teachers()->attach([9,5]); // Sonia & Kouamé     
         $c9->styles()->attach(7);
@@ -108,7 +117,8 @@ class CourseSeeder extends Seeder
             'name' => 'Salsa Porto on2', 'monday'=> 1, 'level' => 'Intermediate',
             'start_time_mon' => '20:55', 'end_time_mon' => '21:55',  
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,            
+            'full_price' => 160, 'reduced_price' => 140, 
+            'status'=> 'active',           
         ]);
         $c10->teachers()->attach([2,3]); // Corinne & Fred    
         $c10->styles()->attach(2);    
@@ -118,7 +128,8 @@ class CourseSeeder extends Seeder
             'name' => 'Pasitos con todo', 'monday'=> 1, 'level' => 'Intermediate',
             'start_time_mon' => '20:55', 'end_time_mon' => '21:55', 
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,             
+            'full_price' => 160, 'reduced_price' => 140,   
+            'status'=> 'active',          
         ]);
         $c11->teachers()->attach([8,10]); // Sabrina & Vivien    
         $c11->styles()->attach(7);    
@@ -129,7 +140,8 @@ class CourseSeeder extends Seeder
             'name' => 'Afrohouse Afrobeat', 'tuesday'=> 1, 'level' => 'All levels',
             'start_time_tue' => '18:45', 'end_time_tue' => '20:15',   
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 200, 'reduced_price' => 180,           
+            'full_price' => 200, 'reduced_price' => 180,    
+            'status'=> 'active',       
         ]);
         $c12->teachers()->attach(14); // Ivan        
         $c12->styles()->attach(13);
@@ -139,7 +151,8 @@ class CourseSeeder extends Seeder
             'name' => 'Footwork / Shines', 'tuesday'=> 1, 'level' => 'Inter',
             'start_time_tue' => '19:00', 'end_time_tue' => '20:00',
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,            
+            'full_price' => 160, 'reduced_price' => 140,  
+            'status'=> 'active',          
         ]);
         $c13->teachers()->attach(7); // Mona
         $c13->styles()->attach(2);
@@ -149,7 +162,8 @@ class CourseSeeder extends Seeder
             'name' => 'Hip Hop', 'tuesday'=> 1, 'level' => 'Beginner',
             'start_time_tue' => '20:20', 'end_time_tue' => '21:50',  
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 200, 'reduced_price' => 180,    
+            'full_price' => 200, 'reduced_price' => 180,
+            'status'=> 'active',    
         ]);
         $c14->teachers()->attach(14);// Ivan        
         $c14->styles()->attach(4);
@@ -159,7 +173,8 @@ class CourseSeeder extends Seeder
             'name' => 'Salsa Porto', 'tuesday'=> 1, 'level' => 'Beginner',
             'start_time_tue' => '20:30', 'end_time_tue' => '21:30',  
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,            
+            'full_price' => 160, 'reduced_price' => 140,  
+            'status'=> 'active',          
         ]);
         $c15->teachers()->attach(7);// Mona
         $c15->styles()->attach(1);
@@ -171,30 +186,33 @@ class CourseSeeder extends Seeder
             'name' => 'Salsa Fusion (Dancefloor style)', 'wednesday'=> 1, 'level' => 'All levels',
             'start_time_wed' => '18:45', 'end_time_wed' => '20:15',   
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 200, 'reduced_price' => 180,   
+            'full_price' => 200, 'reduced_price' => 180,
+            'status'=> 'active'   
         ]);
         $c16->teachers()->attach([3,5]); // Fred & Kouamé
         $c16->styles()->attach(16);
         // CCA
 
         $c17 = Course::create([
-            'name' => 'Lady Styling Cubaine', 'wednesday'=> 1, 'level' => 'All levels',
+            'name' => 'Lady Styling', 'wednesday'=> 1, 'level' => 'All levels',
             'start_time_wed' => '19:00', 'end_time_wed' => '20:15',
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
             'full_price' => 180, 'reduced_price' => 160,  
+            'status'=> 'active',
         ]);
         $c17->teachers()->attach(8); // Sabrina    
-        $c17->styles()->attach(7);    
+        $c17->styles()->attach(5);    
         // Usine Kugler
 
         $c18 = Course::create([
             'name' => 'Boogaloo', 'wednesday'=> 1, 'level' => 'All levels',
             'start_time_wed' => '19:30', 'end_time_wed' => '20:30',
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,          
+            'full_price' => 160, 'reduced_price' => 140,  
+            'status'=> 'active',        
         ]);
         $c18->teachers()->attach(2); // Corinne     
-        $c18->styles()->attach(18);   
+        $c18->styles()->attach(16);   
         // Vivre son Corps
 
 
@@ -202,7 +220,8 @@ class CourseSeeder extends Seeder
             'name' => 'Salsa Cubaine', 'wednesday'=> 1, 'level' => 'Intermediate',
             'start_time_wed' => '19:30', 'end_time_wed' => '20:45',   
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,           
+            'full_price' => 160, 'reduced_price' => 140,   
+            'status'=> 'active',        
         ]);
         // $c19->teachers()->attach([10,40]); // Vivien & Assistante        
         $c19->styles()->attach(7);
@@ -212,7 +231,8 @@ class CourseSeeder extends Seeder
             'name' => 'Salsa cubaine', 'wednesday'=> 1, 'level' => 'Intermediate',
             'start_time_wed' => '20:30', 'end_time_wed' => '22:00',   
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 200, 'reduced_price' => 180,           
+            'full_price' => 200, 'reduced_price' => 180, 
+            'status'=> 'active',          
         ]);
         //$c20->teachers()->attach([5,42]); // Kouamé & Assistante
         $c20->styles()->attach(7);
@@ -222,7 +242,8 @@ class CourseSeeder extends Seeder
             'name' => 'Salsa Porto', 'wednesday'=> 1, 'level' => 'Intermediate',
             'start_time_wed' => '20:30', 'end_time_wed' => '22:00',  
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 200, 'reduced_price' => 180,   
+            'full_price' => 200, 'reduced_price' => 180,
+            'status'=> 'active',   
         ]);
         $c21->teachers()->attach([2,3]); // Corinne & Fred        
         $c21->styles()->attach(1);
@@ -233,6 +254,7 @@ class CourseSeeder extends Seeder
             'start_time_wed' => '20:45', 'end_time_wed' => '22:00', 
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
             'full_price' => 180, 'reduced_price' => 160,   
+            'status'=> 'active',
         ]);
         //$c22->teachers()->attach([10,40]); // Vivien & assistante
         $c22->styles()->attach(7);
@@ -242,7 +264,8 @@ class CourseSeeder extends Seeder
             'name' => 'Dancehall', 'thursday'=> 1, 'level' => 'All levels',
             'start_time_thu' => '19:00', 'end_time_thu' => '20:00',   
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,           
+            'full_price' => 160, 'reduced_price' => 140,  
+            'status'=> 'active',         
         ]);
         $c23->teachers()->attach(4); // Kelly
         $c23->styles()->attach(3);
@@ -252,7 +275,8 @@ class CourseSeeder extends Seeder
             'name' => 'salsa cubaine', 'thursday'=> 1, 'level' => 'Beginner',
             'start_time_thu' => '19:30', 'end_time_thu' => '20:30', 
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,             
+            'full_price' => 160, 'reduced_price' => 140,   
+            'status'=> 'active',          
         ]);
         $c24->teachers()->attach([11,13]);// Jessica & Yann
         $c24->styles()->attach(7);
@@ -262,7 +286,8 @@ class CourseSeeder extends Seeder
             'name' => 'salsa cubaine', 'thursday'=> 1, 'level' => 'Beginner',
             'start_time_thu' => '20:00', 'end_time_thu' => '21:00',  
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,            
+            'full_price' => 160, 'reduced_price' => 140,  
+            'status'=> 'active',          
         ]);                        
         $c25->teachers()->attach([4,12]); // Kelly & Edgar
         $c25->styles()->attach(7);
@@ -273,16 +298,18 @@ class CourseSeeder extends Seeder
             'start_time_thu' => '20:30', 'end_time_thu' => '22:00',  
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
             'full_price' => 200, 'reduced_price' => 180,  
+            'status'=> 'active',
         ]);
         $c26->teachers()->attach([5,9]); // Sonia & Kouamé        
-        $c26->styles()->attach(17);
+        $c26->styles()->attach(15);
         // Diafa | Salle B
 
         $c27 = Course::create([
             'name' => 'Salsa Cubaine', 'thursday'=> 1, 'level' => 'Advanced',
             'start_time_thu' => '20:30', 'end_time_thu' => '22:00',  
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 200, 'reduced_price' => 180,            
+            'full_price' => 200, 'reduced_price' => 180,   
+            'status'=> 'active',         
         ]);   
         $c27->teachers()->attach([11,13]); // Jessica & Yann        
         $c27->styles()->attach(7);
@@ -292,7 +319,8 @@ class CourseSeeder extends Seeder
             'name' => 'Salsa Cubaine Interm', 'thursday'=> 1, 'level' => 'Intermediate', 'level_number' => '2',
             'start_time_thu' => '21:00', 'end_time_thu' => '22:00',
             'start_date' => '2020-06-01', 'end_date' => '2020-06-15',
-            'full_price' => 160, 'reduced_price' => 140,      
+            'full_price' => 160, 'reduced_price' => 140,  
+            'status'=> 'active',    
         ]);
         $c28->teachers()->attach([4,12]);   // Kelly & Edgar     
         $c28->styles()->attach(7);

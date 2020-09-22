@@ -1,72 +1,57 @@
 .df-form {
-    @apply py-5;
-    @apply px-8;
-    
-    input[type=text], input[type=number], input[type=time] {
-        appearance: none;
-        display: block;
-        @apply pl-5;
-        @apply w-full;
-        @apply bg-gray-200;
-        @apply text-gray-700;
-        @apply rounded-full;
-        @apply py-2;
-        @apply px-3;
-        @apply leading-tight;
-        @apply border;
-        @apply border-gray-200;                
-    }
-    
-    input[type=text]:focus, input[type=number]:focus{
-        @apply bg-white;
-        @apply outline-none;
-        @apply border-gray-500;
-    }
-
-    textarea{
-        @apply appearance-none; 
-        @apply block; 
-        @apply w-full; 
-        @apply bg-gray-200; 
-        @apply text-gray-700; 
-        @apply rounded-lg; 
-        @apply py-2; 
-        @apply px-3; 
-        @apply leading-tight; 
-        @apply border; 
-        @apply border-gray-200; 
-    }
-
-    textarea:focus {
-        @apply outline-none;
-        @apply bg-white;
-        @apply border-gray-500;
-    }
 
     .select2-container--default .select2-selection--multiple {
         background-color: #edf2f7;
         border: 1px solid #edf2f7;
-        padding-left: 0.5rem;                    
+        padding-left: 0.5rem;
     }
 
     .select2-container--default.select2-container--focus .select2-selection--multiple {
-        border: solid #a0aec0 1px;        
-    }
-
-    .btn-save {
-        @apply rounded-full bg-red-700 text-white py-2 px-3;
-    }
-    
-    .btn-save:hover {
-        @apply bg-red-800;
-    }
-    
-    .btn-cancel {
-        @apply py-2 px-3;
-    }
-
-    .btn-cancel:hover {
-        @apply bg-gray-300 rounded;
+        border: solid #a0aec0 1px;
     }
 }
 
+.df-textfield {
+    appearance: none;
+    display: block;
+    @apply pl-5;
+    @apply w-full;
+    @apply bg-white;
+    @apply text-gray-700;
+    @apply rounded;
+    @apply py-2;
+    @apply px-3;
+    @apply leading-tight;
+    @apply border;
+    @apply border-gray-300;
+}
+
+.error-field {
+    @apply border-red-500;
+}
+
+.df-textfield:focus {
+    @apply bg-white;
+    @apply outline-none;
+    @apply border-gray-500;
+}
+
+.df-textarea {
+    @apply appearance-none;
+    @apply block;
+    @apply w-full;
+    @apply bg-white;
+    @apply text-gray-700;
+    @apply rounded-lg;
+    @apply py-2;
+    @apply px-3;
+    @apply leading-tight;
+    @apply border;
+    @apply border-gray-200;
+}
+
+.df-textarea:focus {
+    @apply outline-none;
+    @apply bg-white;
+    @apply border-gray-500;
+}

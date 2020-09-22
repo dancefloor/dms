@@ -6,50 +6,55 @@
 
 @section('content')
 
-@guest
 
-<main class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-    <div class="sm:text-center lg:text-left">
-        <h2
-            class="text-4xl tracking-tight leading-10 font-extrabold text-gray-800 sm:text-5xl sm:leading-none md:text-6xl">
-            Welcome to dancefloor
-            <br class="xl:hidden" />
-            <span class="text-red-700">online classes
-            </span>
-        </h2>
-        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-            Dancing makes us happy! and we are committed to keep sharing our passion for dancing no matter
-            what. Please
-            sign-in and register to start enjoying one of our classes.
-        </p>
-        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <div class="rounded-md shadow">
-                <a href="{{ route('login') }}"
-                    class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-red-800 focus:shadow-outline-red transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-                    Login
-                </a>
-            </div>
-            <div class="mt-3 sm:mt-0 sm:ml-3">
-                <a href="{{ route('register')}}"
-                    class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-red-700 bg-red-200 hover:text-red-100 hover:bg-red-500 focus:outline-none focus:shadow-outline-indigo focus:border-red-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-                    Register
-                </a>
-            </div>
-        </div>
-    </div>
-</main>
-@endguest
+@include('partials.banner')
+
+@include('partials.landing')
+
 
 {{-- {{ env('APP_URL').'/storage' }}
 <br>
 {{ base_path('public/paypal.png') }} --}}
 
-{{-- // 'root' =>  --}}
+{{-- {{auth()->user()->email}} --}}
+<section class="my-20">
 
+    @include('partials.testimonials')
+</section>
 
-<div class="container mx-auto my-20">
-    <x-catalogue :courses="$courses" />
+<div id="live" class="container mx-auto my-20">
+    <div class="py-5 border-t border-gray-300 space-y-2 px-3 mb-5">
+        <h2 class="text-4xl leading-6 font-bold text-gray-800">
+            Live classes
+        </h2>
+        <p class="max-w-4xl text-base leading-5 text-gray-500">
+            You don't live in Geneva or Lausanne, No problem! Take the opportunity to follow our live classes, feel the
+            classroom energy, ask direct questions to the teachers, and review the videos of the class afterwards.
+        </p>
+    </div>
+    <x-catalogue :courses="$live" />
+    <br>
 </div>
+
+<div class="bg-gray-800 py-10">
+    <div id="online" class="container mx-auto my-20">
+        <div class="py-5 border-t border-gray-300 space-y-2 px-3 mb-5">
+            <h2 class="text-4xl leading-6 font-bold text-gray-100">
+                Online classes
+            </h2>
+            <p class="max-w-4xl text-base leading-5 text-gray-500">
+                With our online classes you get access to the videos from live classes, you'll have access our the
+                private facebook group and you can decide to progress at your own pace
+            </p>
+        </div>
+        <x-image-catalog :courses="$online" />
+    </div>
+</div>
+
+
+<section id="about" class="container mx-auto my-20">
+    @include('partials.about')
+</section>
 
 @endsection
 

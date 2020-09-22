@@ -31,10 +31,10 @@ class CreateLocationsTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->text('contract')->nullable();
-            $table->string('video')->nullable();
+            $table->text('video')->nullable();
             $table->string('entry_code')->nullable();
             $table->string('google_maps_shortlink')->nullable();
-            $table->text('google_map')->nullable();
+            $table->text('google_maps')->nullable();
             $table->string('public_transportation')->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -20,8 +20,10 @@ class RegistrationPaymentManager {
 
     public static function updateOrder($id)
     {
-        $order = Order::find($id);
+        $order = Order::findOrFail($id);
+        
         $amount = 0;
+        
         foreach ($order->payments as $pay) {
             $amount = $amount + $pay->amount;
         }
@@ -32,13 +34,15 @@ class RegistrationPaymentManager {
                 self::registrationCompleted($r->id);
             }
             $order->save();
+            
         }else{                        
             foreach ($order->registrations as $r) {
                 self::registrationToPartial($r->id);
             }
             $order->status = 'partial';
-            $order->save();
+            $order->save();            
         }
+        return $order->status;
     }
 
     public static function registrationCompleted($id)

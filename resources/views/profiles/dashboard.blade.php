@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section id="profile" class="container mx-auto py-10">
+<section id="profile" class="container mx-auto">
     <h1 class="capitalize mb-10 font-bold text-2xl">Welcome {{ auth()->user()->firstname}},</h1>
     <section>
         <header class="flex justify-between items-baseline">
@@ -34,7 +34,7 @@
                 <div>
                     <div class="inline-flex">
                         @foreach ($item->teachers as $t)
-                        <img src="{{ asset($t->avatar)}}" alt="" class="w-8 rounded-full">
+                        <img src="{{ asset($t->avatar)}}" alt="" class="w-8 h-8 rounded-full">
                         @endforeach
                     </div>
                 </div>

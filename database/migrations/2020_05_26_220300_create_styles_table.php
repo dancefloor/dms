@@ -17,14 +17,17 @@ class CreateStylesTable extends Migration
         Schema::create('styles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug')->nullale();
-            $table->text('description')->nullale();
-            $table->string('icon')->nullale();
-            $table->string('color')->nullale();
-            $table->string('image')->nullale();
-            $table->string('origin')->nullale();
-            $table->string('genre')->nullale();
-            $table->string('year_of_origin')->nullale();
+            $table->string('slug')->nullable();         
+            $table->string('icon')->nullable();
+            $table->string('color')->nullable();
+            $table->string('image')->nullable();
+            $table->string('origin')->nullable();
+            $table->string('family')->nullable();
+            $table->string('music')->nullable();
+            $table->string('year')->nullable();
+            $table->string('video')->nullable();                     
+            $table->string('portrait')->nullable();   
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

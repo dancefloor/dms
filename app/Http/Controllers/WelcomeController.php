@@ -39,12 +39,17 @@ class WelcomeController extends Controller
                     break;
             }
         } else {
-            $courses = Course::all();
+            $live = Course::liveCourses()->get();
+            $online = Course::onlineCourses()->get();
         }
 
 
         
-        return view('welcome')->with(['courses'   => $courses]);
+        return view('welcome')->with([
+            'live'    => $live,
+            'online'   => $online
+            ]
+        );
     }
 
     // //https://stackoverflow.com/questions/1653891/how-to-find-number-of-mondays-or-tuesdays-between-two-dates

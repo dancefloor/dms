@@ -8,9 +8,12 @@
 // Variables
 @import 'variables';
 
+@import 'components/defaults';
+@import 'components/navigation';
 @import 'components/form';
+@import 'components/buttons';
 
-body{
+body {
     font-family: 'Roboto', sans-serif;
 }
 

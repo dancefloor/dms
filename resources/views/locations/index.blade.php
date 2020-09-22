@@ -1,26 +1,29 @@
-@extends('layouts.app')
+@extends('layouts.back')
 
 @section('content')
-    <section class="content-header">
-        <h1 class="pull-left">Locations</h1>
-        <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('locations.create') }}">Add New</a>
-        </h1>
-    </section>
-    <div class="content">
-        <div class="clearfix"></div>
-
-        @include('flash::message')
-
-        <div class="clearfix"></div>
-        <div class="box box-primary">
-            <div class="box-body">
-                    @include('locations.table')
-            </div>
+<section class="container mx-auto px-3">
+    <div class="flex justify-between mb-8 items-center">
+        <div>
+            <h1 class="text-2xl font-bold leading-7 text-gray-900 md:text-4xl sm:leading-9 sm:truncate inline-flex">
+                <span class="self-center ml-3">Locations</span>
+            </h1>
+            {{-- <span class="block">{{ $stats }}</span> --}}
         </div>
-        <div class="text-center">
-        
+        <div>
+            <a href="{{ route( 'locations.create' ) }}"
+                class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:shadow-outline-red focus:border-red-600 transition duration-150 ease-in-out">
+                @include('icons.add')
+                <span class="ml-2">Add Location</span>
+            </a>
+            <a href="{{ route( 'classrooms.create' ) }}"
+                class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:shadow-outline-red focus:border-red-600 transition duration-150 ease-in-out">
+                @include('icons.add')
+                <span class="ml-2">Add Classroom</span>
+            </a>
         </div>
     </div>
+    <div class="bg-white rounded-lg shadow mb-20 overflow-hidden">
+        @include('locations.table')
+    </div>
+</section>
 @endsection
-

@@ -25,6 +25,16 @@ class CreateStyleRequest extends FormRequest
      */
     public function rules()
     {
-        return Style::$rules;
+        return [
+            'name'          => 'required|string|min:3|max:30',
+            'icon'          => 'nullable|string|min:3|max:40',
+            'origin'        => 'nullable|string|min:3|max:50',
+            'color'         => 'nullable|string|min:3|max:30',
+            'family'        => 'nullable|string|min:3|max:30',
+            'music'         => 'nullable|string|min:3|max:100',
+            'year'          => 'nullable|string|min:3|max:20',
+            'description'   => 'nullable|string|min:3|max:1200',
+            'image'         => 'nullable|image|max:1024|mimes:png,jpg,jpeg,gif'
+        ];
     }
 }

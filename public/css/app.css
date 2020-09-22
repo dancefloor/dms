@@ -17878,14 +17878,68 @@ video {
   transition-delay: 1000ms;
 }
 
-.df-form {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+h1 {
+  font-size: 2.25rem;
+  margin-top: 0.5rem;
+  font-weight: 800;
+  --text-opacity: 1;
+  color: #2d3748;
+  color: rgba(45, 55, 72, var(--text-opacity));
+  line-height: 2rem;
+  letter-spacing: -0.025em;
 }
 
-.df-form input[type=text], .df-form input[type=number], .df-form input[type=time] {
+.df-navigation-link {
+  display: block;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  --text-opacity: 1;
+  color: #e2e8f0;
+  color: rgba(226, 232, 240, var(--text-opacity));
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.df-navigation-link:hover {
+  color: white;
+  --bg-opacity: 1;
+  background-color: #4a5568;
+  background-color: rgba(74, 85, 104, var(--bg-opacity));
+}
+
+.df-navigation-link:focus {
+  color: white;
+  --bg-opacity: 1;
+  background-color: #4a5568;
+  background-color: rgba(74, 85, 104, var(--bg-opacity));
+  outline: none;
+}
+
+.df-navigation-link-active {
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+  font-weight: 700;
+}
+
+.df-form .select2-container--default .select2-selection--multiple {
+  background-color: #edf2f7;
+  border: 1px solid #edf2f7;
+  padding-left: 0.5rem;
+}
+
+.df-form .select2-container--default.select2-container--focus .select2-selection--multiple {
+  border: solid #a0aec0 1px;
+}
+
+.df-textfield {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -17893,12 +17947,12 @@ video {
   padding-left: 1.25rem;
   width: 100%;
   --bg-opacity: 1;
-  background-color: #edf2f7;
-  background-color: rgba(237, 242, 247, var(--bg-opacity));
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
   --text-opacity: 1;
   color: #4a5568;
   color: rgba(74, 85, 104, var(--text-opacity));
-  border-radius: 9999px;
+  border-radius: 0.25rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
@@ -17906,11 +17960,17 @@ video {
   line-height: 1.25;
   border-width: 1px;
   --border-opacity: 1;
-  border-color: #edf2f7;
-  border-color: rgba(237, 242, 247, var(--border-opacity));
+  border-color: #e2e8f0;
+  border-color: rgba(226, 232, 240, var(--border-opacity));
 }
 
-.df-form input[type=text]:focus, .df-form input[type=number]:focus {
+.error-field {
+  --border-opacity: 1;
+  border-color: #f56565;
+  border-color: rgba(245, 101, 101, var(--border-opacity));
+}
+
+.df-textfield:focus {
   --bg-opacity: 1;
   background-color: #fff;
   background-color: rgba(255, 255, 255, var(--bg-opacity));
@@ -17920,15 +17980,15 @@ video {
   border-color: rgba(160, 174, 192, var(--border-opacity));
 }
 
-.df-form textarea {
+.df-textarea {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   display: block;
   width: 100%;
   --bg-opacity: 1;
-  background-color: #edf2f7;
-  background-color: rgba(237, 242, 247, var(--bg-opacity));
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
   --text-opacity: 1;
   color: #4a5568;
   color: rgba(74, 85, 104, var(--text-opacity));
@@ -17944,7 +18004,7 @@ video {
   border-color: rgba(237, 242, 247, var(--border-opacity));
 }
 
-.df-form textarea:focus {
+.df-textarea:focus {
   outline: 0;
   --bg-opacity: 1;
   background-color: #fff;
@@ -17954,17 +18014,51 @@ video {
   border-color: rgba(160, 174, 192, var(--border-opacity));
 }
 
-.df-form .select2-container--default .select2-selection--multiple {
-  background-color: #edf2f7;
-  border: 1px solid #edf2f7;
-  padding-left: 0.5rem;
+.df-btn-primary {
+  --bg-opacity: 1;
+  background-color: #c53030;
+  background-color: rgba(197, 48, 48, var(--bg-opacity));
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+  border-radius: 9999px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: inline-flex;
+  align-items: center;
 }
 
-.df-form .select2-container--default.select2-container--focus .select2-selection--multiple {
-  border: solid #a0aec0 1px;
+.df-btn-primary:hover {
+  --bg-opacity: 1;
+  background-color: #9b2c2c;
+  background-color: rgba(155, 44, 44, var(--bg-opacity));
 }
 
-.df-form .btn-save {
+.df-btn-secondary {
+  --bg-opacity: 1;
+  background-color: #e2e8f0;
+  background-color: rgba(226, 232, 240, var(--bg-opacity));
+  --text-opacity: 1;
+  color: #4a5568;
+  color: rgba(74, 85, 104, var(--text-opacity));
+  border-radius: 9999px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.df-btn-secondary:hover {
+  --bg-opacity: 1;
+  background-color: #cbd5e0;
+  background-color: rgba(203, 213, 224, var(--bg-opacity));
+}
+
+.btn-save {
   border-radius: 9999px;
   --bg-opacity: 1;
   background-color: #c53030;
@@ -17978,20 +18072,20 @@ video {
   padding-right: 0.75rem;
 }
 
-.df-form .btn-save:hover {
+.btn-save:hover {
   --bg-opacity: 1;
   background-color: #9b2c2c;
   background-color: rgba(155, 44, 44, var(--bg-opacity));
 }
 
-.df-form .btn-cancel {
+.btn-cancel {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
 
-.df-form .btn-cancel:hover {
+.btn-cancel:hover {
   --bg-opacity: 1;
   background-color: #e2e8f0;
   background-color: rgba(226, 232, 240, var(--bg-opacity));

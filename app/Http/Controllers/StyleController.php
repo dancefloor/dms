@@ -6,9 +6,11 @@ use App\Http\Requests\CreateStyleRequest;
 use App\Http\Requests\UpdateStyleRequest;
 use App\Repositories\StyleRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Style;
 use Illuminate\Http\Request;
-use Flash;
 use Response;
+use App\Exports\StylesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StyleController extends AppBaseController
 {
@@ -29,10 +31,27 @@ class StyleController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $styles = $this->styleRepository->all();
+        $search = request()->query('search');
+        if ($search) {            
+            $styles = Style::search($search)->paginate(10);
+            // $styles = Style::where('name', 'LIKE', "%{$search}%")->paginate(10);
+        } else if( request()->family == 'cuban-salsa' ) {
+            $styles = Style::cubanSalsa()->paginate(10);
+        } else if( request()->family == 'line-salsa' ) {
+            $styles = Style::lineSalsa()->paginate(10);
+        } else if( request()->family == 'urban' ) {
+            $styles = Style::urban()->paginate(10);
+        } else if( request()->family == 'sensual' ) {
+            $styles = Style::sensual()->paginate(10);
+        } else if( request()->family == 'sport' ) {
+            $styles = Style::sport()->paginate(10);
+        } else if( request()->family == 'fusion' ) {
+            $styles = Style::sport()->paginate(10);
+        } else {
+            $styles = Style::latest()->paginate(10);
+        }
 
-        return view('styles.index')
-            ->with('styles', $styles);
+        return view('styles.index')->with('styles', $styles);
     }
 
     /**
@@ -53,12 +72,27 @@ class StyleController extends AppBaseController
      * @return Response
      */
     public function store(CreateStyleRequest $request)
-    {
-        $input = $request->all();
+    {                
+        // dd($request->all());
+        $style = Style::create([
+            'name'          => $request->name,
+            'description'   => $request->description,
+            'slug'          => $request->slug,
+            'icon'          => $request->icon,
+            'image'         => $request->image,
+            'music'         => $request->music,
+            'family'        => $request->family,
+            'color'         => $request->color,
+            'origin'        => $request->origin, 
+            'music'         => $request->music,
+            'year'          => $request->year,
+        ]);
 
-        $style = $this->styleRepository->create($input);
+        if ($request->hasFile('image')) {
+            $style->update(['image' => $request->image->store('styles') ]);            
+        }
 
-        Flash::success('Style saved successfully.');
+        session()->flash('success', 'Style added successfully');
 
         return redirect(route('styles.index'));
     }
@@ -75,7 +109,7 @@ class StyleController extends AppBaseController
         $style = $this->styleRepository->find($id);
 
         if (empty($style)) {
-            Flash::error('Style not found');
+            session()->flash('error', 'Style not found');            
 
             return redirect(route('styles.index'));
         }
@@ -95,7 +129,7 @@ class StyleController extends AppBaseController
         $style = $this->styleRepository->find($id);
 
         if (empty($style)) {
-            Flash::error('Style not found');
+            session()->flash('error', 'Style not found');                
 
             return redirect(route('styles.index'));
         }
@@ -111,19 +145,32 @@ class StyleController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateStyleRequest $request)
-    {
-        $style = $this->styleRepository->find($id);
-
-        if (empty($style)) {
-            Flash::error('Style not found');
-
+    public function update(Style $style, UpdateStyleRequest $request)
+    {    
+        //dd($request->all());
+        if (empty($style)) {            
+            session()->flash('error', 'Style not found');    
             return redirect(route('styles.index'));
         }
 
-        $style = $this->styleRepository->update($request->all(), $id);
+        $style->update([
+            'name'          => $request->name,
+            'description'   => $request->description,
+            'slug'          => $request->slug,
+            'icon'          => $request->icon,            
+            'music'         => $request->music,
+            'family'        => $request->family,
+            'color'         => $request->color,
+            'origin'        => $request->origin, 
+            'music'         => $request->music,
+            'year'          => $request->year,
+        ]);
 
-        Flash::success('Style updated successfully.');
+        if ($request->hasFile('image')) {
+            $style->update(['image' => $request->image->store('styles') ]);            
+        }
+
+        session()->flash('success','Style updated successfully.');
 
         return redirect(route('styles.index'));
     }
@@ -137,20 +184,26 @@ class StyleController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Style $style)
     {
-        $style = $this->styleRepository->find($id);
+        //$style = $this->styleRepository->find($id);
 
-        if (empty($style)) {
-            Flash::error('Style not found');
+        if (empty($style)) {            
+            session()->flash('error', 'Style not found');    
 
             return redirect(route('styles.index'));
         }
 
-        $this->styleRepository->delete($id);
+        //$this->styleRepository->delete($id);
+        $style->delete();
 
-        Flash::success('Style deleted successfully.');
+        session()->flash('success','Style deleted successfully.');
 
         return redirect(route('styles.index'));
+    }
+
+    public function export() 
+    {             
+        return Excel::download(new StylesExport, 'styles.xlsx');
     }
 }

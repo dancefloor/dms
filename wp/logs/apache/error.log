@@ -1,0 +1,16 @@
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 192.168.1.2. Set the 'ServerName' directive globally to suppress this message
+[Mon Sep 07 13:21:21.540389 2020] [mpm_event:notice] [pid 54734:tid 4553723328] AH00489: Apache/2.4.43 (Unix) configured -- resuming normal operations
+[Mon Sep 07 13:21:21.540808 2020] [core:notice] [pid 54734:tid 4553723328] AH00094: Command line: '/Users/gabriel/Library/Application Support/Local/lightning-services/apache-2.4.43+6/bin/darwin/bin/httpd -D FOREGROUND -f /Users/gabriel/Library/Application Support/Local/run/_UtWr6obu/conf/apache/apache2.conf'
+[Mon Sep 07 13:21:58.690428 2020] [core:warn] [pid 54734:tid 4553723328] AH00045: child process 54773 still did not exit, sending a SIGTERM
+[Mon Sep 07 13:22:00.695793 2020] [core:warn] [pid 54734:tid 4553723328] AH00045: child process 54773 still did not exit, sending a SIGTERM
+[Mon Sep 07 13:22:02.702987 2020] [core:warn] [pid 54734:tid 4553723328] AH00045: child process 54773 still did not exit, sending a SIGTERM
+[Mon Sep 07 13:22:04.712351 2020] [core:error] [pid 54734:tid 4553723328] AH00046: child process 54773 still did not exit, sending a SIGKILL
+[Mon Sep 07 13:22:05.712871 2020] [mpm_event:notice] [pid 54734:tid 4553723328] AH00491: caught SIGTERM, shutting down
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 192.168.1.2. Set the 'ServerName' directive globally to suppress this message
+[Mon Sep 07 13:33:55.203278 2020] [mpm_event:notice] [pid 54845:tid 4690775488] AH00489: Apache/2.4.43 (Unix) configured -- resuming normal operations
+[Mon Sep 07 13:33:55.203647 2020] [core:notice] [pid 54845:tid 4690775488] AH00094: Command line: '/Users/gabriel/Library/Application Support/Local/lightning-services/apache-2.4.43+6/bin/darwin/bin/httpd -D FOREGROUND -f /Users/gabriel/Library/Application Support/Local/run/_UtWr6obu/conf/apache/apache2.conf'
+[Mon Sep 07 13:34:24.871916 2020] [core:warn] [pid 54845:tid 4690775488] AH00045: child process 54851 still did not exit, sending a SIGTERM
+[Mon Sep 07 13:34:26.875377 2020] [core:warn] [pid 54845:tid 4690775488] AH00045: child process 54851 still did not exit, sending a SIGTERM
+[Mon Sep 07 13:34:28.881467 2020] [core:warn] [pid 54845:tid 4690775488] AH00045: child process 54851 still did not exit, sending a SIGTERM
+[Mon Sep 07 13:34:30.887055 2020] [core:error] [pid 54845:tid 4690775488] AH00046: child process 54851 still did not exit, sending a SIGKILL
+[Mon Sep 07 13:34:31.889360 2020] [mpm_event:notice] [pid 54845:tid 4690775488] AH00491: caught SIGTERM, shutting down

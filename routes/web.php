@@ -20,17 +20,21 @@ Route::get('/', 'WelcomeController')->name('welcome');
 
 //Route::get('/','PageController@onlineClass')->name('salsa.fusion');
 
+Route::resource('courses', 'CourseController');
+
 Auth::routes(['verify' => true]);
 
-Route::get('dashboard', 'ProfileController@index')->name('dashboard')->middleware('verified');
-
-Route::resource('courses', 'CourseController');
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'verified'])->group(function(){
+    Route::get('dashboard', 'ProfileController@index')->name('dashboard');
     Route::resource('locations', 'LocationController');
+    Route::resource('classrooms', 'ClassroomController');
     Route::resource('skills', 'SkillController');
     Route::resource('lessons', 'LessonController');
     Route::resource('payments', 'PaymentController');
     Route::resource('styles', 'StyleController');
+    
+    Route::get('export/styles', 'StyleController@export')->name('styles.export');
+
     Route::resource('permissions', 'PermissionController');
     Route::resource('roles', 'RoleController');
     Route::resource('users', 'UserController');

@@ -1,0 +1,29 @@
+.df-navigation-link {
+    display: block;
+    @apply px-3;
+    @apply py-2;
+    @apply rounded-md;
+    @apply text-sm;
+    @apply font-medium;
+    @apply leading-5;
+    @apply text-gray-300;
+    @apply transition;
+    @apply duration-150; 
+    @apply ease-in-out;
+}
+
+.df-navigation-link:hover {
+    color: white;
+    @apply bg-gray-700;
+}
+
+.df-navigation-link:focus {
+    color: white;
+    @apply bg-gray-700;
+    outline: none;
+}
+
+.df-navigation-link-active {
+    @apply text-white;
+    @apply font-bold;
+}

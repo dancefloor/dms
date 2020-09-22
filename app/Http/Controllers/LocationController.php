@@ -6,8 +6,8 @@ use App\Http\Requests\CreateLocationRequest;
 use App\Http\Requests\UpdateLocationRequest;
 use App\Repositories\LocationRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Location;
 use Illuminate\Http\Request;
-use Flash;
 use Response;
 
 class LocationController extends AppBaseController
@@ -29,7 +29,8 @@ class LocationController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $locations = $this->locationRepository->all();
+        $locations = Location::latest()->paginate(5);
+        // $locations = $this->locationRepository->all();
 
         return view('locations.index')
             ->with('locations', $locations);
@@ -53,12 +54,33 @@ class LocationController extends AppBaseController
      * @return Response
      */
     public function store(CreateLocationRequest $request)
-    {
-        $input = $request->all();
+    {        
+        $location = Location::create([
+            'name'          => $request->name,            
+            'shortname'     => $request->shortname,
+            'address'       => $request->address,
+            'address_info'  => $request->address_info,
+            'postal_code'   => $request->postal_code,
+            'city'          => $request->city,
+            'neighborhood'  => $request->neighborhood,
+            'state'         => $request->state,
+            'country'       => $request->country,
+            'contact'       => $request->contact,
+            'email'         => $request->email,
+            'phone'         => $request->phone,            
+            'video'         => $request->video,
+            'entry_code'    => $request->entry_code,
+            'comments'      => $request->comments,
+            'google_maps'   => $request->google_maps,
+            'google_maps_shortlink' => $request->google_maps_shortlink,
+            'public_transportation' => $request->public_transportation,  
+        ]);
 
-        $location = $this->locationRepository->create($input);
+        if ($request->hasFile('contract')) {
+            $location->update(['contract' => $request->contract->store('locations')]);               
+        }
 
-        Flash::success('Location saved successfully.');
+        session()->flash('success','Location saved successfully.');
 
         return redirect(route('locations.index'));
     }
@@ -75,7 +97,7 @@ class LocationController extends AppBaseController
         $location = $this->locationRepository->find($id);
 
         if (empty($location)) {
-            Flash::error('Location not found');
+            // Flash::error('Location not found');
 
             return redirect(route('locations.index'));
         }
@@ -111,19 +133,40 @@ class LocationController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateLocationRequest $request)
+    public function update(Location $location, UpdateLocationRequest $request)
     {
-        $location = $this->locationRepository->find($id);
-
-        if (empty($location)) {
-            Flash::error('Location not found');
-
+        if (empty($location)) {            
+            session()->flash('error','Location not found');
             return redirect(route('locations.index'));
         }
 
-        $location = $this->locationRepository->update($request->all(), $id);
+        $location->update([
+            'name'          => $request->name,            
+            'shortname'     => $request->shortname,
+            'address'       => $request->address,
+            'address_info'  => $request->address_info,
+            'postal_code'   => $request->postal_code,
+            'city'          => $request->city,
+            'neighborhood'  => $request->neighborhood,
+            'state'         => $request->state,
+            'country'       => $request->country,
+            'contact'       => $request->contact,
+            'email'         => $request->email,
+            'phone'         => $request->phone,
+            'contract'      => $request->contract,
+            'video'         => $request->video,
+            'entry_code'    => $request->entry_code,
+            'comments'      => $request->comments,
+            'google_maps'   => $request->google_maps,
+            'google_maps_shortlink' => $request->google_maps_shortlink,
+            'public_transportation' => $request->public_transportation,  
+        ]);
 
-        Flash::success('Location updated successfully.');
+        if ($request->hasFile('contract')) {
+            $location->update(['contract' => $request->contract->store('locations')]);               
+        }
+
+        session()->flash('success','Location updated successfully.');
 
         return redirect(route('locations.index'));
     }
@@ -137,20 +180,19 @@ class LocationController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Location $location)
     {
-        $location = $this->locationRepository->find($id);
-
-        if (empty($location)) {
-            Flash::error('Location not found');
-
+            
+        if (empty($location)) {            
+            session()->flash('error','Location not found');
             return redirect(route('locations.index'));
         }
 
-        $this->locationRepository->delete($id);
+        $location->delete();
 
-        Flash::success('Location deleted successfully.');
+        session()->flash('success','Location deleted successfully.');
 
         return redirect(route('locations.index'));
     }
 }
+

@@ -24,9 +24,25 @@ class UpdateLocationRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
-        $rules = Location::$rules;
-        
-        return $rules;
+    {       
+        return [
+            'name'          => 'required|string|min:3|max:50',
+            'shortname'     => 'required|string|min:3|max:20',            
+            'address'       => 'required|string',
+            'address_info'  => 'nullable|string',
+            'postal_code'   => 'required|string|min:3|max:10',
+            'city'          => 'required|string|min:2|max:25',
+            'neighborhood'  => 'required|string|min:2|max:30',
+            'state'         => 'required|string|min:3|max:25',
+            'country'       => 'required|string|min:3|max:25',
+            'comments'      => 'nullable|string',
+            'contact'       => 'nullable|string',
+            'email'         => 'nullable|email',
+            'phone'         => 'nullable|string',
+            'entry_code'    => 'nullable|string|min:3|max:10',
+            'contract'      => 'nullable|file|mimes:png,jpg,pdf,jpeg,gif',
+            'public_transportation'=> 'nullable|string',
+            'google_maps_shortlink'=> 'nullable|url',
+        ];
     }
 }

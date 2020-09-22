@@ -5,6 +5,7 @@ namespace App\Models;
 //use Eloquent as Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 /**
  * Class Location
@@ -35,35 +36,34 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Location extends Model
 {
     use SoftDeletes;
+    use Sluggable;
 
     public $table = 'locations';
 
 
     protected $dates = ['deleted_at'];
 
-
-
     public $fillable = [
         'name',
+        'slug',
+        'shortname',
         'address',
         'address_info',
         'postal_code',
         'city',
+        'neighborhood',
         'state',
         'country',
-        'm2',
-        'capacity',
-        'limit_couples',
-        'price_hour',
-        'price_month',
-        'dance_shoes',
-        'comments',
         'contact',
         'email',
         'phone',
         'contract',
         'video',
-        'public'
+        'entry_code',
+        'comments',
+        'google_maps_shortlink',
+        'google_maps',
+        'public_transportation',        
     ];
 
     /**
@@ -94,22 +94,14 @@ class Location extends Model
         'video' => 'string'
     ];
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        'name' => 'required',
-        'address' => 'required',
-        'postal_code' => 'required',
-        'city' => 'required',
-        'state' => 'required',
-        'country' => 'required',
-        'contract' => 'rules text textarea ii'
-    ];
+    public function sluggable()
+    {
+        return [
+            'slug' => [ 'source' => 'name' ]
+        ];
+    }
 
-    public function comments()
+    public function classrooms()
     {
         return $this->hasMany(Classroom::class);
     }

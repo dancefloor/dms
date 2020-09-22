@@ -21,6 +21,7 @@ class CreateCoursesTable extends Migration
             $table->text('description')->nullable();            
             $table->text('excerpt')->nullable();            
             $table->string('tagline')->nullable();  
+            $table->string('keywords')->nullable();  
             
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
@@ -63,21 +64,26 @@ class CreateCoursesTable extends Migration
             $table->decimal('full_price')->nullable();
             $table->decimal('reduced_price')->nullable();
             $table->decimal('promo_price')->nullable();
+            $table->decimal('live_price')->nullable();
+            $table->decimal('online_price')->nullable();
                         
             $table->string('thumbnail')->nullable();                    
-            
-            $table->set('focus',['partnerwork','footwork','choreography', 'styling', 'body movements', 'theory']);
-            $table->enum('type',['bootcamp','class', 'workshop', 'online'])->nullable(); 
-            $table->enum('status',['active','finished','soon'])->nullable();
+            $table->string('portrait')->nullable();                    
+                        
+            $table->set('focus',['partnerwork','footwork','choreography', 'styling', 'isolations', 'theory', 'wellness']);
+            $table->enum('type',['bootcamp','class', 'workshop'])->nullable(); 
+            $table->boolean('is_online')->default(0);
+            $table->enum('status',['active','finished','draft'])->nullable();
             
             $table->string('online_link')->nullable(); 
-            $table->string('online_id')->nullable(); 
-            $table->string('online_password')->nullable();
-
             $table->integer('limit')->nullable();
+            // $table->string('online_id')->nullable(); 
+            // $table->string('online_password')->nullable();
+
+            $table->boolean('to_waiting')->nullable()->default(0);
             
             $table->unsignedBigInteger('user_id');
-            $table->bigInteger('location_id')->nullable();
+            $table->bigInteger('classroom_id')->nullable();
             
             $table->timestamps();
             $table->softDeletes();

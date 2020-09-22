@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\DB;
 
 use function PHPSTORM_META\map;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
+    
     use Notifiable;
 
     /**

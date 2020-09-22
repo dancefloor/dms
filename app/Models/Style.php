@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -26,10 +26,17 @@ class Style extends Model
     public $fillable = [
         'name',
         'description',
+        'slug',
         'icon',
-        'image'
+        'image',
+        'music',
+        'family',
+        'color',        
+        'origin',        
+        'music',
+        'year',
     ];
-
+    
     /**
      * The attributes that should be casted to native types.
      *
@@ -43,19 +50,42 @@ class Style extends Model
         'image' => 'string'
     ];
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        'name' => 'required'
-    ];
-
     public function courses()
     {
-
         return $this->belongsToMany(Course::class);
+    }
+
+    public function scopeSearch($query, $term){
+        $term = trim($term);
+        return $query->where(function($query) use ($term){
+            $query->where('name', 'LIKE', "%{$term}%")
+                  ->orWhere('family', 'LIKE', "%{$term}%")
+                  ->orWhere('origin', 'LIKE', "%{$term}%");
+        });
+    }
+
+    public function scopeCubanSalsa($query){
+        return $this->where('family','Cuban Salsa');
+    }
+
+    public function scopelineSalsa($query){
+        return $this->where('family','Line Salsa');
+    }
+
+    public function scopeUrban($query){
+        return $this->where('family','Urban');
+    }
+
+    public function scopeSensual($query){
+        return $this->where('family','Sensual');
+    }
+
+    public function scopeSport($query){
+        return $this->where('family','Sport');
+    }
+
+    public function scopeFusion($query){
+        return $this->where('family','Fusion');
     }
 
     

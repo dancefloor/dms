@@ -21,6 +21,7 @@ class CreateSkillsTable extends Migration
             $table->string('icon')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
+            $table->text('video')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

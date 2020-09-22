@@ -115,7 +115,7 @@
                             <div class="flex">
                                 @foreach ($item->teachers as $teacher)
                                 <img src="{{$teacher->avatar}}" alt=""
-                                    class="w-10 rounded-full border hover:border-white shadow-solid -ml-1">
+                                    class="w-8 h-8 rounded-full border hover:border-white shadow-solid -ml-1">
                                 @endforeach
                             </div>
                         </div>

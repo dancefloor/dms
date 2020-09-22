@@ -6,11 +6,13 @@ use App\Http\Requests\CreatePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 use App\Repositories\PaymentRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Mail\RegistrationPaymentConfirmation;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Service\RegistrationPaymentManager;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Mail;
 use Response;
 
 class PaymentController extends AppBaseController
@@ -62,22 +64,24 @@ class PaymentController extends AppBaseController
         $input = $request->all();
 
         $payment = Payment::create([            
-            'code'      => $request->code,
-            'provider'  => $request->provider,
-            'method'    => $request->method,
-            'amount'    => $request->amount,
+            'code'          => $request->code,
+            'provider'      => $request->provider,
+            'method'        => $request->method,
+            'amount'        => $request->amount,
             'amount_received' => $request->amount_received,
-            'currency'  => $request->currency,
-            'comments'  => $request->comments,
-            'received_date'  => $request->received_date,
-            'status'    => 'paid'
+            'currency'      => $request->currency,
+            'comments'      => $request->comments,
+            'received_date' => $request->received_date,
+            'status'        => 'paid'
         ]);
         
         $payment->order()->associate($request->order)->save();
         
-        RegistrationPaymentManager::updateOrder($request->order);
-
-        session()->flash('success', 'Payment saved successfully.');        
+        $status = RegistrationPaymentManager::updateOrder($request->order);
+        
+        Mail::to(auth()->user()->email)->send(new RegistrationPaymentConfirmation($status));      
+        
+        session()->flash('success', 'Payment saved successfully.');
 
         return redirect(route('payments.index'));
     }

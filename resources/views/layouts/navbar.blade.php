@@ -1,4 +1,4 @@
-<nav class="bg-gray-900" x-data="{ openMenu: false}">
+<nav class="bg-gray-900 relative z-50" x-data="{ openMenu: false}">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -33,10 +33,11 @@
                 </div>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex">
-                        @auth
-                        <a href="{{ route('dashboard') }}" class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900
+                        {{-- @auth
+                        <a href="{{ route('dashboard') }}" class="px-3 py-2 rounded-md text-sm font-medium leading-5
+                        text-white bg-gray-900
                         focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
-                            Dashboard
+                        Dashboard
                         </a>
 
                         @can('crud_courses')
@@ -82,7 +83,7 @@
                         @endcan
 
 
-                        @endauth
+                        @endauth --}}
 
                     </div>
                 </div>
@@ -103,8 +104,8 @@
                     <div>
                         <button id="user-menu" aria-label="User menu" aria-haspopup="true"
                             @click="openAccount = !openAccount" @click.away="openAccount = false"
-                            class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out">
-                            @if (auth()->user()->picture == NULL)
+                            class="flex text-sm border-2 border-gray-500 rounded-full hover:border-gray-300 focus:outline-none focus:border-white transition duration-150 ease-in-out">
+                            @if (auth()->user()->avatar == NULL)
                             <span class="text-white capitalize">{{ auth()->user()->firstname }}</span>
                             @else
                             <img class="h-8 w-8 rounded-full" src="{{ asset(auth()->user()->avatar)}}" alt="" />

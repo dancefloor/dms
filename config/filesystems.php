@@ -57,7 +57,7 @@ return [
 
         'kreativmedia' => [
             'driver' => 'local',
-            'root' => public_path('images'),
+            'root' => public_path('uploads'),
             'visibility' => 'public',
         ],
 

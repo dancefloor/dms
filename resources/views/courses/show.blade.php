@@ -1,4 +1,4 @@
-@extends('layouts.back')
+@extends('layouts.front')
 
 @section('content')
 
@@ -8,15 +8,28 @@
 
 <div class="container mx-auto">
     <div class="flex justify-center mx-3">
-        <div class="w-full md:w-4/5">
-            @include('courses.fields.card')
+        <div class="w-full">
+            @include('courses.fields.header')
         </div>
     </div>
 
-    @include('courses.fields.videos')
+    <div class="max-w-7xl m-auto px-3">
+        <div class="flex flex-wrap -mx-3 mt-8">
+            <div class="w-full md:w-2/3 px-3">
+                @include('courses.fields.main.default')
+                @include('courses.fields.main.extra')
+                @include('courses.fields.main.classroom')
+            </div>
+            <div class="w-full md:w-1/3 px-3">
+                @include('courses.fields.sidebar.table')
+            </div>
+        </div>
+    </div>
 
-    @include('courses.fields.description')
 
+
+    {{-- @include('courses.fields.videos')
+    @include('courses.fields.description')--}}
     @include('courses.fields.students')
 
     <div class="flex justify-center my-5">
@@ -47,8 +60,5 @@
         </div>
     </div>
 </div>
-
 @endif
-
-
 @endsection

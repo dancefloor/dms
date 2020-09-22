@@ -83,9 +83,12 @@ class Course extends Model
         'teaser_video_2',
         'teaser_video_3',
 
+        'is_online',
+        'to_waiting',
+
         'online_link',
-        'online_id',
-        'online_password',
+        // 'online_id',
+        // 'online_password',
 
         'level',
         'level_number',
@@ -93,10 +96,12 @@ class Course extends Model
         'full_price',
         'reduced_price',
         'promo_price',
+        'online_price',
 
         'thumbnail',
         'focus',
         'type',
+        'status',
 
         'limit',
     ];
@@ -150,11 +155,15 @@ class Course extends Model
         'full_price'    => 'float',
         'reduced_price' => 'float',
         'promo_price'   => 'float',
+        'online_price'  => 'float',
 
         'cover_image'   => 'string',
         'status'        => 'string',
         'focus'         => 'string',
         'type'          => 'string',
+
+        'is_online'     => 'boolean',
+        'to_waiting'    => 'boolean',
 
         'limit'         => 'integer',
 
@@ -221,16 +230,37 @@ class Course extends Model
         return in_array($id, $this->students()->pluck('user_id')->toArray());
     }
 
+
+    public function scopeLiveCourses($query)
+    {
+        return $query->where('is_online','=','1')->where('end_date','<=',now());
+    }
+
+    public function scopeOnlineCourses($query)
+    {
+        return $query->where('is_online','=','1');
+    }
+
+    public function scopeActiveCourses($query)
+    {
+        return $query->whereStatus('active');
+    }
+
+    public function scopeRegularCourses($query)
+    {
+        return $query->where('is_online','0');
+    }
+
     public function getDaysAttribute()
     {
         $days = [];
-        if ($this->monday == 1)     { array_push($days,'mon');}
-        if ($this->tuesday == 1)    { array_push($days,'tue');}
-        if ($this->wednesday == 1)  { array_push($days,'wed');}
-        if ($this->thursday == 1)   { array_push($days,'thu');}
-        if ($this->friday == 1)     { array_push($days,'fri');}
-        if ($this->saturday == 1)   { array_push($days,'sat');}
-        if ($this->sunday == 1)     { array_push($days,'sun');}
+        if ($this->monday == 1)     { array_push($days,'monday');}
+        if ($this->tuesday == 1)    { array_push($days,'tuesday');}
+        if ($this->wednesday == 1)  { array_push($days,'wednesday');}
+        if ($this->thursday == 1)   { array_push($days,'thursday');}
+        if ($this->friday == 1)     { array_push($days,'friday');}
+        if ($this->saturday == 1)   { array_push($days,'saturday');}
+        if ($this->sunday == 1)     { array_push($days,'sunday');}
         return $days;
     }
 
@@ -273,3 +303,4 @@ class Course extends Model
         return $url;
     }
 }
+
