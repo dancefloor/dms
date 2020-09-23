@@ -14,15 +14,13 @@
 </header>
 
 <div class="flex justify-center mt-5 mb-10">
-    <div class="rounded-lg overflow-hidden">
-        @if ($course->teaser_video_1)
-        {!! $course->teaser_video_1 !!}
-        @else
-        @if ($course->thumbnail)
-        <img src="{{ asset('images/' . $course->thumbnail) }}" alt="" class="rounded-lg">
-        @else
-        <img src="{{ asset('images/coco-fred.jpg') }}" alt="" class="rounded-lg">
-        @endif
-        @endif
-    </div>
+    @if ($course->teaser_video_1)
+    {!! $course->teaser_video_1 !!}
+    @else
+    @if ($course->thumbnail)
+    <img src="{{ asset('images/' . $course->thumbnail) }}" alt="" class="rounded-lg">
+    @else
+    <img src="{{ asset('images/coco-fred.jpg') }}" alt="" class="rounded-lg">
+    @endif
+    @endif
 </div>
