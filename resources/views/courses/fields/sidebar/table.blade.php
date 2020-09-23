@@ -136,15 +136,16 @@
                                     </tr>
                                     @endif
 
-                                    @if ($course->online_price)
+                                    {{-- @if ($course->online_price)
                                     <tr>
                                         <td>Online price</td>
-                                        <td>{{ $course->online_price }} CHF</td>
-                                    </tr>
-                                    @endif
-                                </table>
+                                        <td>{{ $course->online_price }} CHF
                             </td>
                         </tr>
+                        @endif --}}
+                    </table>
+                    </td>
+                    </tr>
                     </table>
                 </div>
             </div>
@@ -163,7 +164,7 @@
                 @csrf
                 <button type="submit" id="register" title="Register"
                     class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-2 md:text-lg md:px-10">
-                    Register {{ $course->online_price }}
+                    Register {{ $course->online_price }} CHF
                 </button>
             </form>
             @else

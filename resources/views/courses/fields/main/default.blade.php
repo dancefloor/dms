@@ -1,4 +1,4 @@
-<p class="text-gray-700 text-base">{{ $course->excerpt }}</p>
+<p class="text-gray-700 text-base">{!! $course->excerpt !!}</p>
 
 <div class="pt-4 mt-1">
     <span
@@ -16,7 +16,7 @@
 @if ($course->description)
 <hr class="my-5">
 
-<p class="text-gray-700 text-base">{{ $course->description }}</p>
+<p class="text-gray-700 text-base">{!! $course->description !!}</p>
 
 @endif
 
