@@ -2,13 +2,13 @@
 
 <div class="pt-4 mt-1">
     <span
-        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">#{{ $course->type }}</span>
+        class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2 mb-1">#{{ $course->type }}</span>
     <span
-        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">#{{ $course->focus }}</span>
+        class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2 mb-1">#{{ $course->focus }}</span>
 
     @if ($course->is_online == 1)
     <span
-        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">#online</span>
+        class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2 mb-1">#online</span>
     @endif
 
 </div>
