@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             StyleSeeder::class,
             LocationSeeder::class,
             ClassroomSeeder::class,
-            CourseSeeder::class,
+            //CourseSeeder::class,
             ]
         );
     }

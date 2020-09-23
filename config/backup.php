@@ -145,7 +145,7 @@ return [
         ],
 
         'slack' => [
-            'webhook_url' => 'https://hooks.slack.com/services/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',
+            'webhook_url' => 'https://hooks.slack.com/services/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',
 
             /*
              * If this is set to null the default channel of the webhook will be used.

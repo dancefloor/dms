@@ -233,7 +233,7 @@ class Course extends Model
 
     public function scopeLiveCourses($query)
     {
-        return $query->where('is_online','=','1')->where('end_date','<=',now());
+        return $query->where('is_online','1')->where('end_date','<=',now());
     }
 
     public function scopeOnlineCourses($query)
