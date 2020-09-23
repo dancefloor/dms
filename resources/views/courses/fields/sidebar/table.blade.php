@@ -27,7 +27,7 @@
                 </span>
             </div>
 
-            <div class="font-bold text-sm mb-2 inline-flex items-top text-gray-700">
+            <div class="font-bold text-sm mb-2 block items-top text-gray-700">
                 @include('icons.time')
                 <table class="w-full ml-2">
                     <tr>
@@ -110,72 +110,78 @@
             </div>
             @endif
 
-            <div class="font-bold mb-2 inline-flex items-top text-gray-700">
-                @include('icons.price-tag')
-                <table class="w-full ml-2">
-                    <tr>
-                        <td valign="top" class="pr-2">Price</td>
-                        <td>
-                            <table class="w-full text-sm">
-                                <tr>
-                                    <td>Full Price</td>
-                                    <td>{{ $course->full_price }} CHF</td>
-                                </tr>
-                                @if ($course->reduced_price)
-                                <tr>
-                                    <td>Reduced price</td>
-                                    <td>{{ $course->reduced_price }} CHF</td>
-                                </tr>
-                                @endif
+            <div class="font-bold mb-2 text-gray-700">
+                <div class="inline-flex items-top">
+                    @include('icons.price-tag')
+                    <table class="w-full ml-2">
+                        <tr>
+                            <td valign="top" class="pr-2">Price</td>
+                            <td>
+                                <table class="w-full text-sm">
+                                    <tr>
+                                        <td>Full Price</td>
+                                        <td>{{ $course->full_price }} CHF</td>
+                                    </tr>
+                                    @if ($course->reduced_price)
+                                    <tr>
+                                        <td>Reduced price</td>
+                                        <td>{{ $course->reduced_price }} CHF</td>
+                                    </tr>
+                                    @endif
 
-                                @if ($course->promo_price)
-                                <tr>
-                                    <td>Promotion</td>
-                                    <td>{{ $course->promo_price }} CHF</td>
-                                </tr>
-                                @endif
+                                    @if ($course->promo_price)
+                                    <tr>
+                                        <td>Promotion</td>
+                                        <td>{{ $course->promo_price }} CHF</td>
+                                    </tr>
+                                    @endif
 
-                                @if ($course->online_price)
-                                <tr>
-                                    <td>Online price</td>
-                                    <td>{{ $course->online_price }} CHF</td>
-                                </tr>
-                                @endif
-                            </table>
-                        </td>
-                    </tr>
-                </table>
+                                    @if ($course->online_price)
+                                    <tr>
+                                        <td>Online price</td>
+                                        <td>{{ $course->online_price }} CHF</td>
+                                    </tr>
+                                    @endif
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <br>
             @auth
             @if (!auth()->user()->isRegistered($course->id))
+            {{-- <form action="{{ route('registration.add', $course->id) }}" method="post">
+            @csrf
+            <button type="submit" id="register" title="Register"
+                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-2 md:text-lg md:px-10">
+                Register Course 160 CHF
+            </button>
+            </form> --}}
+            {{-- <br> --}}
             <form action="{{ route('registration.add', $course->id) }}" method="post">
                 @csrf
                 <button type="submit" id="register" title="Register"
                     class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-2 md:text-lg md:px-10">
-                    Register Course 160 CHF
-                </button>
-            </form>
-            <br>
-            <form action="{{ route('registration.add', $course->id) }}" method="post">
-                @csrf
-                <button type="submit" id="register" title="Register"
-                    class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-2 md:text-lg md:px-10">
-                    Register Online 40 CHF
+                    Register {{ $course->online_price }}
                 </button>
             </form>
             @else
             @php $user_status = auth()->user()->registrationStatus($course->id) @endphp
             @if ($user_status == 'pre-registered')
             <a href="{{ route('checkout') }}"
-                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-2 md:text-lg md:px-10">
+                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition duration-150 ease-in-out md:py-2 md:text-lg md:px-10">
                 Checkout
             </a>
             @endif
-
+            <a href="{{ $course->online_link }}"
+                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-700 hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition duration-150 ease-in-out md:py-2 md:text-lg md:px-10">
+                Facebook Group
+            </a>
             <div class="flex justify-center my-3">
                 <x-registration-status uid="{{ auth()->user()->id }}" cid="{{ $course->id }}" />
             </div>
+
             @endif
             @else
             <a href="{{ route('login') }}"

@@ -6,14 +6,14 @@
 @include('courses.online')
 @else
 
-<div class="container mx-auto">
+<div class="max-w-6xl mx-auto">
     <div class="flex justify-center mx-3">
         <div class="w-full">
             @include('courses.fields.header')
         </div>
     </div>
 
-    <div class="max-w-7xl m-auto px-3">
+    <div class="max-w-6xl m-auto px-3">
         <div class="flex flex-wrap -mx-3 mt-8">
             <div class="w-full md:w-2/3 px-3">
                 @include('courses.fields.main.default')
