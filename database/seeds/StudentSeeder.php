@@ -209,16 +209,7 @@ class StudentSeeder extends Seeder
             'gender'    => '',
             'facebook'  => 'Thyphaine Desmonts',
         ]);
-        User::create([
-            'email'     => 'te.frederic@gmail.com',
-            'email_verified_at' => now(),
-            'password'  => '$2y$10$UNX1dW20SSa8gqzqZoVq5emO3SeOXLgkMvCDhrddH7j89TuZ2pPya',    
-            'firstname' => 'Fred',
-            'lastname'  => 'Dancefloor', 
-            'birthday'  => '',
-            'gender'    => 'male',
-            'facebook'  => 'Fred dancefloor',
-        ]);
+
         User::create([
             'email'     => 'sylianetanguy@hotmail.com',
             'email_verified_at' => now(),

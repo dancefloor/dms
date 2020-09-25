@@ -59,15 +59,16 @@ class TeamSeeder extends Seeder
         $fred = User::firstOrCreate([
             'firstname'     => 'Fred',
             'lastname'      => 'Dancefloor',
-            'email'         => 'fred@dancefloorgenevasalsa.ch',
-            'password'      => Hash::make('password'),
+            'email'         => 'te.frederic@gmail.com',
+            'password'      => '$2y$10$UNX1dW20SSa8gqzqZoVq5emO3SeOXLgkMvCDhrddH7j89TuZ2pPya',
             'picture'       => 'images/teachers/fred-square.png',
             'portrait'      => 'images/teachers/fred.jpg',
             'gender'        => 'male',
             'mobile'        => '+41 76 571 2003',
-            'email_verified_at' => now(),
+            'email_verified_at' => now(),            
         ]);        
         $fred->roles()->attach([2, 3]);
+
 
         $kelly = User::firstOrCreate([
             'firstname'     => 'Kelly',
