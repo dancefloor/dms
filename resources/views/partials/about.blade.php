@@ -3,7 +3,7 @@
     About
     {{-- <span class="text-red-800">DANCEFLOOR</span> --}}
 </h2>
-<div class="flex justify-center">
+<div class="flex justify-center mx-3">
     <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl md:w-2/3">
         With nearly 400 students, 16 teachers and an international reputation acquired through its
         teaching and its shows around the world, Dancefloor wishes to share its experience of dance with
