@@ -68,7 +68,7 @@
     </div>
     @endif
 
-    <main>
+    <main class="mt-16">
         @yield('content')
     </main>
 

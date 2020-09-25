@@ -37,7 +37,7 @@
                         </p>
                         <div class="mt-3 sm:flex">
                             <a href="#live"
-                                class="mt-3 w-full px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-700 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray active:bg-gray-900 transition duration-150 ease-in-out sm:mt-0 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto">
+                                class="mt-3 mr-2 md:mr-0 w-full px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-700 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray active:bg-gray-900 transition duration-150 ease-in-out sm:mt-0 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto">
                                 Live classes
                             </a>
                             <a href="#online"
@@ -57,7 +57,7 @@
                                 <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
                             </pattern>
                         </defs>
-                        <rect y="72" width="640" height="640" class="text-gray-50" fill="currentColor" />
+                        <rect y="72" width="640" height="640" class="text-gray-100" fill="currentColor" />
                         <rect x="118" width="404" height="784" fill="url(#4f4f415c-a0e9-44c2-9601-6ded5a34a13e)" />
                     </svg>
                     <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">

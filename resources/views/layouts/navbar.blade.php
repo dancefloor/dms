@@ -1,4 +1,4 @@
-<nav class="bg-gray-900 relative z-50" x-data="{ openMenu: false}">
+<nav class="bg-gray-900 fixed top-0 w-full z-50" x-data="{ openMenu: false}">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -146,11 +146,11 @@
                 @else
 
                 <a href="{{ url('/login') }}"
-                    class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+                    class="ml-1 md:ml-4 px-2 md:px-3 py-2 rounded-md text-xs md:text-base font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
                     Login
                 </a>
                 <a href="{{ url('/register') }}"
-                    class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+                    class="ml-1 md:ml-4 px-2 md:px-3 py-2 rounded-md text-xs md:text-base font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
                     Register
                 </a>
                 @endauth

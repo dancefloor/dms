@@ -38,7 +38,7 @@
         </aside>
         @endif
 
-        <main class="flex-1 flex flex-col overflow-hidden bg-gray-100">
+        <main class="flex-1 flex flex-col overflow-hidden bg-gray-100 mt-8">
             <div class="px-6 py-4 flex-1 overflow-y-scroll">
                 <div class="mt-10 container mx-auto px-2 sm:px-6">
                     @if (session()->has('success'))

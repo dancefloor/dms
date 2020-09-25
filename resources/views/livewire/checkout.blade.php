@@ -19,7 +19,9 @@
                 <tr>
                     <td class="{{ $loop->last ? '' : 'border-b'}} pl-3">{{ $item->name }}</td>
                     <td class="{{ $loop->last ? '' : 'border-b'}}">
+                        @if ($item->start_date)
                         {{ $item->start_date->format('d F Y') }} - {{ $item->end_date->format('d M yy') }}
+                        @endif
                     </td>
                     <td class="{{ $loop->last ? '' : 'border-b'}}">{{ $item->level }}</td>
                     <td class="{{ $loop->last ? '' : 'border-b'}}">

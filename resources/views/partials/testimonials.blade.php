@@ -2,7 +2,7 @@
     <h2 class="text-center text-white text-5xl pt-20 font-bold">Testimonials</h2>
 
     <div class="max-w-screen-xl mx-auto md:grid md:grid-cols-2 md:px-6 lg:px-8">
-        <div class="py-12 px-4 sm:px-6 md:flex md:flex-col md:py-10 md:pl-0 md:pr-10 lg:pr-16">
+        <div class="py-8 px-4 sm:px-6 md:flex md:flex-col md:py-10 md:pl-0 md:pr-10 lg:pr-16">
             <blockquote class="mt-8 md:flex-grow md:flex md:flex-col">
                 <div class="relative text-lg leading-7 font-medium text-white md:flex-grow">
                     <svg class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-800"
@@ -19,8 +19,7 @@
                 <footer class="mt-8">
                     <div class="flex">
                         <div class="flex-shrink-0 inline-flex rounded-full border-2 border-white">
-                            <img class="h-12 w-12 rounded-full"
-                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            <img class="h-12 w-12 rounded-full" src="{{ asset('testimonials/nicole-sommer.jpg')}}"
                                 alt="">
                         </div>
                         <div class="ml-4">
@@ -32,7 +31,7 @@
             </blockquote>
         </div>
 
-        <div class="py-12 px-4 sm:px-6 md:py-10 md:pr-0 md:pl-10 lg:pl-16">
+        <div class="py-8 px-4 sm:px-6 md:py-10 md:pr-0 md:pl-10 lg:pl-16">
             <blockquote class="mt-8 md:flex-grow md:flex md:flex-col">
                 <div class="relative text-lg leading-7 font-medium text-white md:flex-grow">
                     <svg class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-800"
@@ -50,8 +49,7 @@
                     <div class="flex">
                         <div class="flex-shrink-0 inline-flex rounded-full border-2 border-white">
                             <img class="h-12 w-12 rounded-full"
-                                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt="">
+                                src="{{ asset('testimonials/guillaume-de-toulouse.jpg')}}" alt="">
                         </div>
                         <div class="ml-4">
                             <div class="text-base leading-6 font-medium text-white">Guillaume Detoulouse</div>
@@ -67,7 +65,7 @@
 
 
     <div class="max-w-screen-xl mx-auto md:grid md:grid-cols-2 md:px-6 lg:px-8">
-        <div class="py-12 px-4 sm:px-6 md:flex md:flex-col md:py-10 md:pl-0 md:pr-10 lg:pr-16">
+        <div class="py-8 px-4 sm:px-6 md:flex md:flex-col md:py-10 md:pl-0 md:pr-10 lg:pr-16">
             <blockquote class="mt-8 md:flex-grow md:flex md:flex-col">
                 <div class="relative text-lg leading-7 font-medium text-white md:flex-grow">
                     <svg class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-800"
@@ -87,8 +85,7 @@
                 <footer class="mt-8">
                     <div class="flex">
                         <div class="flex-shrink-0 inline-flex rounded-full border-2 border-white">
-                            <img class="h-12 w-12 rounded-full"
-                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            <img class="h-12 w-12 rounded-full" src="{{ asset('testimonials/isabela-bagueros.jpg')}}"
                                 alt="">
                         </div>
                         <div class="ml-4">
@@ -102,7 +99,7 @@
 
 
 
-        <div class="py-12 px-4 sm:px-6 md:py-10 md:pr-0 md:pl-10 lg:pl-16">
+        <div class="py-8 px-4 sm:px-6 md:py-10 md:pr-0 md:pl-10 lg:pl-16">
             <blockquote class="mt-8 md:flex-grow md:flex md:flex-col">
                 <div class="relative text-lg leading-7 font-medium text-white md:flex-grow">
                     <svg class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-800"
@@ -120,8 +117,7 @@
                 <footer class="mt-8">
                     <div class="flex">
                         <div class="flex-shrink-0 inline-flex rounded-full border-2 border-white">
-                            <img class="h-12 w-12 rounded-full"
-                                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            <img class="h-12 w-12 rounded-full" src="{{ asset('testimonials/veronique-zeau.jpg')}}"
                                 alt="">
                         </div>
                         <div class="ml-4">
@@ -138,7 +134,7 @@
 
 
     <div class="max-w-screen-xl mx-auto md:grid md:grid-cols-2 md:px-6 lg:px-8">
-        <div class="py-12 px-4 sm:px-6 md:flex md:flex-col md:py-10 md:pl-0 md:pr-10 lg:pr-16">
+        <div class="py-8 px-4 sm:px-6 md:flex md:flex-col md:py-10 md:pl-0 md:pr-10 lg:pr-16">
             <blockquote class="mt-8 md:flex-grow md:flex md:flex-col">
                 <div class="relative text-lg leading-7 font-medium text-white md:flex-grow">
                     <svg class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-800"
@@ -154,8 +150,7 @@
                 <footer class="mt-8">
                     <div class="flex">
                         <div class="flex-shrink-0 inline-flex rounded-full border-2 border-white">
-                            <img class="h-12 w-12 rounded-full"
-                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            <img class="h-12 w-12 rounded-full" src="{{ asset('testimonials/lori-patterson.jpg')}}"
                                 alt="">
                         </div>
                         <div class="ml-4">
@@ -171,7 +166,7 @@
 
 
 
-        <div class="py-12 px-4 sm:px-6 md:py-10 md:pr-0 md:pl-10 lg:pl-16">
+        <div class="py-8 px-4 sm:px-6 md:py-10 md:pr-0 md:pl-10 lg:pl-16">
             <blockquote class="mt-8 md:flex-grow md:flex md:flex-col">
                 <div class="relative text-lg leading-7 font-medium text-white md:flex-grow">
                     <svg class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-800"
@@ -186,9 +181,7 @@
                 <footer class="mt-8">
                     <div class="flex">
                         <div class="flex-shrink-0 inline-flex rounded-full border-2 border-white">
-                            <img class="h-12 w-12 rounded-full"
-                                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt="">
+                            <img class="h-12 w-12 rounded-full" src="{{ asset('testimonials/ana-vinas.jpg')}}" alt="">
                         </div>
                         <div class="ml-4">
                             <div class="text-base leading-6 font-medium text-white">Ana Viñas</div>

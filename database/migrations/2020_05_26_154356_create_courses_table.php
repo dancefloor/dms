@@ -20,6 +20,7 @@ class CreateCoursesTable extends Migration
             $table->string('slug');
             $table->text('description')->nullable();            
             $table->text('excerpt')->nullable();            
+            $table->text('online_desc')->nullable();            
             $table->string('tagline')->nullable();  
             $table->string('keywords')->nullable();  
             

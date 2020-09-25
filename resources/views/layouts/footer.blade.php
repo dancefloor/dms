@@ -33,7 +33,7 @@
                     </div>
 
                     <div>
-                        <a href="https://www.instagram.com/dancefloor_team/" target="_blank"
+                        <a href="https://www.instagram.com/dancefloor_studio_/" target="_blank"
                             class="text-white bg-pink-700 rounded-full inline-flex p-3 hover:bg-pink-800 mx-2 inline-flex">
                             @include('icons.social.instagram')
                         </a>

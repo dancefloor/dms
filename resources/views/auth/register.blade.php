@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="w-full max-w-md -mt-10">
+<div class="w-full max-w-md -mt-10" x-data="{ showInfo: false }" @keydown.escape="showInfo = !showInfo" x-cloak>
     <div class="flex justify-center py-4">
         @include('icons.logo-white',['style'=>'h-16'])
     </div>
@@ -41,8 +41,19 @@
                 class="appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none @error('lastname') border-red-500 @enderror"
                 id="facebook" type="text" placeholder="Facebook profile link" name="facebook"
                 value="{{ old('facebook') }}" required autocomplete="facebook">
-            <p class="text-xs text-gray-500 ml-2">*Required for the private Facebook group</p>
+            <p class="text-xs text-gray-500 ml-2">*Required for the private Facebook group.
+                <button @click="showInfo = !showInfo" type="button" class="underline">More info</button>
+            </p>
+            <div x-show="showInfo" @click.away="showInfo = false">
+                @include('partials.auth-alert')
+            </div>
+            @error('facebook')
+            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+            @enderror
         </div>
+
+
+
 
         <div class="mb-4">
             <input
@@ -69,6 +80,16 @@
                 class="appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none @error('password') border-red-500 @enderror"
                 type="password" id="password-confirm" name="password_confirmation"
                 placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">
+        </div>
+
+        <div class="mb-4">
+            <input
+                class="appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none @error('country') border-red-500 @enderror"
+                type="text" id="country" name="country" placeholder="Country of residence" value="{{ old('country') }}"
+                required autocomplete="country">
+            @error('country')
+            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="mb-4">
@@ -106,9 +127,10 @@
                     <option value="party">Dance Party</option>
                     <option value="festival">In a Festival</option>
                     <option value="friend">From a friend</option>
+                    <option value="ads">Social media ads(Facebook, instagram, twitter, etc)</option>
                     <option value="public-manifestation">Public manifestation (ex: Fête de Genève, Automnales)</option>
                     <option value="instructor">From an instructor</option>
-                    <option value="old-student">I am an old student</option>
+                    <option value="current-student">I am a current dancefloor student</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor">

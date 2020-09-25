@@ -27,7 +27,6 @@
     </div>
 
 
-
     {{-- @include('courses.fields.videos')
     @include('courses.fields.description')--}}
     @include('courses.fields.students')

@@ -17,10 +17,7 @@
 {{ base_path('public/paypal.png') }} --}}
 
 {{-- {{auth()->user()->email}} --}}
-<section class="my-20">
 
-    @include('partials.testimonials')
-</section>
 
 <div id="live" class="container mx-auto my-20">
     <div class="py-5 border-t border-gray-300 space-y-2 px-3 mb-5">
@@ -54,6 +51,11 @@
 
 <section id="about" class="container mx-auto my-20">
     @include('partials.about')
+    <br>
+</section>
+
+<section class="mt-20">
+    @include('partials.testimonials')
 </section>
 
 @endsection
