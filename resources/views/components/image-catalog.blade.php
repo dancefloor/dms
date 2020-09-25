@@ -8,7 +8,7 @@
                     {{-- <img class="h-48 w-full object-cover" src="{{ asset('uploads/' . $course->thumbnail)}}" alt="">
                     --}}
                 </div>
-                <div class="flex-1 bg-white p-6 flex flex-col justify-between -mt-1 relative z-10">
+                <div class="flex-1 bg-white p-6 flex flex-col justify-between -mt-2 relative z-10">
                     <div class="flex-1">
                         <div class="flex justify-between items-center">
                             <p class="text-base leading-6 text-gray-500 capitalize">

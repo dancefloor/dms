@@ -29,7 +29,9 @@
             classroom energy, ask direct questions to the teachers, and review the videos of the class afterwards.
         </p>
     </div>
-    <x-catalogue :courses="$live" />
+    <div class="mx-3">
+        <x-catalogue :courses="$live" />
+    </div>
     <br>
 </div>
 
@@ -44,7 +46,9 @@
                 private facebook group and you can decide to progress at your own pace
             </p>
         </div>
-        <x-image-catalog :courses="$online" />
+        <div class="mx-3">
+            <x-image-catalog :courses="$online" />
+        </div>
     </div>
 </div>
 

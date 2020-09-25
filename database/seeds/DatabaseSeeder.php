@@ -3,6 +3,7 @@
 use App\Classroom;
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,11 +12,12 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {        
         $this->call([
             RoleSeeder::class,
-            TeamSeeder::class,
-            StudentSeeder::class,
+            //TeamSeeder::class,
+            'TeamSeeder',
+            //StudentSeeder::class,
             StyleSeeder::class,
             LocationSeeder::class,
             ClassroomSeeder::class,
