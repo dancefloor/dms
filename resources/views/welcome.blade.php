@@ -11,6 +11,10 @@
 
 @include('partials.landing')
 
+<section class="">
+    @include('partials.testimonials')
+</section>
+
 
 {{-- {{ env('APP_URL').'/storage' }}
 <br>
@@ -56,10 +60,6 @@
 <section id="about" class="container mx-auto my-20">
     @include('partials.about')
     <br>
-</section>
-
-<section class="mt-20">
-    @include('partials.testimonials')
 </section>
 
 @endsection

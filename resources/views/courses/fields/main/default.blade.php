@@ -37,6 +37,7 @@
 
     @endforelse
 </div>
+<br>
 @endif
 
 @if ($course->teaser_video_2)

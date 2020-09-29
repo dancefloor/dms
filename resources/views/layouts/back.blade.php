@@ -31,7 +31,7 @@
 
     <section class="flex flex-row h-screen">
         @if(auth()->user()->hasVerifiedEmail())
-        <aside class="flex-none w-64 pb-6 hidden md:block bg-gray-800 text-white">
+        <aside class="flex-none w-64 pb-6 hidden md:block bg-gray-800 text-white mt-8">
             <nav class="mt-10 px-10 relative z-10">
                 @include('layouts.navigation')
             </nav>
