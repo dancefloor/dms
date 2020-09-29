@@ -3,12 +3,14 @@
     <div class="w-full md:w-1/3 px-6 mb-3">
         <a href="{{route('courses.show', $course )}}">
             <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-                <div class="flex-shrink-0 h-56">
-                    {!! $course->teaser_video_1 !!}
-                    {{-- <img class="h-48 w-full object-cover" src="{{ asset('uploads/' . $course->thumbnail)}}" alt="">
-                    --}}
+                <div class="flex-shrink-0">
+                    {{-- <div class="relative min-h-0 overflow-hidden">
+                        {!! $course->teaser_video_1 !!}
+                    </div> --}}
+
+                    <img class="h-48 w-full object-cover" src="{{ asset('uploads/' . $course->thumbnail)}}" alt="">
                 </div>
-                <div class="flex-1 bg-white p-6 flex flex-col justify-between -mt-8 sm:-mt-5 md:-mt-2 relative z-10">
+                <div class="flex-1 bg-white p-6 flex flex-col justify-between relative z-10">
                     <div class="flex-1">
                         <div class="flex justify-between items-center">
                             <p class="text-base leading-6 text-gray-500 capitalize">

@@ -31,6 +31,7 @@
     @include('courses.fields.description')--}}
     @include('courses.fields.students')
 
+    @can('crud_courses')
     <div class="flex justify-center my-5">
         <div class="w-full md:w-3/5 my-5">
             <div class="flex justify-between">
@@ -58,6 +59,10 @@
             </div>
         </div>
     </div>
+    @endcan
+    <br>
+
+
 </div>
 @endif
 @endsection

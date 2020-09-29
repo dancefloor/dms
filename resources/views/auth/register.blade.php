@@ -105,9 +105,10 @@
         <div class="mb-4">
             <label for="" class="text-gray-700 ml-2 mr-3">Gender</label>
             <label for="gender">
-                <input type="radio" name="gender" value="male">
+                <input type="radio" id="gender" name="gender" value="male" {{ old('gender') == 'male' ? 'checked':''}}>
                 <span class="ml-1 mr-3 text-sm text-gray-600">Male</span>
-                <input type="radio" name="gender" value="female">
+                <input type="radio" name="gender" id="gender" value="female"
+                    {{ old('gender') == 'female' ? 'checked':''}}>
                 <span class="ml-1 mr-3 text-sm text-gray-600">Female</span>
             </label>
             @error('gender')
@@ -121,16 +122,27 @@
                     class="block appearance-none w-full bg-white border border-gray-300 text-gray-600 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="aware_of_df" name="aware_of_df" required>
                     <option disabled selected>How did you first heard about dancefloor</option>
-                    <option value="facebook">Facebook</option>
-                    <option value="instagram">Instagram</option>
-                    <option value="google">Google</option>
-                    <option value="party">Dance Party</option>
-                    <option value="festival">In a Festival</option>
-                    <option value="friend">From a friend</option>
-                    <option value="ads">Social media ads(Facebook, instagram, twitter, etc)</option>
-                    <option value="public-manifestation">Public manifestation (ex: Fête de Genève, Automnales)</option>
-                    <option value="instructor">From an instructor</option>
-                    <option value="current-student">I am a current dancefloor student</option>
+                    <option value="facebook" {{ old('aware_of_df') == 'facebook' ? 'selected':'' }}>Facebook</option>
+                    <option value="instagram" {{ old('aware_of_df') == 'instagram' ? 'selected':'' }}>Instagram</option>
+                    <option value="google" {{ old('aware_of_df') == 'google' ? 'selected':'' }}>Google</option>
+                    <option value="party" {{ old('aware_of_df') == 'party' ? 'selected':'' }}>Dance Party</option>
+                    <option value="festival" {{ old('aware_of_df') ==' festival' ? 'selected':'' }}>
+                        In a Festival
+                    </option>
+                    <option value="friend" {{ old('aware_of_df') == 'friend' ? 'selected':'' }}>From a friend</option>
+                    <option value="ads" {{ old('aware_of_df') == 'ads' ? 'selected':'' }}>
+                        Social media ads(Facebook, instagram, twitter, etc)
+                    </option>
+                    <option value="public-manifestation"
+                        {{ old('aware_of_df') == 'public-manifestation' ? 'selected':'' }}>
+                        Public manifestation (ex: Fête de Genève, Automnales)
+                    </option>
+                    <option value="instructor" {{ old('aware_of_df') == 'instructor' ? 'selected':'' }}>
+                        From an instructor
+                    </option>
+                    <option value="current-student" {{ old('aware_of_df') == 'current-student' ? 'selected':'' }}>
+                        I am a current dancefloor student
+                    </option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor">
