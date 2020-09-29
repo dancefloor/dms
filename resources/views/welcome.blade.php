@@ -39,8 +39,8 @@
     <br>
 </div>
 
-<div class="bg-gray-800 py-10">
-    <div id="online" class="container mx-auto my-20">
+<div class="bg-gray-800 pb-10 pt-5">
+    <div id="online" class="container mx-auto my-10">
         <div class="py-5 border-t border-gray-300 space-y-2 px-3 mb-5">
             <h2 class="text-4xl leading-6 font-bold text-gray-100">
                 Online classes

@@ -1,8 +1,8 @@
 <section class="bg-gray-800">
-    <h2 class="text-center text-white text-5xl pt-8 font-bold">Testimonials</h2>
+    <h2 class="text-center text-white text-5xl pt-5 font-bold">Testimonials</h2>
 
     <div class="max-w-screen-xl mx-auto md:grid md:grid-cols-2 md:px-6 lg:px-8">
-        <div class="py-6 px-4 sm:px-6 md:flex md:flex-col md:py-8 md:pl-0 md:pr-10 lg:pr-16">
+        <div class="py-4 px-4 sm:px-6 md:flex md:flex-col md:py-6 md:pl-0 md:pr-10 lg:pr-16">
             <blockquote class="mt-8 md:flex-grow md:flex md:flex-col">
                 <div class="relative text-lg leading-7 font-medium text-white md:flex-grow">
                     <svg class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-800"
@@ -31,7 +31,7 @@
             </blockquote>
         </div>
 
-        <div class="py-6 px-4 sm:px-6 md:py-8 md:pr-0 md:pl-10 lg:pl-16">
+        <div class="py-4 px-4 sm:px-6 md:py-6 md:pr-0 md:pl-10 lg:pl-16">
             <blockquote class="mt-8 md:flex-grow md:flex md:flex-col">
                 <div class="relative text-lg leading-7 font-medium text-white md:flex-grow">
                     <svg class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-800"
@@ -65,7 +65,7 @@
 
 
     <div class="max-w-screen-xl mx-auto md:grid md:grid-cols-2 md:px-6 lg:px-8">
-        <div class="py-6 px-4 sm:px-6 md:flex md:flex-col md:py-8 md:pl-0 md:pr-10 lg:pr-16">
+        <div class="py-4 px-4 sm:px-6 md:flex md:flex-col md:py-6 md:pl-0 md:pr-10 lg:pr-16">
             <blockquote class="mt-8 md:flex-grow md:flex md:flex-col">
                 <div class="relative text-lg leading-7 font-medium text-white md:flex-grow">
                     <svg class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-800"
@@ -99,7 +99,7 @@
 
 
 
-        <div class="py-6 px-4 sm:px-6 md:py-8 md:pr-0 md:pl-10 lg:pl-16">
+        <div class="py-4 px-4 sm:px-6 md:py-6 md:pr-0 md:pl-10 lg:pl-16">
             <blockquote class="mt-8 md:flex-grow md:flex md:flex-col">
                 <div class="relative text-lg leading-7 font-medium text-white md:flex-grow">
                     <svg class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-800"

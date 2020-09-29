@@ -52,9 +52,6 @@
             @enderror
         </div>
 
-
-
-
         <div class="mb-4">
             <input
                 class="appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none @error('email') border-red-500 @enderror"
@@ -97,6 +94,9 @@
                 class="appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none @error('birthday') border-red-500 @enderror"
                 type="text" id="birthday" name="birthday" placeholder="Birthday" value="{{ old('birthday') }}" required
                 autocomplete="birthday">
+            <p class="text-xs text-gray-500 ml-2">
+                *Please click to select your birthday.
+            </p>
             @error('birthday')
             <p class="text-red-500 text-xs italic">{{ $message }}</p>
             @enderror
