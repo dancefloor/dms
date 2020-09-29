@@ -15,7 +15,10 @@
 
 <div class="flex justify-center mt-5 mb-10">
     @if ($course->teaser_video_1)
-    {!! $course->teaser_video_1 !!}
+    <div class="h-48 sm:h-full md:w-full">
+        {!! $course->teaser_video_1 !!}
+    </div>
+
     @else
     @if ($course->thumbnail)
     <img src="{{ asset('images/' . $course->thumbnail) }}" alt="" class="rounded-lg">
