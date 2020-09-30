@@ -2,7 +2,7 @@
 
 
 @section('content')
-<section>
+<section class="mt-6">
     <div class="bg-gray-800 pt-10 pb-24 border-t border-gray-900">
         <div class="container mx-auto px-4">
             <div class="flex justify-between mb-8 items-center">

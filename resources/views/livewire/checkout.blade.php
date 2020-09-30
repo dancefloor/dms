@@ -1,6 +1,6 @@
 <div>
     <div class="flex justify-between mb-5">
-        <h1 class="my-3 text-3xl">List of pre-registered courses</h1>
+        <h1 class="my-3 text-3xl">Cart</h1>
         <p class="my-3 text-xl text-gray-700">{{ now()->format('d.m.yy') }}</p>
     </div>
     <div class="border rounded-lg mb-10">
@@ -8,23 +8,31 @@
             <thead class="bg-gray-100 border-b">
                 <tr>
                     <th class="text-left pl-3 py-2" width="30%">Course</th>
-                    <th class="text-left" width="30%">Period</th>
-                    <th class="text-left" width="15%">Level</th>
-                    <th class="text-left" width="15%">Status</th>
+                    <th class="hidden sm:table-cell text-left" width="30%">Period</th>
+                    <th class="hidden sm:table-cell text-left" width="15%">Level</th>
+                    <th class="hidden sm:table-cell text-left" width="15%">Status</th>
                     <th class="text-right pr-3" width="10%">Price</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (auth()->user()->pendingCourses as $item)
                 <tr>
-                    <td class="{{ $loop->last ? '' : 'border-b'}} pl-3">{{ $item->name }}</td>
-                    <td class="{{ $loop->last ? '' : 'border-b'}}">
+                    <td class="{{ $loop->last ? '' : 'border-b'}} pl-3">
+                        {{ $item->name }}
+                        <div class="sm:hidden text-sm text-gray-700">
+                            @if ($item->start_date)
+                            {{ $item->start_date->format('d F Y') }} - {{ $item->end_date->format('d M yy') }}
+                            @endif
+                            <span class="capitalize">{{ $item->level }}</span>
+                        </div>
+                    </td>
+                    <td class="{{ $loop->last ? '' : 'border-b'}} hidden sm:table-cell">
                         @if ($item->start_date)
                         {{ $item->start_date->format('d F Y') }} - {{ $item->end_date->format('d M yy') }}
                         @endif
                     </td>
-                    <td class="{{ $loop->last ? '' : 'border-b'}}">{{ $item->level }}</td>
-                    <td class="{{ $loop->last ? '' : 'border-b'}}">
+                    <td class="{{ $loop->last ? '' : 'border-b'}} hidden sm:table-cell">{{ $item->level }}</td>
+                    <td class="{{ $loop->last ? '' : 'border-b'}} hidden sm:table-cell">
                         {{-- {{ $item->pivot->status }} --}}
                         <x-registration-status uid="{{ auth()->user()->id }}" cid="{{ $item->id }}" />
                     </td>
