@@ -11,8 +11,7 @@
             @if (auth()->user()->pendingCourses()->count() > 0)
             <div class="mb-3">
                 <a href="{{ route('checkout') }}"
-                    class="bg-red-700 text-white py-2 px-3 hover:bg-red-800 rounded-full">Proceed to
-                    Checkout</a>
+                    class="bg-red-700 text-white py-2 px-3 hover:bg-red-800 rounded-full">Buy</a>
             </div>
             @endif
 
@@ -21,18 +20,23 @@
         <ul class="border bg-white rounded-lg">
             @forelse (auth()->user()->learns as $item)
             <li
-                class="grid grid-cols-5 gap-4 items-center px-3 py-2 {{ $loop->last ? '' : 'border-b border-gray-300'}}">
+                class="grid grid-cols-3 sm:grid-cols-5 gap-4 items-center px-3 py-2 {{ $loop->last ? '' : 'border-b border-gray-300'}}">
                 <div>
                     <strong class="block"><a href="{{ route('courses.show', $item) }}">{{ $item->name }}</a></strong>
                     {{ implode(',',$item->days)}}
+                    <div class="text-xs sm:hidden">
+                        @if ($item->start_date)
+                        {{ $item->start_date->format('d F y') }} - {{ $item->end_date->format('d F y') }}
+                        @endif
+                    </div>
                 </div>
-                <div>
+                <div class="hidden sm:inline-flex">
                     @if ($item->start_date)
                     {{ $item->start_date->format('d F y') }} - {{ $item->end_date->format('d F y') }}
                     @endif
                 </div>
-                <div>
-                    <div class="inline-flex">
+                <div class="hidden sm:inline-flex">
+                    <div>
                         @foreach ($item->teachers as $t)
                         <img src="{{ asset($t->avatar)}}" alt="" class="w-8 h-8 rounded-full">
                         @endforeach
