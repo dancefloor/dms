@@ -1,6 +1,6 @@
 <header class="flex justify-center mt-10">
     <div class="text-center">
-        <h1 class="text-5xl md:text-6xl font-bold mb-5 leading-6">{{ $course->name }}</h1>
+        <h1 class="text-4xl md:text-6xl font-bold mb-5 leading-10">{{ $course->name }}</h1>
         <h3 class="text-2xl font-bold text-gray-600">
             {{ $course->tagline }}
             @if (now() < $course->end_date)

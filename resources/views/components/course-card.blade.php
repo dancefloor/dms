@@ -20,9 +20,14 @@
                 </span>
             </div>
             <div class="inline-flex text-gray-600 text-sm">
-                @include('icons.calendar', ['style' => 'w-4 text-gray-600 mr-2'])
-                {{ $course->start_date->format('d.m.yy') }} -
-                {{ $course->end_date->format('d.m.yy')}}</div>
+                <span>
+                    @include('icons.calendar', ['style' => 'w-4 text-gray-600 mr-2'])
+                </span>
+                <span>
+                    {{ $course->start_date->format('d.m.yy') }} - {{ $course->end_date->format('d.m.yy')}}
+                </span>
+
+            </div>
             <x-course-daily-schedule :course="$course" />
             <div class="flex justify-between text-sm text-gray-600">
                 <span class="inline-flex items-center">@include('icons.level', ['style'=>'w-4

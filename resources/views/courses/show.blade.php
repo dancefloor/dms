@@ -29,7 +29,10 @@
 
     {{-- @include('courses.fields.videos')
     @include('courses.fields.description')--}}
+    @auth
     @include('courses.fields.students')
+    @endauth
+
 
     @can('crud_courses')
     <div class="flex justify-center my-5">
