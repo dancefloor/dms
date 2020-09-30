@@ -39,7 +39,7 @@ class WelcomeController extends Controller
                     break;
             }
         } else {
-            $live = Course::liveCourses()->get();
+            $live = Course::liveCourses()->get();            
             $online = Course::onlineCourses()->get();
         }
 

@@ -111,7 +111,7 @@
                         It's a great chance to be able to follow online this salsa fusion workshop
                         with teachers like Fred and Kouamé! With this mix of styles I'm getting out of my salsa/rueda
                         comfort
-                        zone... and that's pretty good, I'm learning a lot! :+1::hugging_face: thanks !
+                        zone... and that's pretty good, I'm learning a lot! thanks !
                     </p>
                 </div>
                 <footer class="mt-8">

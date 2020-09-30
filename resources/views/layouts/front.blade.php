@@ -39,7 +39,7 @@
     @if (session()->has('success'))
     <div x-data="{ open: true }" x-show="open">
         <!--Header Alert-->
-        <div class="alert-banner w-full">
+        <div class="alert-banner w-full mt-16">
             <label
                 class="close cursor-pointer flex items-center justify-between w-full py-4 px-3 bg-green-400 rounded text-white font-bold"
                 title="close" for="banneralert">
@@ -55,7 +55,7 @@
     @if (session()->has('alert'))
     <div class="" x-data="{ open: true }" x-show="open">
         <!--Header Alert-->
-        <div class="alert-banner w-full">
+        <div class="alert-banner w-full mt-16">
             <label
                 class="close cursor-pointer flex items-center justify-between w-full py-4 px-5 bg-orange-500 text-orange-100 font-bold"
                 title="close" for="banneralert">
@@ -68,7 +68,7 @@
     </div>
     @endif
 
-    <main class="mt-16">
+    <main class="">
         @yield('content')
     </main>
 

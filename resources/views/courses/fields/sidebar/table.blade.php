@@ -27,7 +27,7 @@
                 </span>
             </div>
 
-            <div class="font-bold text-sm mb-2 block items-top text-gray-700">
+            <div class="font-bold text-sm mb-2 inline-flex items-top text-gray-700">
                 @include('icons.time')
                 <table class="w-full ml-2">
                     <tr>
