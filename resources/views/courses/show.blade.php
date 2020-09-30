@@ -2,9 +2,7 @@
 
 @section('content')
 
-@if ($course->type == 'online')
-@include('courses.online')
-@else
+
 
 <div class="container mx-auto mt-16">
     <div class="flex justify-center mx-3">
@@ -67,5 +65,5 @@
 
 
 </div>
-@endif
+
 @endsection
