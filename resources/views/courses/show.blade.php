@@ -6,7 +6,7 @@
 @include('courses.online')
 @else
 
-<div class="container mx-auto">
+<div class="container mx-auto mt-16">
     <div class="flex justify-center mx-3">
         <div class="w-full">
             @include('courses.fields.header')

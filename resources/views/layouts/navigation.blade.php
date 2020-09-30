@@ -4,9 +4,10 @@
     Dashboard
 </a>
 
-<a href="{{ route('dashboard') }}"
-    class="block px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
-    Notifications
+{{-- <a href="{{ route('dashboard') }}"
+class="block px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700
+focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+Notifications
 </a>
 
 <a href="{{ route('dashboard') }}"
@@ -17,7 +18,7 @@
 <a href=""
     class="block px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
     Payments
-</a>
+</a> --}}
 
 <br>
 <br>
