@@ -1,4 +1,4 @@
-<h3 class="text-2xl text-gray-900">You will learn to:</h3>
+<h3 class="text-2xl text-gray-900">What you will learn:</h3>
 
 
 <!-- Always add the `prose` class -->

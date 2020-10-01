@@ -29,7 +29,7 @@
         <div class="mb-4">
             <input
                 class="appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none @error('lastname') border-red-500 @enderror"
-                id="lastname" type="text" placeholder="Lastname" name="lastname" value="{{ old('lastname') }}" required
+                id="lastname" type="text" placeholder="Last name" name="lastname" value="{{ old('lastname') }}" required
                 autocomplete="lastname">
             @error('lastname')
             <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -39,10 +39,10 @@
         <div class="mb-4">
             <input
                 class="appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none @error('lastname') border-red-500 @enderror"
-                id="facebook" type="text" placeholder="Facebook profile link" name="facebook"
+                id="facebook" type="text" placeholder="Facebook profile URL link" name="facebook"
                 value="{{ old('facebook') }}" required autocomplete="facebook">
             <p class="text-xs text-gray-500 ml-2">*Required for the private Facebook group.
-                <button @click="showInfo = !showInfo" type="button" class="underline">More info</button>
+                <button @click="showInfo = !showInfo" type="button" class="underline font-bold">More info</button>
             </p>
             <div x-show="showInfo" @click.away="showInfo = false">
                 @include('partials.auth-alert')

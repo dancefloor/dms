@@ -22,7 +22,7 @@
 {{-- {{auth()->user()->email}} --}}
 
 
-<div id="live" class="container mx-auto my-20">
+<div id="live" class="container mx-auto my-4 pt-16 pb-16">
     <div class="py-5 border-t border-gray-300 space-y-2 px-3 mb-5">
         <h2 class="text-4xl leading-6 font-bold text-gray-800">
             Live classes
@@ -39,13 +39,13 @@
 </div>
 
 <div class="bg-gray-800 pb-10 pt-5">
-    <div id="online" class="container mx-auto my-10">
+    <div id="online" class="container mx-auto pt-16 pb-16">
         <div class="py-5 border-t border-gray-300 space-y-2 px-3 mb-5">
             <h2 class="text-4xl leading-6 font-bold text-gray-100">
                 Online classes
             </h2>
             <p class="max-w-4xl text-base leading-5 text-gray-500">
-                With our online classes you get access to the videos from live classes, you'll have access our the
+                With our online classes you get access to the videos from live classes, you'll have access our
                 private facebook group and you can decide to progress at your own pace
             </p>
         </div>
