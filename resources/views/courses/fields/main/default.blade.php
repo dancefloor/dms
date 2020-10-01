@@ -1,7 +1,9 @@
 <h3 class="text-2xl text-gray-900">You will learn to:</h3>
 
-<article class="prose prose-lg">
-    {!! $course->excerdivt !!}
+
+<!-- Always add the `prose` class -->
+<article class="prose text-base">
+    {!! $course->excerpt !!}
 </article>
 
 @if ($course->description)
