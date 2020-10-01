@@ -1,4 +1,11 @@
+<h3 class="text-2xl text-gray-900">You will learn to:</h3>
 <p class="text-gray-700 text-base">{!! $course->excerpt !!}</p>
+
+@if ($course->description)
+<hr class="my-5">
+<h3 class="text-2xl text-gray-900">Details</h3>
+<p class="text-gray-700 text-base">{!! $course->description !!}</p>
+@endif
 
 <div class="pt-4 mt-1">
     <span
@@ -12,13 +19,6 @@
     @endif
 
 </div>
-
-@if ($course->description)
-<hr class="my-5">
-
-<p class="text-gray-700 text-base">{!! $course->description !!}</p>
-
-@endif
 
 @if ($course->teachers->count() > 0)
 <hr class="my-5">

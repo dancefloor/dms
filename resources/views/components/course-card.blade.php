@@ -53,37 +53,37 @@
                 @switch(auth()->user()->registrationStatus($course->id))
 
                 @case('pre-registered')
-                <span id="pending" class="bg-orange-600 text-orange-100 p-2 rounded-full inline-flex">
+                <span id="pending" class="bg-orange-600 text-orange-100 p-2 rounded-full inline-flex h-8 w-8">
                     @include('icons.pending',['style'=>'w-5'])
                 </span>
                 @break
                 @case('waiting')
-                <span id="waiting" class="bg-blue-600 text-blue-100 p-2 rounded-full inline-flex">
+                <span id="waiting" class="bg-blue-600 text-blue-100 p-2 rounded-full inline-flex h-8 w-8">
                     @include('icons.waiting',['style'=>'w-5'])
                 </span>
                 @break
                 @case('registered')
-                <span id="registered" class="bg-gray-200 text-green-700 p-2 rounded-full inline-flex">
+                <span id="registered" class="bg-gray-200 text-green-700 p-2 rounded-full inline-flex h-8 w-8">
                     @include('icons.checked',['style'=>'w-5'])
                 </span>
                 @break
                 @case('standby')
-                <button id="standby" disabled="disabled" class="bg-gray-200 text-pink-400 p-2 rounded-full">
+                <button id="standby" disabled="disabled" class="bg-gray-200 text-pink-400 p-2 rounded-full h-8 w-8">
                     @include('icons.standby',['style'=>'w-5'])
                 </button>
                 @break
                 @case('open')
-                <button id="standby" disabled="disabled" class="bg-green-200 text-green-700 p-2 rounded-full">
+                <button id="standby" disabled="disabled" class="bg-green-200 text-green-700 p-2 rounded-full h-8 w-8">
                     @include('icons.open',['style'=>'w-5'])
                 </button>
                 @break
                 @case('partial')
-                <button id="standby" disabled="disabled" class="bg-green-400 text-green-800 p-2 rounded-full">
+                <button id="standby" disabled="disabled" class="bg-green-400 text-green-800 p-2 rounded-full h-8 w-8">
                     @include('icons.phase',['style'=>'w-5'])
                 </button>
                 @break
                 @default
-                <button id="cancelled" disabled="disabled" class="bg-gray-200 text-gray-800 p-2 rounded-full">
+                <button id="cancelled" disabled="disabled" class="bg-gray-200 text-gray-800 p-2 rounded-full h-8 w-8">
                     @include('icons.x-circle-thin',['style'=>'w-5'])
                 </button>
                 @endswitch
