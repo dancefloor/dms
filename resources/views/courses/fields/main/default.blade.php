@@ -1,5 +1,8 @@
 <h3 class="text-2xl text-gray-900">You will learn to:</h3>
-<p class="text-gray-700 text-base">{!! $course->excerpt !!}</p>
+
+<article class="prose prose-lg">
+    {!! $course->excerdivt !!}
+</article>
 
 @if ($course->description)
 <hr class="my-5">
@@ -7,18 +10,17 @@
 <p class="text-gray-700 text-base">{!! $course->description !!}</p>
 @endif
 
-<div class="pt-4 mt-1">
+{{-- <div class="pt-4 mt-1">
     <span
         class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2 mb-1">#{{ $course->type }}</span>
-    <span
-        class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2 mb-1">#{{ $course->focus }}</span>
+<span
+    class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2 mb-1">#{{ $course->focus }}</span>
 
-    @if ($course->is_online == 1)
-    <span
-        class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2 mb-1">#online</span>
-    @endif
+@if ($course->is_online == 1)
+<span class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-red-800 mr-2 mb-1">#online</span>
+@endif
 
-</div>
+</div> --}}
 
 @if ($course->teachers->count() > 0)
 <hr class="my-5">
