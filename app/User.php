@@ -15,7 +15,7 @@ use function PHPSTORM_META\map;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    
+
     use Notifiable;
 
     /**
@@ -194,19 +194,19 @@ class User extends Authenticatable implements MustVerifyEmail
             ->where('role', 'student')
             ->get();
 
-            $id = collect($result)->map(function ($item, $key) {
-                return $item->status;
-            })->first();
-        return $id;
+        $status = collect($result)->map(function ($item) {
+            return $item->status;
+        })->first();
+        return $status;
     }
 
     public function registrationDate($id)
     {
         $result = DB::table('registrations')
-        ->where('user_id', $this->id)
-        ->where('course_id', $id)
-        ->where('role', 'student')
-        ->get();
+            ->where('user_id', $this->id)
+            ->where('course_id', $id)
+            ->where('role', 'student')
+            ->get();
 
         $date = collect($result)->map(function ($item, $key) {
             return $item->created_at;
@@ -221,7 +221,7 @@ class User extends Authenticatable implements MustVerifyEmail
             ->where('course_id', $id)
             ->get();
         dd($registration);
-            return $registration;
+        return $registration;
     }
 
     public function isRegistered($id)
@@ -229,11 +229,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return in_array($id, $this->learns()->pluck('course_id')->toArray());
     }
 
-    public function useReduced():bool
+    public function useReduced(): bool
     {
-        if ($this->work_status != 'working'){
+        if ($this->work_status != 'working') {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

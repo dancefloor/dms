@@ -3,7 +3,9 @@
 namespace App\View\Components;
 
 use App\User;
+use Illuminate\Log\Logger;
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\Log;
 
 class RegistrationStatus extends Component
 {
@@ -34,6 +36,10 @@ class RegistrationStatus extends Component
         $user = User::find($this->uid);
 
         $this->status = $user->registrationStatus($this->cid);
+        Log::info($this->status);
+        
+        //Log::emergency('message');
+        //Log::debug('message');
 
         switch ($this->status) {
             case 'pre-registered':

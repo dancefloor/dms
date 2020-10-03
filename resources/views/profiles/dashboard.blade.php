@@ -23,24 +23,21 @@
                 class="grid grid-cols-3 sm:grid-cols-5 gap-4 items-center px-3 py-2 {{ $loop->last ? '' : 'border-b border-gray-300'}}">
                 <div>
                     <strong class="block"><a href="{{ route('courses.show', $item) }}">{{ $item->name }}</a></strong>
-                    {{ implode(',',$item->days)}}
-                    <div class="text-xs sm:hidden">
-                        @if ($item->start_date)
-                        {{ $item->start_date->format('d F y') }} - {{ $item->end_date->format('d F y') }}
-                        @endif
-                    </div>
-                </div>
-                <div class="hidden sm:inline-flex">
                     @if ($item->start_date)
-                    {{ $item->start_date->format('d F y') }} - {{ $item->end_date->format('d F y') }}
+                    <span class="text-sm text-gray-700">{{ $item->start_date->format('d F y') }} -
+                        {{ $item->end_date->format('d F y') }}</span>
                     @endif
+                    <div class="text-xs sm:hidden capitalize">
+                        {{ implode(',',$item->days)}}
+                    </div>
                 </div>
                 <div class="hidden sm:inline-flex">
-                    <div>
-                        @foreach ($item->teachers as $t)
-                        <img src="{{ asset($t->avatar)}}" alt="" class="w-8 h-8 rounded-full">
-                        @endforeach
-                    </div>
+                    {{ implode(',',$item->days)}}
+                </div>
+                <div class="hidden sm:inline-flex">
+                    @foreach ($item->teachers as $t)
+                    <img src="{{ asset($t->avatar)}}" alt="" class="w-8 h-8 rounded-full">
+                    @endforeach
                 </div>
                 <div class="flex justify-end">
                     <div class="inline-flex items-center">
