@@ -52,9 +52,8 @@
                                     <div class="text-sm leading-5 text-gray-500">Optimization</div> --}}
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap">
-                                    {{ auth()->user()->registrationStatus($course->id) }}
-                                    {{-- <x-registration-status uid="{{ auth()->user()->id }}" cid="{{ $course->id }}"
-                                    /> --}}
+                                    {{-- {{ auth()->user()->registrationStatus($course->id) }} --}}
+                                    <x-registration-status uid="{{ auth()->user()->id }}" cid="{{ $course->id }}" />
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                                     {{ $item->registrationDate($course->id) }}
