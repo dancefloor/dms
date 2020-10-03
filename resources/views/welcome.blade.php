@@ -1,5 +1,16 @@
 @extends('layouts.front')
 
+@section('seo')
+<meta property="og:url" content="https://dancefloor.family" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Dancefloor Studio" />
+<meta property="og:description"
+    content="Dance school in Geneva, Switzerland. Cuban Salsa, Line salsa, on1, on2, Hip-hop, dancehall, house, afro-cuban, rumba, reggaeton" />
+<meta property="og:image"
+    content="https://www.dancefloorgenevasalsa.ch/wp-content/uploads/2018/04/dancefloor-logo-black.png" />
+@endsection
+
+
 @section('css')
 <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 @endsection

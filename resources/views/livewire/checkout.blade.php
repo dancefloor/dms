@@ -157,7 +157,8 @@
                         'user'      => Auth::id(),
                         'total'     => $total,
                         'discount'  => $discount,
-                        'subtotal'  => $subtotal,                                                
+                        'subtotal'  => $subtotal, 
+                        'title'     => $title,                                               
                         ])}}">
             Pay by Credit Card
         </a>

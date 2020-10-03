@@ -1,8 +1,16 @@
 @extends('layouts.front')
 
+
+
+@section('seo')
+<meta property="og:url" content="https://dancefloor.family/courses/{{ $course->id }}" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Dancefloor Studio | {{ $course->name }}" />
+<meta property="og:description" content="{{ strip_tags($course->excerpt ) }}" />
+<meta property="og:image" content="{{ asset('uploads/'. $course->thumbnail ) }}" />
+@endsection
+
 @section('content')
-
-
 
 <div class="container mx-auto mt-16">
     <div class="flex justify-center mx-3">

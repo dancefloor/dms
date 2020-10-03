@@ -85,4 +85,18 @@ class OrderPriceCalculator {
         }
     }
 
+    public static function getTitle($registrations)
+    {
+        $title = '';        
+        foreach ($registrations as $item) {
+            $course = Course::findOrFail($item->id);
+            if ($item === array_key_last($registrations->toArray())) {
+                $title = $title . ' ' . $course->name;
+            }else{
+                $title = $title . ', ' . $course->name;
+            }
+        }
+        return $title;
+    }
+
 }

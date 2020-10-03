@@ -15,6 +15,7 @@ class Checkout extends Component
     public $discount = 0;        
     public $discountText;
     public $commission = 0;
+    public $title;
 
     public function mount()
     {
@@ -24,6 +25,7 @@ class Checkout extends Component
         $this->discount = 0;        
         $this->total = OrderPriceCalculator::getTotal($this->subtotal, $this->discount, 0);        
         $this->discountText = OrderPriceCalculator::getDiscountText($this->count);
+        $this->title = OrderPriceCalculator::getTitle(Auth::user()->pendingCourses);
     }
 
     public function updatedMethod($value)
