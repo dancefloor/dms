@@ -10,6 +10,7 @@ use App\Models\Course;
 use App\Models\Role;
 use App\Models\Registration;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 use function PHPSTORM_META\map;
 
@@ -194,9 +195,15 @@ class User extends Authenticatable implements MustVerifyEmail
             ->where('role', 'student')
             ->get();
 
+        Log::notice('hola');
+        Log::info($result);
+        
+        
         $status = collect($result)->map(function ($item) {
             return $item->status;
         })->first();
+        
+        Log::error($status);
         return $status;
     }
 
