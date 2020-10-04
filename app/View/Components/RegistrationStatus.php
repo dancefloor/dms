@@ -35,6 +35,7 @@ class RegistrationStatus extends Component
 
         $user = User::find($this->uid);
 
+        Log::info('course: ' . $this->cid);
         $this->status = $user->registrationStatus($this->cid);
         Log::info($this->status);
         
