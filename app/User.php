@@ -187,12 +187,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->whereGender('male');
     }
 
-    public function registrationStatus($id)
+    public function registrationStatus($id, $uid = null)
     {
+        if ($uid === null) {
+            $uid = $this->id;
+        }
         Log::notice('course_id: ' . $id);
-        Log::notice('user_id: ' . $this->id);
+        Log::notice('user_id: ' . $uid);
         $result = DB::table('registrations')
-            ->where('user_id', $this->id)
+            ->where('user_id', $uid)
             ->where('course_id', $id)
             ->where('role', 'student')
             ->get();
