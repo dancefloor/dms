@@ -190,15 +190,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function registrationStatus($id)
     {
         Log::notice('course_id: ' . $id);
+        Log::notice('user_id: ' . $this->id);
         $result = DB::table('registrations')
             ->where('user_id', $this->id)
             ->where('course_id', $id)
             ->where('role', 'student')
             ->get();
 
-        
         Log::info($result);
-        
         
         $status = collect($result)->map(function ($item) {
             return $item->status;
