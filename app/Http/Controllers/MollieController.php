@@ -47,7 +47,7 @@ class MollieController extends Controller
                                                 ->where('role', 'student')
                                                 ->first();                
                     $order->registrations()->save($registration);                
-                    RegistrationPaymentManager::registrationToOpen($registration->id);
+                    //RegistrationPaymentManager::registrationToOpen($registration->id);
                 }                        
                 //$order->subtotal_amount = OrderPriceCalculator::getSubtotal($order->user_id, $order->courses);
                 //$order->total_amount = OrderPriceCalculator::getTotal(count($request->courses), $order->subtotal,$order->method);
