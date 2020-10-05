@@ -165,6 +165,9 @@
     -->
     <div :class="{ 'block': openMenu, 'hidden':!openMenu }" class="hidden sm:hidden">
         <div class="px-2 pt-2 pb-3">
+            <a href="{{ route('welcome') }}"
+                class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Home
+            </a>
             <a href="{{ route('dashboard') }}"
                 class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard
             </a>
