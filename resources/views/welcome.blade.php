@@ -6,8 +6,7 @@
 <meta property="og:title" content="Dancefloor Studio" />
 <meta property="og:description"
     content="Dance school in Geneva, Switzerland. Cuban Salsa, Line salsa, on1, on2, Hip-hop, dancehall, house, afro-cuban, rumba, reggaeton" />
-<meta property="og:image"
-    content="https://www.dancefloorgenevasalsa.ch/wp-content/uploads/2018/04/dancefloor-logo-black.png" />
+<meta property="og:image" content="{{ asset('images/dancefloor-logo-black.png')}}" />
 @endsection
 
 
