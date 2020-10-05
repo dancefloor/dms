@@ -82,9 +82,9 @@ class MollieController extends Controller
 
             $user_payment->order()->associate($order->id)->save();
 
-            // redirect customer to Mollie checkout page
-            return redirect($payment->getCheckoutUrl(), 303);
+            // redirect customer to Mollie checkout page            
         });
+        return redirect($payment->getCheckoutUrl(), 303);
     }
 
     /**
