@@ -34,6 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::resource('styles', 'StyleController');
     
     Route::get('export/styles', 'StyleController@export')->name('styles.export');
+    Route::get('export/students', 'CourseController@export')->name('students.export');
 
     Route::resource('permissions', 'PermissionController');
     Route::resource('roles', 'RoleController');

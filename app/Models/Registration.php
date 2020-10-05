@@ -20,6 +20,8 @@ class Registration extends Pivot
         'updated_at',
     ];
 
+    protected $dates = ['created_at', 'updated_at'];
+
     public function order()
     {
         return $this->BelongsTo(\App\Models\Order::class);

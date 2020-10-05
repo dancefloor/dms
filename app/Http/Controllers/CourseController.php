@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\StudentsPerCourseExport;
 use App\Http\Requests\CreateCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Repositories\CourseRepository;
@@ -292,4 +293,9 @@ class CourseController extends AppBaseController
             'user_id'       => auth()->user()->id,                
         ];
     }
+
+
+    public function export(){
+        return (new StudentsPerCourseExport(request()->cid))->download('students.xlsx');
+    }    
 }

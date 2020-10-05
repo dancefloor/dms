@@ -1,6 +1,8 @@
 @if ($course->students()->count() > 0)
 <h3 class="uppercase mt-20 mb-10 text-3xl text-center text-gray-700 font-bold">Students</h3>
 
+
+<a href="{{ route('students.export', ['cid'=> $course->id])}}">Export</a>
 <section id="students-list">
 
     <div class="flex flex-col">
