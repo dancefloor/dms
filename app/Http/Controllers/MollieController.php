@@ -27,50 +27,47 @@ class MollieController extends Controller
     public function preparePayment()
     {
         // dd(request()->all());        
-        // DB::transaction(function () {
-            
+
+        $payment = Mollie::api()->payments()->create([
+            'amount'        => [
+                'currency'      => 'CHF', // Type of currency you want to send
+                'value'         => request()->amount, // You must send the correct number of decimals, thus we enforce the use of strings
+            ],
+            'description'   => request()->title,
+            'redirectUrl'   => route('payment.status'),
+            'webhookUrl'    => route('webhooks.mollie'),
+            "metadata"      => [
+                "name"  =>   request()->name,
+                "email" =>   request()->email,
+            ],
+        ]);
+
+        DB::transaction(function () use ($payment){
+            $payment = Mollie::api()->payments()->get($payment->id);
+
             $order = Order::create([
-                'user_id'   => request()->user,                       
+                'user_id'   => request()->user,
                 'method'    => 'credit-card',
                 'subtotal'  => request()->subtotal ?? 0,
                 'discount'  => request()->discount ?? 0,
-                'total'     => request()->total ?? 0,            
+                'total'     => request()->total ?? 0,
                 'status'    => 'open',
-            ]);     
-            
-            
-            if (request()->courses) {                                        
-                $order->courses()->attach(request()->courses);                                            
-                foreach (request()->courses as $id) {                
+            ]);
+
+            if (request()->courses) {
+                $order->courses()->attach(request()->courses);
+                foreach (request()->courses as $id) {
                     $registration = Registration::where('course_id', $id)
-                                                ->where('user_id', request()->user)
-                                                ->where('role', 'student')
-                                                ->first();                
-                    $order->registrations()->save($registration);                
+                        ->where('user_id', request()->user)
+                        ->where('role', 'student')
+                        ->first();
+                    $order->registrations()->save($registration);
                     //RegistrationPaymentManager::registrationToOpen($registration->id);
-                }                        
+                }
                 //$order->subtotal_amount = OrderPriceCalculator::getSubtotal($order->user_id, $order->courses);
                 //$order->total_amount = OrderPriceCalculator::getTotal(count($request->courses), $order->subtotal,$order->method);
                 //$order->status = 'open';
             }
-
-
-            $payment = Mollie::api()->payments()->create([
-                'amount'        => [
-                    'currency'      => 'CHF', // Type of currency you want to send
-                    'value'         => request()->amount, // You must send the correct number of decimals, thus we enforce the use of strings
-                ],
-                'description'   => request()->title,
-                'redirectUrl'   => route('payment.status'), 
-                'webhookUrl'    => route('webhooks.mollie'),
-                "metadata"      => [
-                    "name"  =>   request()->name,
-                    "email" =>   request()->email,
-                ],
-            ]);
-
-
-            $payment = Mollie::api()->payments()->get($payment->id);
 
             $user_payment = Payment::create([
                 'code'              => Str::random(15),
@@ -82,12 +79,12 @@ class MollieController extends Controller
                 'status'            => 'open',
                 'done'              => now(),
             ]);
-    
-            $user_payment->order()->associate($order->id)->save();        
-    
+
+            $user_payment->order()->associate($order->id)->save();
+
             // redirect customer to Mollie checkout page
             return redirect($payment->getCheckoutUrl(), 303);
-        // });
+        });
     }
 
     /**
@@ -97,18 +94,17 @@ class MollieController extends Controller
      */
     public function paymentSuccess()
     {
-        $pay = Payment::latest()->first();        
+        $pay = Payment::latest()->first();
         $mollie = Mollie::api()->payments()->get($pay->molley_payment_id);
-                    
+
         if ($mollie->isPaid()) {
             $pay->status = 'paid';
             $pay->save();
             RegistrationPaymentManager::updateOrder($pay->order_id);
-            
+
             return view('payments.status');
         } else {
             echo 'Payment Error';
         }
-      
     }
 }
