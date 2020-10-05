@@ -65,7 +65,7 @@
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500 @error('birthday') border-red-500 @enderror"
             type="text" id="birthday" name="birthday" placeholder="Birthday"
-            value="{{ $user->birthday ?? old('birthday') }}" required autocomplete="birthday">
+            value="{{ $user->birthday ?? old('birthday') }}" autocomplete="birthday">
         @error('birthday')
         <p class="text-red-500 text-xs italic">{{ $message }}</p>
         @enderror

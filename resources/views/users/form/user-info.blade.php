@@ -5,7 +5,7 @@
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-500  @error('mobile') border-red-500 @enderror"
             id="mobile" type="text" placeholder="Mobile" name="mobile" value="{{ $user->mobile ?? old('mobile') }}"
-            required autocomplete="phone">
+            autocomplete="phone">
         @error('mobile')
         <p class="text-red-500 text-xs italic">{{ $message }}</p>
         @enderror
