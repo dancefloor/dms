@@ -26,8 +26,8 @@ class MollieController extends Controller
      */
     public function preparePayment()
     {
-        //dd(request()->all());        
-        DB::transaction(function () {
+        // dd(request()->all());        
+        // DB::transaction(function () {
             
             $order = Order::create([
                 'user_id'   => request()->user,                       
@@ -87,7 +87,7 @@ class MollieController extends Controller
     
             // redirect customer to Mollie checkout page
             return redirect($payment->getCheckoutUrl(), 303);
-        });
+        // });
     }
 
     /**

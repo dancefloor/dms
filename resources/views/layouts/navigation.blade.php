@@ -1,4 +1,7 @@
 @auth
+<a href="{{ route('welcome') }}" class="df-navigation-link {{ Request::is('/') ? 'df-navigation-link-active' : '' }}">
+    Home
+</a>
 <a href="{{ route('dashboard') }}"
     class="df-navigation-link {{ Request::is('dashboard') ? 'df-navigation-link-active' : '' }}">
     Dashboard

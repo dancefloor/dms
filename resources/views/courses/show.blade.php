@@ -46,9 +46,9 @@
             <div class="flex justify-between">
                 <div>
                     <a href="{{ route('courses.index') }}"
-                        class="bg-gray-300 hover:bg-gray-400 py-2 px-4 rounded-lg mr-2 inline-flex text-gray-800">
-                        @include('icons.chevron-left', ['style' => 'w-4 mr-2'])
-                        Back
+                        class="bg-gray-300 hover:bg-gray-400 py-2 px-4 rounded-lg mr-2 inline-flex items-center text-gray-800">
+                        @include('icons.chevron-left', ['style' => 'w-4 h-4'])
+                        <span class="ml-2">Back</span>
                     </a>
                 </div>
                 <div class="inline-flex">
@@ -60,7 +60,8 @@
                     <form action="{{ route('courses.destroy', $course) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="bg-red-700 hover:bg-red-800 py-2 px-4 rounded-lg text-white">
+                        <button type="submit"
+                            class="bg-red-700 hover:bg-red-800 py-2 px-4 rounded-lg text-white items-center">
                             Delete
                         </button>
                     </form>

@@ -4,23 +4,25 @@ namespace App\Service;
 
 use App\Models\Course;
 use App\User;
+use Fideloper\Proxy\TrustProxies;
 
-class OrderPriceCalculator {
-    
+class OrderPriceCalculator
+{
+
     public static function getSubtotal($user_id, $registrations)
     {
         $subtotal = 0;
-        
-        $user = User::find($user_id);        
-        foreach ($registrations as $item) {            
+
+        $user = User::find($user_id);
+        foreach ($registrations as $item) {
             $course = Course::findOrFail($item->id);
-            if ($user->useReduced()) {                                
+            if ($user->useReduced()) {
                 $subtotal = $subtotal + $course->reduced_price;
-            }else{                
+            } else {
                 $subtotal = $subtotal + $course->full_price;
             }
         }
-        
+
         return number_format($subtotal, 2, '.', ',');
     }
 
@@ -31,7 +33,7 @@ class OrderPriceCalculator {
     }
 
     public static function getDiscount($count, $subtotal)
-    {        
+    {
         $two_courses_discount = 0.08;
         $three_courses_discount = 0.13;
         $four_courses_discount = 0.18;
@@ -87,16 +89,11 @@ class OrderPriceCalculator {
 
     public static function getTitle($registrations)
     {
-        $title = '';        
+        $title = [];                
         foreach ($registrations as $item) {
             $course = Course::findOrFail($item->id);
-            if ($item === array_key_last($registrations->toArray())) {
-                $title = $title . ' ' . $course->name;
-            }else{
-                $title = $title . ', ' . $course->name;
-            }
+            $title[] = $course->name;            
         }
-        return $title;
+        return implode(' + ' , $title);
     }
-
 }

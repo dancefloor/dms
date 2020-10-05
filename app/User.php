@@ -192,21 +192,21 @@ class User extends Authenticatable implements MustVerifyEmail
         if ($uid === null) {
             $uid = $this->id;
         }
-        Log::notice('course_id: ' . $id);
-        Log::notice('user_id: ' . $uid);
+        // Log::notice('course_id: ' . $id);
+        
         $result = DB::table('registrations')
             ->where('user_id', $uid)
             ->where('course_id', $id)
             ->where('role', 'student')
             ->get();
 
-        Log::info($result);
+        // Log::info($result);
         
         $status = collect($result)->map(function ($item) {
             return $item->status;
         })->first();
         
-        Log::error($status);
+        // Log::error($status);
         return $status;
     }
 
