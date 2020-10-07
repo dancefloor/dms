@@ -9,9 +9,9 @@
         You have successfully register in this courses
     </p>
 
-    <p class="my-5">
+    {{-- <p class="my-5">
         We are having technial issues, your paiment status will be updaded within 24h. Sorry for the inconvenience
-    </p>
+    </p> --}}
 
     <a href="{{ route('dashboard') }}"
         class="bg-red-700 hover:bg-red-800 py-2 px-3 rounded-full text-white ">Dashboard</a>
