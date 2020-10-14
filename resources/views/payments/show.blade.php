@@ -57,6 +57,7 @@
     </a>
 </section>
 
-{{ $mollie }}
+{{ json_decode($mollie) }}
+@json($mollie)
 
 @endsection
