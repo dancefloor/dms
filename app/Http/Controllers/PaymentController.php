@@ -107,7 +107,7 @@ class PaymentController extends AppBaseController
             return redirect(route('payments.index'));
         }
 
-        $mollie = Mollie::api()->payments()->get($pay->molley_payment_id);
+        $mollie = Mollie::api()->payments()->get($payment->molley_payment_id);
 
         return view('payments.show')->with('payment', $payment)->with('mollie', $mollie);
     }
