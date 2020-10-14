@@ -57,7 +57,7 @@
     </a>
 </section>
 
-{{ json_decode($mollie) }}
-@json($mollie)
+{{ gettype($mollie) }}
+{{-- @json($mollie) --}}
 
 @endsection
