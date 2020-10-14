@@ -57,7 +57,8 @@
     </a>
 </section>
 
-{{ gettype($mollie) }}
-{{-- @json($mollie) --}}
+<pre>
+    @php var_dump($mollie); @endphp
+</pre>
 
 @endsection
