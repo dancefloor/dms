@@ -8,6 +8,8 @@
         style="margin-top: -10px;margin-bottom: 5px" href="{{ route('payments.create') }}">Add New</a>
 
     <br>
+    <a href="{{ route('payments-raw.export') }}">Raw Export</a>
+    <a href="{{ route('payments.export') }}">Export</a>
     <div class="my-5 border rounded-lg">
         @include('payments.table')
     </div>

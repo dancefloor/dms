@@ -30,9 +30,12 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::resource('classrooms', 'ClassroomController');
     Route::resource('skills', 'SkillController');
     Route::resource('lessons', 'LessonController');
-    Route::resource('payments', 'PaymentController');
-    Route::resource('styles', 'StyleController');
     
+    Route::resource('payments', 'PaymentController');
+    Route::get('export/payments', 'PaymentController@export')->name('payments.export');
+    Route::get('export/raw-payments', 'PaymentController@rawExport')->name('payments-raw.export');
+
+    Route::resource('styles', 'StyleController');  
     Route::get('export/styles', 'StyleController@export')->name('styles.export');
     Route::get('export/students', 'CourseController@export')->name('students.export');
 

@@ -57,4 +57,6 @@
     </a>
 </section>
 
+{{ $mollie }}
+
 @endsection

@@ -55,7 +55,7 @@
                 Online classes
             </h2>
             <p class="max-w-4xl text-base leading-5 text-gray-500">
-                With our online classes you get access to the videos from live classes, you'll have access our
+                With our online classes you get access to the videos from live classes, you'll have access to our
                 private facebook group and you can decide to progress at your own pace
             </p>
         </div>

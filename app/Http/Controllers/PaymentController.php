@@ -14,6 +14,10 @@ use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Mail;
 use Response;
+use App\Exports\PaymentsRawExport;
+use App\Exports\PaymentsExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Mollie\Laravel\Facades\Mollie;
 
 class PaymentController extends AppBaseController
 {
@@ -103,7 +107,9 @@ class PaymentController extends AppBaseController
             return redirect(route('payments.index'));
         }
 
-        return view('payments.show')->with('payment', $payment);
+        $mollie = Mollie::api()->payments()->get($pay->molley_payment_id);
+
+        return view('payments.show')->with('payment', $payment)->with('mollie', $mollie);
     }
 
     /**
@@ -175,5 +181,15 @@ class PaymentController extends AppBaseController
         Flash::success('Payment deleted successfully.');
 
         return redirect(route('payments.index'));
+    }
+
+    public function rawExport()
+    {
+        return Excel::download(new PaymentsRawExport, 'raw_payments.xlsx');
+    }
+
+    public function export()
+    {
+        return Excel::download(new PaymentsExport, 'payments.xlsx');
     }
 }
