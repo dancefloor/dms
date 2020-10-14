@@ -13,23 +13,24 @@ class OrderPriceCalculator
     {
         $subtotal = 0;
 
-        $user = User::find($user_id);
+        $user = User::find($user_id);                
         foreach ($registrations as $item) {
-            $course = Course::findOrFail($item->id);
-            if ($user->useReduced()) {
-                $subtotal = $subtotal + $course->reduced_price;
-            } else {
-                $subtotal = $subtotal + $course->full_price;
-            }
+            
+            $course = Course::findOrFail($item->id);     
+            $subtotal = $subtotal + $course->full_price;       
+            // if ($user->useReduced()) {$subtotal = $subtotal + $course->reduced_price;} 
+            // else { $subtotal = $subtotal + $course->full_price;}
         }
-
+        
         return number_format($subtotal, 2, '.', ',');
     }
 
     public static function getTotal($subtotal, $discount, $commission)
     {
         // https://laracasts.com/discuss/channels/general-discussion/number-to-2-decimal-placed-blade
-        return number_format($subtotal - $discount + $commission, 2, '.', ',');
+        
+        //return number_format($subtotal - $discount + $commission, 2, '.', ',');
+        return number_format($subtotal, 2, '.', ',');
     }
 
     public static function getDiscount($count, $subtotal)

@@ -53,7 +53,7 @@
                 <label for="method" class="inline-flex items-center">
                     <input type="radio" name="method" value="credit-card" class="text-center" wire:model="method">
                     <span class="ml-2">Credit Card</span>
-                    <span class="text-sm italic text-gray-700 ml-2">(+ 5CHF)</span>
+                    {{-- <span class="text-sm italic text-gray-700 ml-2">(+ 5CHF)</span> --}}
                 </label>
             </div>
             {{-- <div class="{{ $method == 'bank-transfer' ? 'bg-gray-200': 'bg-white'}} rounded-lg py-2 px-3">
@@ -61,7 +61,7 @@
                 <input type="radio" name="method" value="bank-transfer" class="text-center" wire:model="method">
                 <span class="ml-2">Bank transfer</span>
             </label>
-        </div> --}}
+        </div>
         <div class="{{ $method == 'revolut' ? 'bg-gray-200': 'bg-white'}} rounded-lg py-2 px-3">
             <label for="method" class="inline-flex items-center">
                 <input type="radio" name="method" value="revolut" class="text-center" wire:model="method">
@@ -74,7 +74,7 @@
                 <span class="ml-2">Paypal </span>
                 <span class="text-sm italic text-gray-700 ml-2">(3,4 % + 0,55 CHF)</span>
             </label>
-        </div>
+        </div> --}}
         {{-- <div class="{{ $method == 'cash' ? 'bg-gray-200': 'bg-white' }} rounded-lg py-2 px-3">
         <label for="method" class="inline-flex items-center">
             <input type="radio" name="method" value="cash" class="text-center" wire:model="method">
@@ -126,16 +126,20 @@
             </td>
             </tr>
             @endif --}}
-            @if ($method == 'credit-card' || $method == 'paypal')
+
+
+            {{-- @if ($method == 'credit-card' || $method == 'paypal')
             <tr>
                 <td class="border-t pl-3"></td>
                 <td class="border-t"></td>
                 <td class="border-t">{{ $method == 'credit-card' ? 'Credit card' : 'PayPal'}}</td>
-                <td class="border-t font-bold py-2 text-right pr-3">
-                    CHF {{ $commission }}
-                </td>
+            <td class="border-t font-bold py-2 text-right pr-3">
+                CHF {{ $commission }}
+            </td>
             </tr>
-            @endif
+            @endif --}}
+
+
             <tr>
                 <td class="border-t pl-3"></td>
                 <td class="border-t"></td>
