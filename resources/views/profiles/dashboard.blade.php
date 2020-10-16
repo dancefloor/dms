@@ -45,6 +45,9 @@
                     </div>
                 </div>
                 <div class="capitalize text-right">
+                    @if ($item->pivot->status === 'registered')
+                    <a href="{{$item->online_link}}">FB Group</a>
+                    @endif
                     @if ($item->pivot->status === 'pre-registered')
                     <form action="{{ route('registration.remove', $item)}}" method="post">
                         @csrf
