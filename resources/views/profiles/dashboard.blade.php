@@ -47,7 +47,7 @@
                 <div class="capitalize text-right">
                     @if ($item->pivot->status === 'registered')
                     <a href="{{$item->online_link}}"
-                        class="w-full my-1 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-700 hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition duration-150 ease-in-out md:py-2 md:text-lg md:px-10"
+                        class="w-full my-1 flex items-center justify-center px-2 py-1 border border-transparent text-xs rounded-full text-white bg-blue-700 hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition duration-150 ease-in-out md:py-2 md:text-lg md:px-10"
                         target="_blank">FB Group</a>
                     @endif
                     @if ($item->pivot->status === 'pre-registered')
