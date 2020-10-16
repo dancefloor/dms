@@ -9,9 +9,12 @@
         You have successfully register in this courses
     </p>
 
-    <p class="my-5 font-bold">
-        Please click dashboard to access to the facebook group
-    </p>
+    <div class="bg-red-200 py-2 px-3 rounded-md">
+        <p class="my-5 font-bold text-red-800">
+            Please click dashboard to access the facebook group
+        </p>
+    </div>
+    <br>
 
     <a href="{{ route('dashboard') }}"
         class="bg-red-700 hover:bg-red-800 py-2 px-3 rounded-full text-white ">Dashboard</a>
