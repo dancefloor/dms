@@ -33,9 +33,9 @@ class PaymentsExport implements FromQuery, WithHeadings, WithMapping
             $payment->amount,
             $payment->currency,
             $payment->user_id,   
-            $payment->user->email ?? $user->email,
-            $payment->user->firstname ?? $user->firstname,
-            $payment->user->lastname ?? $user->lastname,                     
+            $user->email,
+            $user->firstname,
+            $user->lastname,                     
             $payment->order_id,
             $payment->created_at,                        
         ];
