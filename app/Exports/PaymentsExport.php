@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Order;
 use App\Models\Payment;
 use App\User;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -19,7 +20,10 @@ class PaymentsExport implements FromQuery, WithHeadings, WithMapping
     }
 
     public function map($payment): array
-    {    
+    {   
+        // Cette facon de faire est parce que la base de donnees na pas sauvegarder 
+        $order = Order::firstOrFail($payment->order_id);
+        $user = User::find($order->user_id);
         return [
             $payment->id,
             $payment->provider,
@@ -29,9 +33,9 @@ class PaymentsExport implements FromQuery, WithHeadings, WithMapping
             $payment->amount,
             $payment->currency,
             $payment->user_id,   
-            $payment->user->email ?? '',
-            $payment->user->firstname ?? '',
-            $payment->user->lastname ?? '',                     
+            $payment->user->email ?? $user->email,
+            $payment->user->firstname ?? $user->firstname,
+            $payment->user->lastname ?? $user->lastname,                     
             $payment->order_id,
             $payment->created_at,                        
         ];
@@ -48,7 +52,7 @@ class PaymentsExport implements FromQuery, WithHeadings, WithMapping
             'amount',
             'currency',
             'user_id', 
-            'email',
+            'email',  
             'First name',
             'Last name',
             'order_id',                                   
