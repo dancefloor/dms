@@ -100,6 +100,14 @@
                 </button> --}}
 
                 <!-- Profile dropdown -->
+                <a href="{{ url('/#live') }}"
+                    class="hidden md:block ml-1 md:ml-4 px-2 md:px-3 py-2 rounded-md text-xs md:text-base font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+                    Live Classes
+                </a>
+                <a href="{{ url('/#online') }}"
+                    class="hidden md:block ml-1 md:ml-4 px-2 md:px-3 py-2 rounded-md text-xs md:text-base font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+                    Online Classes
+                </a>
                 <div class="ml-3 relative" x-data="{ openAccount: false}">
                     <div>
                         <button id="user-menu" aria-label="User menu" aria-haspopup="true"

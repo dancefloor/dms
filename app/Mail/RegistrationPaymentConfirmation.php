@@ -29,7 +29,7 @@ class RegistrationPaymentConfirmation extends Mailable
      */
     public function build()
     {
-        return $this->from('gab.zambrano@gmail.com')
+        return $this->from('info@dancefloor.family')
                     ->markdown('emails.registration-confirmation');
     }
 }

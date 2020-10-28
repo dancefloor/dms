@@ -76,6 +76,25 @@
     </div>
     @endif
 
+    @if (session()->has('pre-registered'))
+    <div class="" x-data="{ open: true }" x-show="open">
+        <!--Header Alert-->
+        <div class="alert-banner w-full mt-16">
+            <label
+                class="close cursor-pointer flex items-center justify-between w-full py-4 px-5 bg-orange-500 text-orange-100 font-semibold"
+                title="close" for="banneralert">
+                <span>
+                    {{ session()->get('pre-registered') }}
+                    <a href="{{ route('dashboard') }}" class="underline font-bold hover:text-orange-800">Dashboard</a>
+                </span>
+                <button type="button" @click="open = false">
+                    @include('icons.x', ['style'=>'w-4'])
+                </button>
+            </label>
+        </div>
+    </div>
+    @endif
+
     <main class="">
         @yield('content')
     </main>

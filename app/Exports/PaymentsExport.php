@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Payment;
+use App\User;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -17,18 +18,20 @@ class PaymentsExport implements FromQuery, WithHeadings, WithMapping
         return Payment::query();
     }
 
-    public function map(): array
-    {
+    public function map($payment): array
+    {    
         return [
             $payment->id,
+            $payment->provider,
+            $payment->method,
             $payment->status,
-            $payment->course_id,
-            $payment->course->name,
-            $payment->user_id,
-            $payment->user->firstname .' '. $payment->user->lastname,
-            $payment->user->email,
-            $payment->role,
-            $payment->option,
+            $payment->comments,
+            $payment->amount,
+            $payment->currency,
+            $payment->user_id,   
+            $payment->user->email ?? '',
+            $payment->user->firstname ?? '',
+            $payment->user->lastname ?? '',                     
             $payment->order_id,
             $payment->created_at,                        
         ];
@@ -39,45 +42,17 @@ class PaymentsExport implements FromQuery, WithHeadings, WithMapping
         return [
             'id',
             'provider',
-            'method',
-            'code',
+            'method',            
             'status',            
-            'amount',
-            'amount_received',
-            'currency',
-            'molley_payment_id',
-            'status',
-            'received_date',
             'comments',
-            'order_id',
-            'user_id',                                    
-            'courses',            
-            'username',
-            'email',                                    
+            'amount',
+            'currency',
+            'user_id', 
+            'email',
+            'First name',
+            'Last name',
+            'order_id',                                   
             'created_at',
         ];
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

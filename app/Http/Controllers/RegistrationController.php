@@ -19,7 +19,7 @@ class RegistrationController extends Controller
 
         $course->students()->attach($uid, ['role'=>'student', 'status'=>'pre-registered', 'created_at'=> now()]);
         
-        session()->flash('alert', 'You have successfully pre-register. Please proceed to pay on your Dashboard');
+        session()->flash('pre-registered', 'You have successfully pre-register. Please proceed to pay on your ');
 
         return redirect()->back();
     }

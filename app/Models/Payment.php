@@ -32,6 +32,7 @@ class Payment extends Model
         'molley_payment_id',
         'status',
         'received_date',
+        'user_id'
     ];
 
     /**
@@ -55,14 +56,14 @@ class Payment extends Model
         'method'    => 'required'
     ];
 
-    // public function registrations()
-    // {
-    //     return $this->hasMany('', 'foreign_key', 'local_key');        
-    // }
-
     public function order()
     {
         return $this->belongsTo(\App\Models\Order::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(\App\User::class);
     }
 }
 

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegistrationPaymentConfirmation;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Registration;
 use App\Service\RegistrationPaymentManager;
 use Mollie\Laravel\Facades\Mollie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -78,10 +80,11 @@ class MollieController extends Controller
                 'molley_payment_id' => $payment->id,
                 'status'            => 'open',
                 'done'              => now(),
+                'user_id'           => auth()->user()->id,
+                'comments'          => request()->title,
             ]);
 
-            $user_payment->order()->associate($order->id)->save();
-
+            $user_payment->order()->associate($order->id)->save();            
             // redirect customer to Mollie checkout page            
         });
         return redirect($payment->getCheckoutUrl(), 303);
@@ -98,10 +101,15 @@ class MollieController extends Controller
         $mollie = Mollie::api()->payments()->get($pay->molley_payment_id);
 
         if ($mollie->isPaid()) {
-            $pay->status = 'paid';
+            $pay->status = 'paid';            
             $pay->save();
-            RegistrationPaymentManager::updateOrder($pay->order_id);
-
+            
+            $status = RegistrationPaymentManager::updateOrder($pay->order_id);
+            
+            Mail::to(auth()->user()->email)->send(new RegistrationPaymentConfirmation($status)); 
+        
+            session()->flash('success', 'Payment saved successfully.');
+            
             return view('payments.status');
         } else {
             echo 'Payment Error';
