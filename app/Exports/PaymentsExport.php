@@ -23,7 +23,7 @@ class PaymentsExport implements FromQuery, WithHeadings, WithMapping
     {   
         // Cette facon de faire est parce que la base de donnees na pas sauvegarder 
         $order = Order::find($payment->order_id);
-        $user = User::find($order->user_id);
+        $user = User::find($order->user->id);
         return [
             $payment->id,
             $payment->provider,
