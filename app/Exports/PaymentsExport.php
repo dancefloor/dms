@@ -22,7 +22,7 @@ class PaymentsExport implements FromQuery, WithHeadings, WithMapping
     public function map($payment): array
     {   
         // Cette facon de faire est parce que la base de donnees na pas sauvegarder 
-        $order = Order::firstOrFail($payment->order_id);
+        $order = Order::find($payment->order_id);
         $user = User::find($order->user_id);
         return [
             $payment->id,
@@ -32,7 +32,7 @@ class PaymentsExport implements FromQuery, WithHeadings, WithMapping
             $payment->comments,
             $payment->amount,
             $payment->currency,
-            $payment->user_id,   
+            $user->id,   
             $user->email,
             $user->firstname,
             $user->lastname,                     
