@@ -6,6 +6,12 @@
     class="df-navigation-link {{ Request::is('dashboard') ? 'df-navigation-link-active' : '' }}">
     My dashboard
 </a>
+<a href="{{ url('/#live') }}" class="df-navigation-link">
+    Live Classes
+</a>
+<a href="{{ url('/#online') }}" class="df-navigation-link">
+    Online Classes
+</a>
 
 {{-- <a href="{{ route('dashboard') }}"
 class="block px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700
