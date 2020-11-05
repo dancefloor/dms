@@ -33,7 +33,7 @@
 
                         </p>
                         <div class="">
-                            @if (count($course->teachers) < 2) @foreach ($course->teachers as $teacher)
+                            @if (count($course->teachers) < 3) @foreach ($course->teachers as $teacher)
                                 <div class="inline-flex items-center mr-2 my-2">
                                     <img src="{{$teacher->avatar}}" alt="" class="w-8 rounded-full">
                                     <span class="truncate ml-1">{{ $teacher->firstname }}</span>
