@@ -28,7 +28,7 @@
 <hr class="my-5">
 
 <h3 class="font-semibold text-sm uppercase text-gray-700 block my-2">Teachers</h3>
-<div class="flex items-center">
+<div class="flex flex-wrap items-center">
     @forelse ($course->teachers as $teacher)
     <div class="inline-flex mr-5 items-center">
         <img class="w-10 h-10 rounded-full mr-4 border border-3 border-gray-400" src="{{ asset($teacher->avatar) }}"
