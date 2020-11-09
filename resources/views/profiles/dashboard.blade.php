@@ -35,9 +35,21 @@
                     {{ implode(',',$item->days)}}
                 </div>
                 <div class="hidden sm:inline-flex">
-                    @foreach ($item->teachers as $t)
+                    @if (count($item->teachers) < 3) @foreach ($item->teachers as $teacher)
+                        <div class="inline-flex items-center mr-2 my-2">
+                            <img src="{{$teacher->avatar}}" alt="" class="w-8 rounded-full">
+                            <span class="truncate ml-1">{{ $teacher->firstname }}</span>
+                        </div>
+                        @endforeach
+                        @else
+                        <div class="inline-flex items-center mr-2 my-2">
+                            <img src="{{ asset('images/dancefloor-logo-black.png')}}" alt="" class="w-8 rounded-full">
+                            <span class="truncate ml-1">Dancefloor Team</span>
+                        </div>
+                        @endif
+                        {{-- @foreach ($item->teachers as $t)
                     <img src="{{ asset($t->avatar)}}" alt="" class="w-8 h-8 rounded-full">
-                    @endforeach
+                        @endforeach --}}
                 </div>
                 <div class="flex justify-end">
                     <div class="inline-flex items-center">

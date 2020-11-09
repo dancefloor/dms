@@ -44,6 +44,8 @@
 <br>
 @endif
 
+
+
 @if ($course->teaser_video_2)
 <br>
 <hr class="my-5">

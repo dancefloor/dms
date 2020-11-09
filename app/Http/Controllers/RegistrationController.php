@@ -21,7 +21,8 @@ class RegistrationController extends Controller
         
         session()->flash('pre-registered', 'You have successfully pre-register. Please proceed to pay on your ');
 
-        return redirect()->back();
+        //return redirect()->back();
+        return redirect(route('dashboard'));
     }
 
     public function remove(Course $course)
