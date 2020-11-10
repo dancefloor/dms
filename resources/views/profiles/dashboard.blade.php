@@ -31,7 +31,7 @@
                         {{ implode(',',$item->days)}}
                     </div>
                 </div>
-                <div class="hidden sm:inline-flex">
+                <div class="hidden sm:flex flex-wrap">
                     {{ implode(',',$item->days)}}
                 </div>
                 <div class="hidden sm:inline-flex">
