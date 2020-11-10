@@ -31,8 +31,8 @@
                         {{ implode(',',$item->days)}}
                     </div>
                 </div>
-                <div class="hidden sm:flex flex-wrap">
-                    {{ implode(',',$item->days)}}
+                <div class="hidden sm:inline-flex">
+                    {{-- {{ implode(',',$item->days)}} --}}
                 </div>
                 <div class="hidden sm:inline-flex">
                     @if (count($item->teachers) < 3) @foreach ($item->teachers as $teacher)
