@@ -6,9 +6,9 @@ use App\Models\Order;
 use App\Models\Registration;
 
 class RegistrationPaymentManager {
-    
+
     public static function toPayed(){
-        
+
     }
 
     public static function registrationToOpen($id)
@@ -21,26 +21,26 @@ class RegistrationPaymentManager {
     public static function updateOrder($id)
     {
         $order = Order::findOrFail($id);
-        
+
         $amount = 0;
-        
+
         foreach ($order->payments as $pay) {
             $amount = $amount + $pay->amount;
         }
 
         if ($amount >= $order->total) {
-            $order->status = 'paid';            
+            $order->status = 'paid';
             foreach ($order->registrations as $r) {
                 self::registrationCompleted($r->id);
             }
             $order->save();
-            
-        }else{                        
+
+        }else{
             foreach ($order->registrations as $r) {
                 self::registrationToPartial($r->id);
             }
             $order->status = 'partial';
-            $order->save();            
+            $order->save();
         }
         return $order->status;
     }
@@ -58,5 +58,5 @@ class RegistrationPaymentManager {
         $registration->status = 'partial';
         $registration->save();
     }
-    
+
 }

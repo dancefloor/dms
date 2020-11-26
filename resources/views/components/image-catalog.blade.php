@@ -16,7 +16,7 @@
                             <p class="text-base leading-6 text-gray-500 capitalize">
                                 {{ $course->level }}
                             </p>
-                            <h3 class="font-bold uppercase leading-6 text-base">CHF {{ $course->online_price }}</h3>
+                            <h3 class="font-bold uppercase leading-6 text-base">EUR {{ $course->online_price }}</h3>
                         </div>
                         <a href="{{route('courses.show', $course )}}" class="block">
                             <h3 class="mt-2 text-xl leading-7 font-semibold text-gray-900 hover:text-red-800">

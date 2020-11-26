@@ -16,7 +16,7 @@
                     @endforeach
                 </div>
                 <span class="text-red-700 text-sm font-bold mt-1 w-16 text-right">
-                    CHF {{ $course->full_price }}
+                    EUR {{ $course->full_price }}
                 </span>
             </div>
             <div class="inline-flex text-gray-600 text-sm">

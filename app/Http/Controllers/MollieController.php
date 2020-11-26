@@ -76,7 +76,7 @@ class MollieController extends Controller
                 'provider'          => 'mollie',
                 'method'            => 'credit-card',
                 'amount'            => request()->amount,
-                'currency'          => 'CHF',
+                'currency'          => 'EUR',
                 'molley_payment_id' => $payment->id,
                 'status'            => 'open',
                 'done'              => now(),

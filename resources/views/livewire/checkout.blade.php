@@ -37,7 +37,7 @@
                         <x-registration-status uid="{{ auth()->user()->id }}" cid="{{ $item->id }}" />
                     </td>
                     <td class="{{ $loop->last ? '' : 'border-b'}} text-right py-2 pr-3">
-                        CHF {{ $item->full_price }}
+                        EUR {{ $item->full_price }}
                         {{-- ($item->full_price * 0.08) --}}
                     </td>
                 </tr>
@@ -104,7 +104,7 @@
                 <td class=""></td>
                 <td class="">Subtotal:</td>
                 <td class="font-bold py-2 text-right pr-3">
-                    CHF {{ $subtotal }}
+                    EUR {{ $subtotal }}
                 </td>
             </tr>
             {{-- <tr>
@@ -145,7 +145,7 @@
                 <td class="border-t"></td>
                 <td class="border-t font-bold">Total</td>
                 <td class="border-t font-bold py-2 text-right pr-3">
-                    CHF {{ $total }}
+                    EUR {{ $total }}
                 </td>
             </tr>
         </table>
