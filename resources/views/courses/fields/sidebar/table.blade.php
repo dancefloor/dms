@@ -120,19 +120,19 @@
                                 <table class="w-full text-sm">
                                     <tr>
                                         <td>Full Price</td>
-                                        <td>{{ $course->full_price }} CHF</td>
+                                        <td>{{ $course->full_price }} EUR</td>
                                     </tr>
                                     @if ($course->reduced_price)
                                     <tr>
                                         <td>Reduced price</td>
-                                        <td>{{ $course->reduced_price }} CHF</td>
+                                        <td>{{ $course->reduced_price }} EUR</td>
                                     </tr>
                                     @endif
 
                                     @if ($course->promo_price)
                                     <tr>
                                         <td>Promotion</td>
-                                        <td>{{ $course->promo_price }} CHF</td>
+                                        <td>{{ $course->promo_price }} EUR</td>
                                     </tr>
                                     @endif
 
