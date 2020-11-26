@@ -164,7 +164,7 @@
                 @csrf
                 <button type="submit" id="register" title="Register"
                     class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-2 md:text-lg md:px-10">
-                    Register {{ $course->online_price }} CHF
+                    Register {{ $course->online_price }} EUR
                 </button>
             </form>
             @else
