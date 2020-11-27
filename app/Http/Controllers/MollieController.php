@@ -32,7 +32,7 @@ class MollieController extends Controller
 
         $payment = Mollie::api()->payments()->create([
             'amount'        => [
-                'currency'      => 'CHF', // Type of currency you want to send
+                'currency'      => 'EUR', // Type of currency you want to send
                 'value'         => request()->amount, // You must send the correct number of decimals, thus we enforce the use of strings
             ],
             'description'   => request()->title,
