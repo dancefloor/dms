@@ -36,7 +36,9 @@
     {{-- @include('courses.fields.videos')
     @include('courses.fields.description')--}}
     @auth
+    @can('crud_users')
     @include('courses.fields.students')
+    @endcan
     @endauth
 
 

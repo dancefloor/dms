@@ -45,10 +45,10 @@
                 <div class="flex justify-center md:justify-end">
                     <div class="text-center md:text-right">
                         <div>
-                            <a href="mailto:infos@genevasalsa.com"
+                            <a href="mailto:online@dancefloorgva.com"
                                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out inline-flex">
                                 @include('icons.email')
-                                infos@genevasalsa.com
+                                online@dancefloorgva.com
                             </a>
                         </div>
                         <div>
