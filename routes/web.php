@@ -30,12 +30,12 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::resource('classrooms', 'ClassroomController');
     Route::resource('skills', 'SkillController');
     Route::resource('lessons', 'LessonController');
-    
+
     Route::resource('payments', 'PaymentController');
     Route::get('export/payments', 'PaymentController@export')->name('payments.export');
     Route::get('export/raw-payments', 'PaymentController@rawExport')->name('payments-raw.export');
 
-    Route::resource('styles', 'StyleController');  
+    Route::resource('styles', 'StyleController');
     Route::get('export/styles', 'StyleController@export')->name('styles.export');
     Route::get('export/students', 'CourseController@export')->name('students.export');
 
@@ -43,14 +43,13 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::resource('roles', 'RoleController');
     Route::resource('users', 'UserController');
     Route::resource('orders', 'OrderController');
-    
+
     Route::post('registration/{course}','RegistrationController@add')->name('registration.add');
     Route::delete('registration/{course}','RegistrationController@remove')->name('registration.remove');
-    
+
     Route::name('webhooks.mollie')->post('webhooks/mollie', 'MollieWebhookController@handle');
     Route::get('/mollie-payment','MollieController@preparePayment')->name('mollie.payment');
-    Route::get('/payment-success','MollieController@paymentSuccess')->name('payment.status');    
-    
+    Route::get('/payment-success','MollieController@paymentSuccess')->name('payment.status');
+
     Route::get('checkout','CheckoutController')->name('checkout');
 });
-
