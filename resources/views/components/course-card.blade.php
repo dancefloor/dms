@@ -24,7 +24,7 @@
                     @include('icons.calendar', ['style' => 'w-4 text-gray-600 mr-2'])
                 </span>
                 <span>
-                    {{ $course->start_date->format('d.m.yy') }} - {{ $course->end_date->format('d.m.yy')}}
+                    {{ $course->start_date->format('d.m.Y') }} - {{ $course->end_date->format('d.m.Y')}}
                 </span>
 
             </div>
