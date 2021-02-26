@@ -52,6 +52,11 @@ class WelcomeController extends Controller
         );
     }
 
+    public function online()
+    {
+        return view('pages.onlineclass');
+    }
+
     // //https://stackoverflow.com/questions/1653891/how-to-find-number-of-mondays-or-tuesdays-between-two-dates
     // /** 
     //  * Counts the number occurrences of a certain day of the week between a start and end date

@@ -25,6 +25,7 @@ Route::resource('courses', 'CourseController');
 Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'verified'])->group(function(){
+    Route::get('onlineclass', 'WelcomeController@online')->name('onlineclass');
     Route::get('dashboard', 'ProfileController@index')->name('dashboard');
     Route::resource('locations', 'LocationController');
     Route::resource('classrooms', 'ClassroomController');
